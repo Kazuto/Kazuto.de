@@ -12,8 +12,17 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.12.0",
-    "@nuxtjs/pwa": "^3.0.0-beta.20",
-    "nuxt": "^2.14.0"
+    "@nuxtjs/dotenv": "^1.4.1",
+    "@nuxtjs/pwa": "^3.3.1",
+    "@nuxtjs/style-resources": "^1.0.0",
+    "cosmicjs": "^3.3.2",
+    "emailjs-com": "^2.6.4",
+    "lazysizes": "^5.2.2",
+    "node-sass": "^5.0.0",
+    "nuxt": "^2.14.0",
+    "nuxt-responsive-loader": "^2.0.1",
+    "sass-loader": "^10.1.0",
+    "sharp": "^0.26.3"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^3.1.0",
@@ -23,6 +32,7 @@
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-nuxt": "^1.0.0",
     "eslint-plugin-prettier": "^3.1.4",
+    "gsap": "^3.5.1",
     "prettier": "^2.0.5"
   }
 }
