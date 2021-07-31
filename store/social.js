@@ -22,7 +22,7 @@ export const state = () => ({
     },
     {
       name: 'linkedin',
-      url: 'https://www.linkedin.com/in/kai-hillemacher/',
+      url: 'https://www.linkedin.com/in/kai-mayer/',
       color: '#2867B2',
     },
     // {

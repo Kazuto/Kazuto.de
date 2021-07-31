@@ -27,25 +27,25 @@ export default {
         hid: 'description',
         name: 'description',
         content:
-          'Kai Hillemacher has graduated as a graphic designer in Germany and has been a full stack developer and graphic designer since 2015.',
+          'Kai Mayer has graduated as a graphic designer in Germany and has been a full stack developer and graphic designer since 2015.',
       },
       {
         hid: 'og:description',
         name: 'og:description',
         content:
-          'Kai Hillemacher has graduated as a graphic designer in Germany and has been a full stack developer and graphic designer since 2015.',
+          'Kai Mayer has graduated as a graphic designer in Germany and has been a full stack developer and graphic designer since 2015.',
       },
-      { hid: 'author', name: 'author', content: 'Kai Hillemacher' },
-      { hid: 'copyright', name: 'copyright', content: 'Kai Hillemacher' },
-      { hid: 'publisher', name: 'publisher', content: 'Kai Hillemacher' },
-      { hid: 'author', name: 'author', content: 'Kai Hillemacher' },
+      { hid: 'author', name: 'author', content: 'Kai Mayer' },
+      { hid: 'copyright', name: 'copyright', content: 'Kai Mayer' },
+      { hid: 'publisher', name: 'publisher', content: 'Kai Mayer' },
+      { hid: 'author', name: 'author', content: 'Kai Mayer' },
       { hid: 'page-topic', name: 'page-topic', content: 'Portfolio' },
       { hid: 'page-type', name: 'page-type', content: 'Private Homepage' },
       {
         hid: 'keywords',
         name: 'keywords',
         content:
-          'Full, Stack, Developer, Graphic, Designer, Kai, Hillemacher, Kazuto, Deutschland, Blog, Gestaltungstechnischer, Assistent, Ausbildung, Mediengestalter',
+          'Full, Stack, Developer, Graphic, Designer, Kai, Mayer, Hillemacher, Kazuto, Deutschland, Blog, Gestaltungstechnischer, Assistent, Ausbildung, Mediengestalter',
       },
       { hid: 'audience', name: 'audience', content: 'all' },
       { hid: 'robots', name: 'robots', content: 'index, follow' },
@@ -58,7 +58,7 @@ export default {
         hid: 'twitter:description',
         name: 'twitter:description',
         content:
-          'Kai Hillemacher is a Full-Stack Developer and Graphic Designer from Germany.',
+          'Kai Mayer is a Full-Stack Developer and Graphic Designer from Germany.',
       },
       {
         hid: 'twitter:image',

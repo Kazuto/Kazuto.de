@@ -8,7 +8,7 @@
               data-src="~/assets/images/avatar.jpg"
               :data-srcset="require('~/assets/images/avatar.jpg').srcSet"
               class="lazyload"
-              alt="Kai Hillemacher"
+              alt="Kai Mayer"
               sizes="(min-width: 768px) 50vw"
             />
           </div>
@@ -16,7 +16,7 @@
         <div class="about__right">
           <Animation :x="200" :opacity="0" :duration="0.6" :delay="0.35">
             <Typography variant="h3" tag="p" class="about__name">
-              Kai Hillemacher
+              Kai Mayer
             </Typography>
             <Typography variant="caption" class="about__location">
               <img
