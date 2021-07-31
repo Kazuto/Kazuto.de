@@ -21,7 +21,7 @@
 
     <div class="footer__bar footer__links">
       <a
-        href="/cv_kai_hillemacher.pdf"
+        href="/cv_kai_mayer.pdf"
         class="footer__link footer__link--light"
         target="_blank"
       >
