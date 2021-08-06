@@ -10,10 +10,8 @@
             Uniquely crafted web experiences
           </Typography>
           <div class="button--group">
-            <UIButton tag="a" href="#portfolio" primary>
-              Check my work
-            </UIButton>
-            <UIButton tag="a" href="#about">More about me</UIButton>
+            <Button tag="a" href="#portfolio" primary>Check my work</Button>
+            <Button tag="a" href="#about">More about me</Button>
           </div>
         </div>
         <div class="hero__footer">
