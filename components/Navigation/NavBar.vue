@@ -7,14 +7,14 @@
     aria-label="Navigation"
   >
     <Container>
-      <NavBrand />
+      <NavigationNavBrand />
       <div class="spacer" />
       <ul class="nav__menu">
         <li v-for="(link, idx) in items" :key="idx">
-          <NavLink :link="link"></NavLink>
+          <NavigationNavLink :link="link"></NavigationNavLink>
         </li>
       </ul>
-      <NavBurger />
+      <NavigationNavBurger />
     </Container>
   </nav>
 </template>
