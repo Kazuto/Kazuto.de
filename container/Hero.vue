@@ -9,6 +9,12 @@
           <Typography variant="display4" tag="h1" class="hero__title">
             Uniquely crafted web experiences
           </Typography>
+          <div class="button--group">
+            <UIButton tag="a" href="#portfolio" primary>
+              Check my work
+            </UIButton>
+            <UIButton tag="a" href="#about">More about me</UIButton>
+          </div>
         </div>
         <div class="hero__footer">
           <a
@@ -117,7 +123,14 @@ export default {
     &__title {
       text-transform: uppercase;
       font-weight: 700;
+      margin-bottom: $spacer * 2;
     }
   }
+}
+
+.button--group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacer;
 }
 </style>

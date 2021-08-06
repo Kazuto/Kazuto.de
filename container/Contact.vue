@@ -89,12 +89,12 @@
               >Message</label
             >
           </div>
-          <button class="button button--primary" type="submit">
+          <UIButton type="submit" block>
             <span>
               {{ isSubmitting ? 'Sending...' : 'Send Message' }}
             </span>
             <span v-if="isSubmitting" class="spinner" />
-          </button>
+          </UIButton>
         </Animation>
       </form>
     </Container>
@@ -257,27 +257,6 @@ export default {
     color: $form-color;
 
     transition: $transition-ease;
-  }
-
-  .button {
-    width: 100%;
-
-    border: 0;
-
-    font-size: $btn-font-size;
-    font-weight: $btn-font-weight;
-    padding: $btn-padding;
-
-    background: $btn-bg;
-    color: $btn-color;
-    border-radius: $btn-border-radius;
-
-    transition: $transition-ease;
-
-    &:hover {
-      cursor: pointer;
-      background: $btn-bg-hover;
-    }
   }
 }
 
