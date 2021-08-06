@@ -89,12 +89,12 @@
               >Message</label
             >
           </div>
-          <UIButton type="submit" block>
+          <Button type="submit" block>
             <span>
               {{ isSubmitting ? 'Sending...' : 'Send Message' }}
             </span>
             <span v-if="isSubmitting" class="spinner" />
-          </UIButton>
+          </Button>
         </Animation>
       </form>
     </Container>
