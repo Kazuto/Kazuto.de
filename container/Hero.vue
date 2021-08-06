@@ -10,10 +10,8 @@
             Uniquely crafted web experiences
           </Typography>
           <div class="button--group">
-            <UIButton tag="a" href="#portfolio" primary>
-              Check my work
-            </UIButton>
-            <UIButton tag="a" href="#about">More about me</UIButton>
+            <Button tag="a" href="#portfolio" primary>Check my work</Button>
+            <Button tag="a" href="#about">More about me</Button>
           </div>
         </div>
         <div class="hero__footer">
@@ -37,13 +35,22 @@ export default {
   name: 'Hero',
   mounted() {
     const tl = gsap.timeline({
-      defaults: { duration: 0.75, delay: 0.5 },
+      defaults: { duration: 0.75 },
     })
 
-    tl.from('.hero__title', { y: -100, opacity: 0 }).to('.hero__title', {
-      y: 0,
-      opacity: 1,
-    })
+    tl.from('.hero__title', { y: -100, opacity: 0, delay: 0.3 }).to(
+      '.hero__title',
+      {
+        y: 0,
+        opacity: 1,
+      }
+    )
+    tl.from('.button--group', { opacity: 0, delay: 0, duration: 0.5 }).to(
+      '.button--group',
+      {
+        opacity: 1,
+      }
+    )
   },
   methods: {},
 }
