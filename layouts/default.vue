@@ -1,8 +1,11 @@
 <template>
   <div>
     <Header>
-      <NavBar :items="navItems" />
-      <NavMenuMobile :items="navItems" :header-height="headerHeight" />
+      <NavigationNavBar :items="navItems" />
+      <NavigationNavMenuMobile
+        :items="navItems"
+        :header-height="headerHeight"
+      />
     </Header>
     <Nuxt />
     <Footer />
