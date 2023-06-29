@@ -11,8 +11,8 @@
           rel="noopener"
           class="footer__link footer__link--light footer__link--social"
         >
-          <img
-            :src="require(`~/assets/images/icons/${link.name}.svg`)"
+          <nuxt-img
+            :src="link.image"
             alt=""
           />
         </a>
@@ -37,16 +37,10 @@
   </footer>
 </template>
 
-<script>
-export default {
-  name: 'Footer',
-  computed: {
-    socialMedia() {
-      return this.$store.getters['social/getAll']
-    },
-  },
-  methods: {},
-}
+<script setup>
+const socialStore = useSocialStore()
+
+const socialMedia = computed(() => socialStore.getAll)
 </script>
 
 <style lang="scss" scoped>

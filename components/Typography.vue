@@ -4,48 +4,44 @@
   </component>
 </template>
 
-<script>
-export default {
-  name: 'Typography',
-  props: {
-    variant: {
-      type: String,
-      default: 'p',
-    },
-    tag: {
-      type: String,
-      default: '',
-    },
+<script setup>
+const props = defineProps({
+  variant: {
+    type: String,
+    default: 'p',
   },
-  computed: {
-    isTag() {
-      let tag
-
-      if (this.tag !== '') {
-        return this.tag
-      }
-
-      switch (this.variant) {
-        case 'body1':
-        case 'body2':
-        case 'lead':
-        case 'caption':
-        case 'overline':
-        case 'small':
-        case 'display1':
-        case 'display2':
-        case 'display3':
-        case 'display4':
-          tag = 'p'
-          break
-        default:
-          tag = this.variant
-      }
-
-      return tag
-    },
+  tag: {
+    type: String,
+    default: '',
   },
-}
+})
+
+const isTag = computed(() => {
+  let tag
+
+  if (props.tag !== '') {
+    return props.tag
+  }
+
+  switch (props.variant) {
+    case 'body1':
+    case 'body2':
+    case 'lead':
+    case 'caption':
+    case 'overline':
+    case 'small':
+    case 'display1':
+    case 'display2':
+    case 'display3':
+    case 'display4':
+      tag = 'p'
+      break
+    default:
+      tag = props.variant
+  }
+
+  return tag
+})
 </script>
 
 <style lang="scss" scoped>

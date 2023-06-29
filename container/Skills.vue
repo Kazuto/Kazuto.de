@@ -18,29 +18,14 @@
         </Animation>
       </div>
       <div class="skills__right">
-        <Animation
-          v-for="(stack, index) in stacks"
-          :key="index"
-          :x="1000"
-          :opacity="0"
-          :duration="0.5"
-          :delay="0.25"
-        >
+        <Animation v-for="(skill, index) in skills" :key="index" :x="1000" :opacity="0" :duration="0.5" :delay="0.25">
           <Card name="skill">
-            <img
-              :alt="stack.title"
-              class="card__icon"
-              :src="stack.metadata.icon.imgix_url"
-            />
+            <nuxt-img :alt="skill.title" class="card__icon" :src="skill.metadata.icon.imgix_url" />
 
             <Typography variant="h3" tag="h4" class="card__title">
-              {{ stack.title }}
+              {{ skill.title }}
             </Typography>
-            <Typography
-              variant="body2"
-              class="card__content"
-              v-html="stack.content"
-            />
+            <Typography variant="body2" class="card__content" v-html="skill.content" />
 
             <!-- <div slot="footer">
             <Typography variant="h5" tag="p" class="card__subtitle">
@@ -64,19 +49,10 @@
   </Section>
 </template>
 
-<script>
-export default {
-  name: 'SkillsSection',
-  data() {
-    return {}
-  },
-  computed: {
-    stacks() {
-      return this.$store.getters['skills/getAll']
-    },
-  },
-  methods: {},
-}
+<script setup>
+const skillsStore = useSkillsStore()
+
+const skills = computed(() => skillsStore.getAll)
 </script>
 
 <style lang="scss">
@@ -131,6 +107,7 @@ export default {
       @include bp(md) {
         grid-gap: 4rem;
       }
+
       @include bp(md) {
         width: 50%;
         padding: 4rem 0 0;

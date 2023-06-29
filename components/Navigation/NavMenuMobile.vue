@@ -10,7 +10,10 @@
       <Container>
         <ul class="nav__list">
           <li v-for="(link, index) in items" :key="index" class="nav__item">
-            <NavLink :link="link" @click="toggleMenu()"></NavLink>
+            <NavigationNavLink
+              :link="link"
+              @click="toggleMenu()"
+            ></NavigationNavLink>
           </li>
         </ul>
         <ul class="social__list" />
@@ -19,29 +22,24 @@
   </transition>
 </template>
 
-<script>
-export default {
-  name: 'NavMenuMobile',
-  props: {
-    items: {
-      type: Array,
-      default: () => {},
-    },
-    headerHeight: {
-      type: Number,
-      default: 0,
-    },
+<script setup>
+const headerStore = useHeaderStore()
+
+const props = defineProps({
+  items: {
+    type: Array,
+    default: () => [],
   },
-  computed: {
-    isMenuOpen() {
-      return this.$store.getters['header/getMenuState']
-    },
+  headerHeight: {
+    type: Number,
+    default: 0,
   },
-  methods: {
-    toggleMenu() {
-      this.$store.dispatch('header/toggleMenu')
-    },
-  },
+})
+
+const isMenuOpen = computed(() => headerStore.getMenuState)
+
+const toggleMenu = () => {
+  headerStore.toggleMenu()
 }
 </script>
 

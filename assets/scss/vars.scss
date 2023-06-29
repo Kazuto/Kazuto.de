@@ -56,15 +56,15 @@ $margin-base: $spacer !default;
 * === FONT SIZES ===
 */
 $font-size-base:              1.5rem !default; // Assumes the browser default, typically `16px`
-$font-size-lg:                ($font-size-base * 1.25) !default;
-$font-size-sm:                ($font-size-base * .75) !default;
-$font-size-xs:                ($font-size-base * .5) !default;
+$font-size-lg:                calc($font-size-base * 1.25) !default;
+$font-size-sm:                calc($font-size-base * .75) !default;
+$font-size-xs:                calc($font-size-base * .5) !default;
 
-$h1-font-size:                $font-size-base * 2.5 !default;
-$h2-font-size:                $font-size-base * 2 !default;
-$h3-font-size:                $font-size-base * 1.75 !default;
-$h4-font-size:                $font-size-base * 1.5 !default;
-$h5-font-size:                $font-size-base * 1.25 !default;
+$h1-font-size:                calc($font-size-base * 2.5) !default;
+$h2-font-size:                calc($font-size-base * 2) !default;
+$h3-font-size:                calc($font-size-base * 1.75) !default;
+$h4-font-size:                calc($font-size-base * 1.5) !default;
+$h5-font-size:                calc($font-size-base * 1.25) !default;
 $h6-font-size:                $font-size-base !default;
 
 $headings-margin-bottom:      .75rem !default;
@@ -74,10 +74,10 @@ $headings-letter-spacing:     1 !default;
 $headings-line-height:        1.2 !default;
 $headings-color:              inherit !default;
 
-$display1-size:               $font-size-base * 6 !default;
-$display2-size:               $font-size-base * 5.2 !default;
-$display3-size:               $font-size-base * 4.5 !default;
-$display4-size:               $font-size-base * 3.5 !default;
+$display1-size:               calc($font-size-base * 6) !default;
+$display2-size:               calc($font-size-base * 5.2) !default;
+$display3-size:               calc($font-size-base * 4.5) !default;
+$display4-size:               calc($font-size-base * 3.5) !default;
 
 $display1-weight:             300 !default;
 $display2-weight:             300 !default;
@@ -115,8 +115,8 @@ $transition-ease: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 * === CONTAINER ===
 */
 $container-max-width:         1440px !default;
-$container-padding:           $padding-base * 4.25 !default;
-$container-padding-sm:        $padding-base * 2 !default;
+$container-padding:           calc($padding-base * 4.25) !default;
+$container-padding-sm:        calc($padding-base * 2) !default;
 
 /*
 * === NAVIGATION ===
@@ -127,7 +127,7 @@ $nav-color-hover:             darken($nav-color, 25%) !default;
 
 $navbar-padding:              1rem !default;
 
-$nav-items-gap:               $spacer * 2 !default;
+$nav-items-gap:               calc($spacer * 2) !default;
 
 /*
 * === CARD ===
@@ -136,8 +136,8 @@ $nav-items-gap:               $spacer * 2 !default;
 $card-bg:                     $gray-100 !default;
 $card-box-shadow:             $box-shadow !default;
 $card-border-radius:          $border-radius !default;
-$card-padding-x:              $spacer * 2.5 !default;
-$card-padding-y:              $spacer * 2.5 !default;
+$card-padding-x:              calc($spacer * 2.5) !default;
+$card-padding-y:              calc($spacer * 2.5) !default;
 $card-padding:                $card-padding-x $card-padding-y !default;
 
 /*
@@ -156,9 +156,9 @@ $alert-font-size:             $font-size-base !default;
 $alert-font-weight:           500 !default;
 
 $alert-margin:                0 0 $spacer 0 !default;
-$alert-padding:               $spacer $spacer * 3 $spacer $spacer !default;
+$alert-padding:               $spacer calc($spacer * 3) $spacer $spacer !default;
 
-$alert-close-width:           $font-size-base * 1.33 !default;
+$alert-close-width:           calc($font-size-base * 1.33) !default;
 $alert-close-height:          $alert-close-width !default;
 $alert-close-font-size:       $alert-close-width !default;
 
@@ -174,7 +174,7 @@ $form-bg-hover:               lighten($form-bg, 2%) !default;
 $form-color:                  $body-text !default;
 $form-border:                 2px solid $body-text !default;
 
-$form-control-padding:        $spacer $spacer * 1.25 !default;
+$form-control-padding:        $spacer calc($spacer * 1.25) !default;
 
 $form-label-font-weight:      500 !default;
 $form-label-letter-spacing:   1px !default;
@@ -191,4 +191,4 @@ $btn-font-weight:             500 !default;
 
 $btn-border:                  none !default;
 $btn-border-radius:           $border-radius !default;
-$btn-padding:                 $spacer / 1.5 $spacer !default;
+$btn-padding:                 calc($spacer / 1.5) $spacer !default;

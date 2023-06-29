@@ -1,19 +1,15 @@
 <template>
   <Section>
     <Container>
-      <Project :item="project"></Project>
+      <Project v-if="project" :item="project"></Project>
     </Container>
   </Section>
 </template>
 
-<script>
-export default {
-  computed: {
-    project() {
-      return this.$store.getters['projects/getFeatured'][0]
-    },
-  },
-}
+<script setup>
+const projectStore = useProjectStore()
+
+const project = computed(() => projectStore.getFeatured)
 </script>
 
 <style lang="scss" scoped>

@@ -14,22 +14,10 @@
       </Animation>
 
       <Animation :y="-30" :opacity="0" :duration="0.6" :delay="0.5">
-        <Typography
-          variant="body1"
-          class="project__description animate"
-          v-html="item.content"
-        ></Typography>
+        <Typography variant="body1" class="project__description animate" v-html="item.content"></Typography>
 
-        <Typography
-          v-if="item.metadata.url"
-          variant="body1"
-          tag="a"
-          :href="item.metadata.url"
-          target="_blank"
-          :aria-label="item.title"
-          rel="noreferrer"
-          class="project__link"
-        >
+        <Typography v-if="item.metadata.url" variant="body1" tag="a" :href="item.metadata.url" target="_blank"
+          :aria-label="item.title" rel="noreferrer" class="project__link">
           Visit now
         </Typography>
       </Animation>
@@ -37,47 +25,37 @@
     <div class="project__right">
       <Animation :x="1000" :opacity="0" :duration="0.5" :delay="0.3">
         <Card class="card--project">
-          <img
-            :src="item.metadata.image.url"
-            :srcset="generateSrcSet(item.metadata.image.imgix_url)"
-            :alt="item.title"
-            class="lazyload"
-            sizes="(min-width: 768px) 40vw"
-          />
+          <nuxt-img :src="item.metadata.image.url" :alt="item.title" sizes="md:40vw" />
         </Card>
       </Animation>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    item: {
-      type: Object,
-      default: () => {},
-    },
+<script setup>
+const props = defineProps({
+  item: {
+    type: Object,
+    default: () => { },
   },
-  data() {
-    return {
-      imageSizes: [320, 640, 768, 960, 1024, 1280, 1600, 1920, 2560, 3840],
+})
+
+const state = reactive({
+  imageSizes: [320, 640, 768, 960, 1024, 1280, 1600, 1920, 2560, 3840],
+})
+
+const generateSrcSet = (url) => {
+  let string = ''
+
+  state.imageSizes.map((size, index) => {
+    string += `${url}?w=${size} ${size}w`
+
+    if (index < state.imageSizes.length - 1) {
+      string += ','
     }
-  },
-  methods: {
-    generateSrcSet(url) {
-      let string = ''
+  })
 
-      this.imageSizes.map((size, index) => {
-        string += `${url}?w=${size} ${size}w`
-
-        if (index < this.imageSizes.length - 1) {
-          string += ','
-        }
-      })
-
-      return string
-    },
-  },
+  return string
 }
 </script>
 

@@ -14,22 +14,12 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'Card',
-  data() {
-    return {}
-  },
-  computed: {
-    hasHeaderSlot() {
-      return !!this.$slots.header
-    },
-    hasFooterSlot() {
-      return !!this.$slots.footer
-    },
-  },
-  created() {},
-}
+<script setup>
+const slots = useSlots()
+
+const hasHeaderSlot = computed(() => !!slots.header);
+
+const hasFooterSlot = computed(() => !!slots.footer);
 </script>
 
 <style lang="scss" scoped>

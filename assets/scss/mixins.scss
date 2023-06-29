@@ -4,7 +4,7 @@
     $n: index($breakpoint-names, $name);
     @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
 }
-  
+
 @function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
     $min: map-get($breakpoints, $name);
     @return if($min != 0, $min, null);
@@ -14,7 +14,7 @@
     $next: breakpoint-next($name, $breakpoints);
     @return if($next, breakpoint-min($next, $breakpoints), null);
 }
-  
+
 @mixin bp($name, $breakpoints: $grid-breakpoints) {
     $min: breakpoint-min($name, $breakpoints);
     @if $min {

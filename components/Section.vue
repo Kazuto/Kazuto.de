@@ -15,32 +15,27 @@
   </section>
 </template>
 
-<script>
-export default {
-  name: 'Section',
-  props: {
-    name: {
-      type: String,
-      default: '',
-    },
-    flex: {
-      type: Boolean,
-      default: false,
-    },
-    alignCenter: {
-      type: Boolean,
-      default: false,
-    },
+<script setup>
+const slots = useSlots()
+
+const props = defineProps({
+  name: {
+    type: String,
+    default: '',
   },
-  computed: {
-    hasHeaderSlot() {
-      return !!this.$slots.header
-    },
-    hasFooterSlot() {
-      return !!this.$slots.footer
-    },
+  flex: {
+    type: Boolean,
+    default: false,
   },
-}
+  alignCenter: {
+    type: Boolean,
+    default: false,
+  }
+})
+
+const hasHeaderSlot = computed(() => !!slots.header)
+
+const hasFooterSlot = computed(() => !!slots.footer)
 </script>
 
 <style lang="scss" scoped>

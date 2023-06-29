@@ -3,36 +3,35 @@
   "version": "1.1.2",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
     "build": "nuxt build",
-    "start": "nuxt start",
+    "dev": "nuxt dev",
     "generate": "nuxt generate",
+    "postinstall": "nuxt prepare",
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lint": "npm run lint:js"
   },
   "dependencies": {
-    "@nuxtjs/axios": "^5.12.0",
-    "@nuxtjs/dotenv": "^1.4.1",
-    "@nuxtjs/pwa": "^3.3.1",
-    "@nuxtjs/style-resources": "^1.0.0",
-    "cosmicjs": "^3.3.2",
-    "emailjs-com": "^2.6.4",
-    "lazysizes": "^5.2.2",
-    "node-sass": "^5.0.0",
-    "nuxt": "^2.14.0",
-    "nuxt-responsive-loader": "^2.0.1",
-    "sass-loader": "^10.1.0",
-    "sharp": "^0.26.3"
+    "@cosmicjs/sdk": "^1.0.9",
+    "@emailjs/browser": "^3.11.0",
+    "@pinia/nuxt": "^0.4.11",
+    "pinia": "^2.1.4"
   },
   "devDependencies": {
-    "@nuxtjs/eslint-config": "^3.1.0",
-    "@nuxtjs/eslint-module": "^2.0.0",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^7.5.0",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-nuxt": "^1.0.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "gsap": "^3.5.1",
-    "prettier": "^2.0.5"
+    "@nuxt/devtools": "latest",
+    "@nuxt/image": "^1.0.0-rc.1",
+    "@nuxt/image-edge": "^1.0.0-rc.1-28126030.07836ae",
+    "@nuxtjs/eslint-config-typescript": "^12.0.0",
+    "@types/node": "^18.15.1",
+    "@wattanx/style-resources": "^1.0.0",
+    "autoprefixer": "^10.4.14",
+    "eslint": "^8.32.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "gsap": "^3.12.2",
+    "node-sass": "^9.0.0",
+    "nuxt": "^3.6.1",
+    "prettier": "^2.8.3",
+    "sass": "^1.63.6",
+    "sass-loader": "^13.3.2"
   }
 }

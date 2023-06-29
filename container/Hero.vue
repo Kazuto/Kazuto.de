@@ -15,12 +15,7 @@
           </div>
         </div>
         <div class="hero__footer">
-          <a
-            class="footer__link"
-            href="#portfolio"
-            name="portfolio"
-            aria-label="portfolio"
-          >
+          <a class="footer__link" href="#portfolio" name="portfolio" aria-label="portfolio">
             <ScrollIndicator />
           </a>
         </div>
@@ -29,31 +24,28 @@
   </Section>
 </template>
 
-<script>
-import { gsap } from 'gsap/dist/gsap'
-export default {
-  name: 'Hero',
-  mounted() {
-    const tl = gsap.timeline({
-      defaults: { duration: 0.75 },
-    })
+<script setup>
+import gsap from 'gsap'
 
-    tl.from('.hero__title', { y: -100, opacity: 0, delay: 0.3 }).to(
-      '.hero__title',
-      {
-        y: 0,
-        opacity: 1,
-      }
-    )
-    tl.from('.button--group', { opacity: 0, delay: 0, duration: 0.5 }).to(
-      '.button--group',
-      {
-        opacity: 1,
-      }
-    )
-  },
-  methods: {},
-}
+onMounted(() => {
+  const tl = gsap.timeline({
+    defaults: { duration: 0.75 },
+  })
+
+  tl.from('.hero__title', { y: -100, opacity: 0, delay: 0.3 }).to(
+    '.hero__title',
+    {
+      y: 0,
+      opacity: 1,
+    }
+  )
+  tl.from('.button--group', { opacity: 0, delay: 0, duration: 0.5 }).to(
+    '.button--group',
+    {
+      opacity: 1,
+    }
+  )
+})
 </script>
 
 <style lang="scss">
@@ -70,19 +62,23 @@ export default {
     right: 0;
     bottom: -1rem;
     z-index: 0;
-    user-select: none; /* Standard */
+    user-select: none;
+    /* Standard */
 
     filter: saturate(0.2) opacity(0.2);
     transform: translateX(40%);
 
     img {
       height: 400px;
+
       @include bp(sm) {
         height: 500px;
       }
+
       @include bp(md) {
         height: 600px;
       }
+
       @include bp(lg) {
         height: 700px;
       }
@@ -104,9 +100,11 @@ export default {
       @include bp(sm) {
         width: 75%;
       }
+
       @include bp(xl) {
         width: 60%;
       }
+
       @include bp(hd) {
         width: 50%;
       }

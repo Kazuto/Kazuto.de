@@ -9,31 +9,21 @@
 
       <form id="app" novalidate class="form" @submit.prevent="checkForm">
         <transition name="fade">
-          <Alert
-            v-if="sendSuccessful"
-            type="success"
-            dismissible
-            @close="sendSuccessful = false"
-          >
+          <Alert v-if="state.sendSuccessful" type="success" dismissible @close="sendSuccessful = false">
             The email was send successfully
           </Alert>
         </transition>
 
         <transition name="fade">
-          <Alert
-            v-if="sendFail"
-            type="error"
-            dismissible
-            @close="sendFail = false"
-          >
+          <Alert v-if="state.sendFail" type="error" dismissible @close="sendFail = false">
             Your email could not be sent. Please try again later.
           </Alert>
         </transition>
 
         <transition name="fade">
-          <Alert v-if="errors.length" type="error">
+          <Alert v-if="state.errors.length" type="error">
             <ul>
-              <li v-for="error in errors" :key="error">
+              <li v-for="error in state.errors" :key="error">
                 {{ error }}
               </li>
             </ul>
@@ -42,58 +32,25 @@
 
         <Animation :y="-30" :opacity="0" :duration="0.6" :delay="0.5">
           <div class="form__group">
-            <input
-              id="name"
-              v-model="form.name"
-              placeholder="Name"
-              type="text"
-              aria-labelledby="name"
-              name="name"
-              class="form__control"
-            />
-            <label for="name" class="form__label" aria-label="Name Input Field"
-              >Name</label
-            >
+            <input id="name" v-model="state.form.name" placeholder="Name" type="text" aria-labelledby="name" name="name"
+              class="form__control" />
+            <label for="name" class="form__label" aria-label="Name Input Field">Name</label>
           </div>
           <div class="form__group">
-            <input
-              id="email"
-              v-model="form.mail"
-              placeholder="Email"
-              type="text"
-              aria-labelledby="email"
-              name="email"
-              class="form__control"
-            />
-            <label
-              for="email"
-              class="form__label"
-              aria-label="E-Mail Input Field"
-              >Email</label
-            >
+            <input id="email" v-model="state.form.mail" placeholder="Email" type="text" aria-labelledby="email" name="email"
+              class="form__control" />
+            <label for="email" class="form__label" aria-label="E-Mail Input Field">Email</label>
           </div>
           <div class="form__group">
-            <textarea
-              id="message"
-              v-model="form.message"
-              placeholder="Message"
-              rows="7"
-              aria-labelledby="message"
-              name="message"
-              class="form__control"
-            />
-            <label
-              for="message"
-              class="form__label"
-              aria-label="Name Input Field"
-              >Message</label
-            >
+            <textarea id="message" v-model="state.form.message" placeholder="Message" rows="7" aria-labelledby="message"
+              name="message" class="form__control" />
+            <label for="message" class="form__label" aria-label="Name Input Field">Message</label>
           </div>
           <Button type="submit" block>
             <span>
-              {{ isSubmitting ? 'Sending...' : 'Send Message' }}
+              {{ state.isSubmitting ? 'Sending...' : 'Send Message' }}
             </span>
-            <span v-if="isSubmitting" class="spinner" />
+            <span v-if="state.isSubmitting" class="spinner" />
           </Button>
         </Animation>
       </form>
@@ -101,77 +58,77 @@
   </Section>
 </template>
 
-<script>
-import emailjs from 'emailjs-com'
+<script setup>
+import emailjs from '@emailjs/browser'
 
-export default {
-  name: 'Contact',
-  data() {
-    return {
-      errors: [],
-      isSubmitting: false,
-      sendSuccessful: false,
-      sendFail: false,
-      form: {
-        name: '',
-        mail: '',
-        message: '',
+const state = reactive({
+  errors: [],
+  isSubmitting: false,
+  sendSuccessful: false,
+  sendFail: false,
+  form: {
+    name: '',
+    mail: '',
+    message: '',
+  },
+})
+
+const checkForm = (e) => {
+  state.errors = []
+
+  if (!state.form.name) {
+    state.errors.push('Please enter a name')
+  }
+
+  if (!state.form.mail) {
+    state.errors.push('Please enter a email')
+  } else if (!validEmail(state.form.mail)) {
+    state.errors.push('The email has to be valid')
+  }
+
+  if (!state.errors.length) {
+    sendMail(e)
+  }
+}
+
+const validEmail = (email) => {
+  const re =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  return re.test(email)
+}
+
+const sendMail = (e) => {
+  const config = useRuntimeConfig()
+
+  state.isSubmitting = true
+
+  emailjs
+    .sendForm(
+      config.emailjsServiceId,
+      config.emailjsTemplateId,
+      e.target,
+      config.emailjsUserId
+    )
+    .then(
+      (result) => {
+        result.status === 200
+          ? (state.sendSuccessful = true)
+          : (state.sendSuccessful = false)
+
+        state.form.name = ''
+        state.form.mail = ''
+        state.form.message = ''
+
+        state.isSubmitting = false
       },
-    }
-  },
-  methods: {
-    checkForm(e) {
-      this.errors = []
+      (error) => {
+        if (error) {
+          state.sendFail = true
 
-      if (!this.form.name) {
-        this.errors.push('Please enter a name')
+          state.isSubmitting = false
+        }
       }
-
-      if (!this.form.mail) {
-        this.errors.push('Please enter a email')
-      } else if (!this.validEmail(this.form.mail)) {
-        this.errors.push('The email has to be valid')
-      }
-
-      if (!this.errors.length) {
-        this.sendMail(e, this)
-      }
-    },
-    validEmail(email) {
-      const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      return re.test(email)
-    },
-    sendMail: (e, self) => {
-      self.isSubmitting = true
-      emailjs
-        .sendForm(
-          self.$config.emailjsServiceId,
-          self.$config.emailjsTemplateId,
-          e.target,
-          self.$config.emailjsUserId
-        )
-        .then(
-          (result) => {
-            result.status === 200
-              ? (self.sendSuccessful = true)
-              : (self.sendSuccessful = false)
-
-            self.form.name = ''
-            self.form.mail = ''
-            self.form.message = ''
-
-            self.isSubmitting = false
-          },
-          (error) => {
-            if (error) {
-              self.sendFail = true
-
-              self.isSubmitting = false
-            }
-          }
-        )
-    },
-  },
+    )
 }
 </script>
 
@@ -232,8 +189,8 @@ export default {
       background: $form-bg-hover;
     }
 
-    &:focus + .form__label,
-    &:not(:placeholder-shown) + .form__label {
+    &:focus+.form__label,
+    &:not(:placeholder-shown)+.form__label {
       background: $body-bg;
       padding: 0 4px;
 
@@ -264,7 +221,12 @@ export default {
 .fade-leave-active {
   transition: opacity 0.5s;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+
+.fade-enter,
+.fade-leave-to
+
+/* .fade-leave-active below version 2.1.8 */
+  {
   opacity: 0;
 }
 </style>

@@ -1,38 +1,29 @@
 <template>
-  <nav
-    id="navigation"
-    class="nav__bar"
-    :class="{ fixed: fixed }"
-    role="navigation"
-    aria-label="Navigation"
-  >
+  <nav id="navigation" class="nav__bar" :class="{ fixed: fixed }" role="navigation" aria-label="Navigation">
     <Container>
-      <NavBrand />
+      <NavigationNavBrand />
       <div class="spacer" />
       <ul class="nav__menu">
         <li v-for="(link, idx) in items" :key="idx">
-          <NavLink :link="link"></NavLink>
+          <NavigationNavLink :link="link"></NavigationNavLink>
         </li>
       </ul>
-      <NavBurger />
+      <NavigationNavBurger />
     </Container>
   </nav>
 </template>
 
-<script>
-export default {
-  name: 'NavBar',
-  props: {
-    items: {
-      type: Array,
-      default: () => {},
-    },
-    fixed: {
-      type: Boolean,
-      default: false,
-    },
+<script setup>
+const props = defineProps({
+  fixed: {
+    type: Boolean,
+    default: false,
   },
-}
+  items: {
+    type: Array,
+    default: () => [],
+  },
+})
 </script>
 
 <style lang="scss" scoped>
@@ -51,13 +42,16 @@ export default {
 
   &.fixed {
     pointer-events: none;
+
     .nav__brand {
       display: none;
+
       img {
         opacity: 0;
         width: 40px;
       }
     }
+
     .nav__burger {
       pointer-events: auto;
     }

@@ -9,8 +9,12 @@
   </main>
 </template>
 
-<script>
-export default {}
-</script>
+<script setup>
+const projectStore = useProjectStore()
+const skillsStore = useSkillsStore()
 
-<style lang="scss"></style>
+onMounted(async () => {
+  await projectStore.fetch()
+  await skillsStore.fetch()
+})
+</script>

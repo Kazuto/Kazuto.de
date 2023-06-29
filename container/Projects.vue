@@ -1,23 +1,15 @@
 <template>
   <Section>
     <Container>
-      <Project
-        v-for="project in projects"
-        :key="project.id"
-        :item="project"
-      ></Project>
+      <Project v-for="project in projects" :key="project.id" :item="project"></Project>
     </Container>
   </Section>
 </template>
 
-<script>
-export default {
-  computed: {
-    projects() {
-      return this.$store.getters['projects/getNonFeatured']
-    },
-  },
-}
+<script setup>
+const projectStore = useProjectStore()
+
+const projects = computed(() => projectStore.getNonFeatured)
 </script>
 
 <style lang="scss" scoped>
@@ -31,7 +23,7 @@ export default {
     padding: 4rem 0;
   }
 
-  .project + .project {
+  .project+.project {
     margin-top: $spacer * 5;
   }
 }

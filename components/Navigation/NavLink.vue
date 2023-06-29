@@ -4,16 +4,13 @@
   }}</a>
 </template>
 
-<script>
-export default {
-  name: 'NavLink',
-  props: {
-    link: {
-      type: Object,
-      default: () => {},
-    },
-  },
-}
+<script setup>
+const props = defineProps({
+  link: {
+    type: Object,
+    default: () => {},
+  }
+})
 </script>
 
 <style lang="scss" scoped>

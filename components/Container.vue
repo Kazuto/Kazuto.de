@@ -4,16 +4,13 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'Container',
-  props: {
-    fluid: {
-      type: Boolean,
-      default: false,
-    },
-  },
-}
+<script setup>
+const props = defineProps({
+  fluid: {
+    type: Boolean,
+    default: false,
+  }
+})
 </script>
 
 <style lang="scss" scoped>

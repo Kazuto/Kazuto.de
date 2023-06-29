@@ -11,25 +11,13 @@
   </a>
 </template>
 
-<script>
-export default {
-  name: 'NavBurger',
-  props: {
-    open: {
-      type: Boolean,
-      default: false,
-    },
-  },
-  computed: {
-    isMenuOpen() {
-      return this.$store.getters['header/getMenuState']
-    },
-  },
-  methods: {
-    toggleMenu() {
-      this.$store.dispatch('header/toggleMenu')
-    },
-  },
+<script setup>
+const headerStore = useHeaderStore()
+
+const isMenuOpen = computed(() => headerStore.getMenuState)
+
+const toggleMenu = () => {
+  headerStore.toggleMenu()
 }
 </script>
 

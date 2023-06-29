@@ -1,56 +1,50 @@
 <template>
-  <header
-    id="header"
-    :class="{ hide: curDirection === 2 && curScroll > scrollTreshold }"
-  >
+  <header id="header" :class="{
+    hide: state.curDirection === 2 && state.curScroll > state.scrollTreshold,
+  }">
     <slot></slot>
   </header>
 </template>
 
-<script>
-export default {
-  name: 'Header',
-  data() {
-    return {
-      breakpoint: 576,
-      curScroll: 0,
-      prevScroll: 0,
-      scrollTreshold: 200,
-      curDirection: 0,
-      prevDirection: 0,
-    }
-  },
-  computed: {
-    isMenuOpen() {
-      return this.$store.getters['header/getMenuState']
-    },
-  },
-  mounted() {
-    this.curScroll = window.scrollY || document.documentElement.scrollTop
-    this.prevScroll = window.scrollY || document.documentElement.scrollTop
+<script setup>
+const headerStore = useHeaderStore()
 
-    window.addEventListener('resize', this.catchResize)
-    window.addEventListener('scroll', this.catchScroll)
-  },
-  methods: {
-    catchResize() {
-      if (!this.isMenuOpen) {
-        return
-      }
+const state = reactive({
+  breakpoint: 576,
+  curScroll: 0,
+  prevScroll: 0,
+  scrollTreshold: 200,
+  curDirection: 0,
+  prevDirection: 0,
+})
 
-      if (window.innerWidth >= this.breakpoint) {
-        this.$store.dispatch('header/toggleMenu')
-      }
-    },
-    catchScroll() {
-      this.curScroll = window.scrollY || document.documentElement.scrollTop
+const isMenuOpen = computed(() => headerStore.getMenuState)
 
-      this.curDirection = this.curScroll > this.prevScroll ? 2 : 1
+onMounted(() => {
+  state.curScroll = window.scrollY || document.documentElement.scrollTop
+  state.prevScroll = window.scrollY || document.documentElement.scrollTop
 
-      this.prevDirection = this.curDirection
-      this.prevScroll = this.curScroll
-    },
-  },
+  window.addEventListener('resize', catchResize)
+  window.addEventListener('scroll', catchScroll)
+})
+
+const catchResize = () => {
+  if (!isMenuOpen) {
+    return
+  }
+
+  if (window.innerWidth >= state.breakpoint) {
+    headerStore.toggleMenu()
+  }
+}
+
+const catchScroll = () => {
+  state.curScroll = window.scrollY || document.documentElement.scrollTop
+
+  state.curDirection = state.curScroll > state.prevScroll ? 2 : 1
+
+  state.prevDirection = state.curDirection
+  state.prevScroll = state.curScroll
 }
 </script>
 

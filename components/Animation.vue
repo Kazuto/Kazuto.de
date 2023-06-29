@@ -1,50 +1,58 @@
 <template>
-  <div ref="animation">
+  <div ref="animation" class="animation">
     <slot />
   </div>
 </template>
 
-<script>
-import { gsap } from 'gsap/dist/gsap'
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+<script setup>
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
-export default {
-  name: 'Animation',
-  props: {
-    y: {
-      type: Number,
-      default: 0,
-    },
-    x: {
-      type: Number,
-      default: 0,
-    },
-    duration: {
-      type: Number,
-      default: 1,
-    },
-    delay: {
-      type: Number,
-      default: 0,
-    },
-    opacity: {
-      type: Number,
-      default: 1,
-    },
+
+const animation = ref(null)
+
+const props = defineProps({
+  y: {
+    type: Number,
+    default: 0,
   },
-  computed: {},
-  mounted() {
-    this.$nextTick(() => {
-      gsap.from(this.$refs.animation, {
-        scrollTrigger: this.$refs.animation,
-        y: this.y,
-        x: this.x,
-        duration: this.duration,
-        delay: this.delay,
-        opacity: this.opacity,
-      })
+  x: {
+    type: Number,
+    default: 0,
+  },
+  duration: {
+    type: Number,
+    default: 1,
+  },
+  delay: {
+    type: Number,
+    default: 0,
+  },
+  opacity: {
+    type: Number,
+    default: 1,
+  },
+})
+
+let ctx
+
+onMounted(() => {
+  ctx = gsap.context(() => {
+    gsap.from(animation.value, {
+      y: props.y,
+      x: props.x,
+      duration: props.duration,
+      delay: props.delay,
+      opacity: props.opacity,
+      scrollTrigger: {
+        trigger: animation.value,
+      },
     })
-  },
-}
+  })
+})
+
+onUnmounted(() => {
+  ctx.revert()
+})
 </script>

@@ -4,12 +4,10 @@
       <div class="about">
         <Animation :x="-500" :opacity="0" :duration="0.7" :delay="0.5">
           <div class="about__left">
-            <img
-              data-src="~/assets/images/avatar.jpg"
-              :data-srcset="require('~/assets/images/avatar.jpg').srcSet"
-              class="lazyload"
+            <nuxt-img
+              src="avatar.jpg"
               alt="Kai Mayer"
-              sizes="(min-width: 768px) 50vw"
+              sizes="md:50vw"
             />
           </div>
         </Animation>
@@ -19,8 +17,8 @@
               Kai Mayer
             </Typography>
             <Typography variant="caption" class="about__location">
-              <img
-                src="~/assets/images/icons/map-pin.svg"
+              <nuxt-img
+                src="icons/map-pin.svg"
                 alt="Location Icon"
               />
               Moenchengladbach, Germany
@@ -55,9 +53,9 @@
                 class="card--profile__social-item"
                 :class="link.name"
               >
-                <img
-                  :src="require(`~/assets/images/icons/${link.name}.svg`)"
-                  alt=""
+                <nuxt-img
+                  :src="link.image"
+                  :alt="link.name"
                 />
               </a>
             </div>
@@ -68,15 +66,10 @@
   </Section>
 </template>
 
-<script>
-export default {
-  name: 'About',
-  computed: {
-    socialMedia() {
-      return this.$store.getters['social/getAll']
-    },
-  },
-}
+<script setup>
+const socialStore = useSocialStore();
+
+const socialMedia = computed(() => socialStore.getAll);
 </script>
 
 <style scoped lang="scss">

@@ -1,16 +1,10 @@
 <template>
   <div class="nav__brand">
     <a href="/" title="Logo link">
-      <img alt="Kazuto Logo Image" src="~@/assets/images/logo.svg" />
+      <img alt="Kazuto Logo Image" src="~/assets/images/logo.svg" />
     </a>
   </div>
 </template>
-
-<script>
-export default {
-  name: 'NavBrand',
-}
-</script>
 
 <style lang="scss" scoped>
 .nav__brand {

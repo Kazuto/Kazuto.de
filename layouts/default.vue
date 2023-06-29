@@ -1,62 +1,58 @@
 <template>
   <div>
     <Header>
-      <NavBar :items="navItems" />
-      <NavMenuMobile :items="navItems" :header-height="headerHeight" />
+      <NavigationNavBar :items="navItems" />
+      <NavigationNavMenuMobile :items="navItems" :header-height="state.headerHeight" />
     </Header>
-    <Nuxt />
+
+    <NuxtPage />
+
     <Footer />
 
     <BackToTop />
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      headerHeight: 0,
-    }
-  },
-  computed: {
-    navItems() {
-      return this.$store.getters['header/getAllItems']
-    },
-    overflow() {
-      return this.$store.getters['header/getMenuState']
-    },
-  },
-  watch: {
-    overflow(newVal) {
-      this.toggleBodyOverflow(newVal)
-    },
-  },
-  created() {
-    this.$store.dispatch('projects/getProjects')
-    this.$store.dispatch('skills/getStacks')
-  },
-  mounted() {
-    this.headerHeight = document.querySelector('#header').clientHeight
-  },
-  methods: {
-    toggleBodyOverflow(state) {
-      if (state) {
-        document.body.classList.add('overflow-hidden')
-      } else {
-        document.body.classList.remove('overflow-hidden')
-      }
-    },
-  },
+<script setup>
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
+
+const headerStore = useHeaderStore()
+
+const state = reactive({
+  headerHeight: 0,
+})
+
+const navItems = computed(() => headerStore.getAllItems)
+
+const overflow = computed(() => headerStore.getMenuState)
+
+watch(overflow, (newValue) => {
+  toggleBodyOverflow(newValue)
+})
+
+onMounted(async () => {
+  state.headerHeight = document.querySelector('#header').clientHeight
+})
+
+const toggleBodyOverflow = (state) => {
+  if (state) {
+    document.body.classList.add('overflow-hidden')
+  } else {
+    document.body.classList.remove('overflow-hidden')
+  }
 }
 </script>
 
 <style lang="scss">
-@import '@/assets/scss/reset';
+@import '~/assets/scss/reset';
 
 @font-face {
   font-family: 'Quicksand';
   src: local('Quicksand'), local('Quicksand'),
-    url('~@/assets/fonts/QuicksandVariable.ttf') format('truetype');
+    url('~/assets/fonts/QuicksandVariable.ttf') format('truetype');
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
@@ -81,6 +77,7 @@ body {
   font-size: $font-size-base;
 
   overflow-x: hidden;
+
   &.overflow-hidden {
     overflow: hidden;
   }
@@ -95,7 +92,12 @@ strong {
 .fade-leave-active {
   transition: opacity 0.2s;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+
+.fade-enter,
+.fade-leave-to
+
+/* .fade-leave-active below version 2.1.8 */
+  {
   opacity: 0;
 }
 </style>

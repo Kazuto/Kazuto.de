@@ -1,60 +1,52 @@
 <template>
-  <component
-    :is="tag"
-    class="button"
-    :class="{
-      'button--primary': primary,
-      'button--secondary': secondary,
-      'button--outline': outline,
-      'button--sm': sm,
-      'button--md': md,
-      'button--lg': lg,
-      'button--block': block,
-    }"
-  >
+  <component :is="tag" class="button" :class="{
+    'button--primary': primary,
+    'button--secondary': secondary,
+    'button--outline': outline,
+    'button--sm': sm,
+    'button--md': md,
+    'button--lg': lg,
+    'button--block': block,
+  }">
     <slot />
   </component>
 </template>
 
-<script>
-export default {
-  name: 'Button',
-  props: {
-    tag: {
-      type: String,
-      default: 'button',
-    },
-    sm: {
-      type: Boolean,
-      default: false,
-    },
-    md: {
-      type: Boolean,
-      default: false,
-    },
-    lg: {
-      type: Boolean,
-      default: false,
-    },
-    primary: {
-      type: Boolean,
-      default: false,
-    },
-    secondary: {
-      type: Boolean,
-      default: false,
-    },
-    outline: {
-      type: Boolean,
-      default: false,
-    },
-    block: {
-      type: Boolean,
-      default: false,
-    },
+<script setup>
+const props = defineProps({
+  tag: {
+    type: String,
+    default: 'button',
   },
-  computed: {},
-}
+  sm: {
+    type: Boolean,
+    default: false,
+  },
+  md: {
+    type: Boolean,
+    default: false,
+  },
+  lg: {
+    type: Boolean,
+    default: false,
+  },
+  primary: {
+    type: Boolean,
+    default: false,
+  },
+  secondary: {
+    type: Boolean,
+    default: false,
+  },
+  outline: {
+    type: Boolean,
+    default: false,
+  },
+  block: {
+    type: Boolean,
+    default: false,
+  },
+})
 </script>
 
 <style lang="scss" scoped>
@@ -96,6 +88,7 @@ export default {
   &--secondary {
     background: $secondary;
     color: $white;
+
     &.button--outline {
       color: $secondary;
     }

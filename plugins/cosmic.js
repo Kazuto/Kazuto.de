@@ -1,11 +1,12 @@
-const Cosmic = require('cosmicjs')
-const api = Cosmic()
+import { createBucketClient } from '@cosmicjs/sdk'
 
-export default ({ app }, inject) => {
-  const bucket = api.bucket({
-    slug: app.$config.cosmicBucketSlug,
-    read_key: app.$config.cosmicReadKey,
+export default defineNuxtPlugin((nuxtApp) => {
+  const config = useRuntimeConfig();
+
+  const cosmic = createBucketClient({
+    bucketSlug: config.public.cosmicBucketSlug,
+    readKey: config.public.cosmicReadKey,
   })
 
-  inject('cosmic', bucket)
-}
+  nuxtApp.provide('cosmic', cosmic)
+})

@@ -5,20 +5,17 @@
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    type: {
-      type: String,
-      default: 'info',
-    },
-    dismissible: {
-      type: Boolean,
-      default: false,
-    },
+<script setup>
+const props = defineProps({
+  type: {
+    type: String,
+    default: 'info',
   },
-  methods: {},
-}
+  dismissible: {
+    type: Boolean,
+    default: false,
+  }
+})
 </script>
 
 <style lang="scss" scoped>
