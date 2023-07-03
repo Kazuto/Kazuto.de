@@ -4,59 +4,31 @@
       <div class="about">
         <Animation :x="-500" :opacity="0" :duration="0.7" :delay="0.5">
           <div class="about__left">
-            <nuxt-img
-              src="avatar.jpg"
-              alt="Kai Mayer"
-              sizes="md:50vw"
-            />
+            <nuxt-img src="avatar.jpg" alt="Kai Mayer" sizes="md:50vw" />
           </div>
         </Animation>
         <div class="about__right">
           <Animation :x="200" :opacity="0" :duration="0.6" :delay="0.35">
             <Typography variant="h3" tag="p" class="about__name">
-              Kai Mayer
+              Hi there, I'm Kai 👋
             </Typography>
             <Typography variant="caption" class="about__location">
-              <nuxt-img
-                src="icons/map-pin.svg"
-                alt="Location Icon"
-              />
+              <nuxt-img src="icons/map-pin.svg" alt="Location Icon" />
               Moenchengladbach, Germany
             </Typography>
           </Animation>
 
           <Animation :x="200" :opacity="0" :duration="0.6" :delay="0.35">
             <Typography variant="body2" class="about__biography">
-              I've started experimenting with Photoshop, HTML and CSS when I was
-              13 years old and quickly grew fond of graphic design and web
-              development. With the age of 23, I've decided to begin training as
-              a Graphic Designer. Through the internship during the training,
-              I've started working as a Front-End Developer. Due to my passion
-              for technology and my never-ending thirst for knowledge I've got
-              more and more in touch with server technologies such as Nginx, PHP
-              and Go what finally led me to work as a Full-Stack developer. But
-              technologies aren't my only passion. I play several instruments
-              and am a big fan of anime and manga as well as tv shows and
-              movies, not to mention video games.
+              <ContentRenderer :value="content"  />
             </Typography>
           </Animation>
 
           <Animation :y="-100" :opacity="0" :duration="1" :delay="0.35">
             <div class="about__social">
-              <a
-                v-for="link in socialMedia"
-                :key="link.name"
-                :aria-label="link.name"
-                :href="link.url"
-                target="_blank"
-                rel="noopener"
-                class="card--profile__social-item"
-                :class="link.name"
-              >
-                <nuxt-img
-                  :src="link.image"
-                  :alt="link.name"
-                />
+              <a v-for="link in socialMedia" :key="link.name" :aria-label="link.name" :href="link.url" target="_blank"
+                rel="noopener" class="card--profile__social-item" :class="link.name">
+                <nuxt-img :src="link.image" :alt="link.name" />
               </a>
             </div>
           </Animation>
@@ -67,9 +39,10 @@
 </template>
 
 <script setup>
-const socialStore = useSocialStore();
+const content = await queryContent('/about').findOne()
+const socialStore = useSocialStore()
 
-const socialMedia = computed(() => socialStore.getAll);
+const socialMedia = computed(() => socialStore.getAll)
 </script>
 
 <style scoped lang="scss">
@@ -139,6 +112,7 @@ const socialMedia = computed(() => socialStore.getAll);
     @include bp(fhd) {
       transform: translateX(-50%) translateY(-2rem);
     }
+
     img {
       position: absolute;
       top: 0;

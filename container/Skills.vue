@@ -6,15 +6,7 @@
           <Typography variant="h1" tag="h3"> What I can do </Typography>
         </Animation>
         <Animation :x="-500" :opacity="0" :duration="0.5" :delay="0.5">
-          <Typography variant="body1">
-            I'm a trained and certified Graphic Designer and skilled in
-            <b>Adobe Photoshop</b>, <b>Illustrator</b> and <b>Indesign</b>,
-            though I'm also familiar with <b>Premiere Pro</b> and
-            <b>After Effects</b>. I work professionally as a Full-Stack
-            Developer and use <b>PHP (Laravel, Symfony)</b> and <b>Go</b> as
-            well as <b>HTML</b>, <b>CSS (SCSS)</b> and
-            <b>JavaScript (Vue.js, Nuxt.js)</b>.
-          </Typography>
+            <ContentRenderer :value="content" />
         </Animation>
       </div>
       <div class="skills__right">
@@ -26,22 +18,6 @@
               {{ skill.title }}
             </Typography>
             <Typography variant="body2" class="card__content" v-html="skill.content" />
-
-            <!-- <div slot="footer">
-            <Typography variant="h5" tag="p" class="card__subtitle">
-              {{ stack.metadata.subtitle }}
-            </Typography>
-            <div class="card__tags">
-              <Tag
-                v-for="(skill, idx) in stack.metadata.skills"
-                :key="idx"
-                small
-                class="card__tag"
-              >
-                {{ skill.title }}
-              </Tag>
-            </div>
-          </div> -->
           </Card>
         </Animation>
       </div>
@@ -50,6 +26,8 @@
 </template>
 
 <script setup>
+const content = await queryContent('/skills').findOne()
+
 const skillsStore = useSkillsStore()
 
 const skills = computed(() => skillsStore.getAll)
@@ -90,6 +68,10 @@ const skills = computed(() => skillsStore.getAll)
         top: 8rem;
         width: 50%;
         margin: 0 4rem 0 0;
+      }
+
+      p {
+        line-height: 1.25;
       }
     }
 
