@@ -69,6 +69,7 @@ export default defineNuxtConfig({
     transpile: ['gsap'],
   },
   components: ['~/components/', '~/container/'],
+  css: ['~/assets/css/app.css'],
   imports: {
     dirs: ['store'],
   },
