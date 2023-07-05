@@ -7,13 +7,13 @@
 
       <form id="app" novalidate class="form w-96" @submit.prevent="checkForm">
         <transition name="fade">
-          <Alert v-if="state.sendSuccessful" type="success" dismissible @close="sendSuccessful = false">
+          <Alert v-if="state.sendSuccessful" type="success" dismissible @close="state.sendSuccessful = false">
             The email was send successfully
           </Alert>
         </transition>
 
         <transition name="fade">
-          <Alert v-if="state.sendFail" type="error" dismissible @close="sendFail = false">
+          <Alert v-if="state.sendFail" type="error" dismissible @close="state.sendFail = false">
             Your email could not be sent. Please try again later.
           </Alert>
         </transition>
@@ -29,11 +29,11 @@
         </transition>
 
         <Animation :y="-30" :opacity="0" :duration="0.6" :delay="0.5">
-          <FormInput label="Name" :value="state.form.name" @update:value="(value) => (state.form.name = value)" />
+          <FormInput id="name" label="Name" :value="state.form.name" @update:value="(value) => (state.form.name = value)" />
 
-          <FormInput label="Email" :value="state.form.mail" @update:value="(value) => (state.form.mail = value)" />
+          <FormInput id="email" label="Email" :value="state.form.email" @update:value="(value) => (state.form.email = value)" />
 
-          <FormTextArea label="Message" :value="state.form.message"
+          <FormTextArea id="message" label="Message" :value="state.form.message"
             @update:value="(value) => (state.form.message = value)" />
 
           <Button type="submit" block>
@@ -58,26 +58,26 @@ const state = reactive({
   sendFail: false,
   form: {
     name: '',
-    mail: '',
+    email: '',
     message: '',
   },
 })
 
-const checkForm = (e) => {
+const checkForm = () => {
   state.errors = []
 
   if (!state.form.name) {
     state.errors.push('Please enter a name')
   }
 
-  if (!state.form.mail) {
+  if (!state.form.email) {
     state.errors.push('Please enter a email')
-  } else if (!validEmail(state.form.mail)) {
+  } else if (!validEmail(state.form.email)) {
     state.errors.push('The email has to be valid')
   }
 
   if (!state.errors.length) {
-    sendMail(e)
+    sendMail()
   }
 }
 
@@ -87,16 +87,16 @@ const validEmail = (email) => {
   return re.test(email)
 }
 
-const sendMail = (e) => {
-  const config = useRuntimeConfig()
+const sendMail = () => {
+  const {public: config} = useRuntimeConfig()
 
   state.isSubmitting = true
 
   emailjs
-    .sendForm(
+    .send(
       config.emailjsServiceId,
       config.emailjsTemplateId,
-      e.target,
+      state.form,
       config.emailjsPublicKey
     )
     .then(
@@ -106,7 +106,7 @@ const sendMail = (e) => {
           : (state.sendSuccessful = false)
 
         state.form.name = ''
-        state.form.mail = ''
+        state.form.email = ''
         state.form.message = ''
 
         state.isSubmitting = false

@@ -1,10 +1,10 @@
 <template>
   <div class="relative">
-    <input :id="label" :placeholder="label" type="text" :aria-labelledby="`label-${label}`" :name="label" :value="value"
+    <input :id="id" :placeholder="label" type="text" :aria-labelledby="`label-${id}`" :name="id" :value="value"
       @input="$emit('update:value', $event.target.value)"
       class="w-full resize-none bg-neutral-100 hover:bg-neutral-50 ring-secondary-900 text-secondary-500 border-2 border-secondary-500 font-sm py-4 px-5 mb-6 rounded-xl transition ease-cubic-bezier duration-500" />
 
-    <label :id="`label-${label}`" :for="label"
+    <label :id="`label-${id}`" :for="id"
       class="absolute block origin-[0_0] left-5 font-medium tracking-wide text-secondary-500 transition ease-cubic-bezier duration-500"
       :aria-label="label">
       {{ label }}
@@ -23,6 +23,10 @@ const props = defineProps({
   label: {
     type: String,
     default: 'name',
+  },
+  id: {
+    type: String,
+    default: 'input',
   },
   type: {
     type: String,
