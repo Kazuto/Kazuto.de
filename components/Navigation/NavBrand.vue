@@ -1,17 +1,7 @@
 <template>
-  <div class="nav__brand">
+  <div>
     <a href="/" title="Logo link">
-      <img alt="Kazuto Logo Image" src="~/assets/images/logo.svg" />
+      <nuxt-img class="w-20 h-auto" alt="Kazuto Logo Image" src="logo.svg" />
     </a>
   </div>
 </template>
-
-<style lang="scss" scoped>
-.nav__brand {
-  img {
-    width: 80px;
-    height: auto;
-    transition: $transition-ease;
-  }
-}
-</style>

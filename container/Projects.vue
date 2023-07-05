@@ -1,5 +1,5 @@
 <template>
-  <Section>
+  <Section id="portfolio" class="min-h-fit z-10 py-20 md:py-16">
     <Container>
       <Project v-for="project in projects" :key="project.id" :item="project"></Project>
     </Container>
@@ -11,20 +11,3 @@ const projectStore = useProjectStore()
 
 const projects = computed(() => projectStore.getNonFeatured)
 </script>
-
-<style lang="scss" scoped>
-.section {
-  min-height: auto;
-  z-index: 1;
-
-  padding: 5rem 0;
-
-  @include bp(md) {
-    padding: 4rem 0;
-  }
-
-  .project+.project {
-    margin-top: $spacer * 5;
-  }
-}
-</style>

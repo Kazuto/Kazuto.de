@@ -1,33 +1,34 @@
 <template>
-  <Section id="about" flex align-center>
+  <Section id="about" flex align-center class="min-h-screen bg-secondary-500 text-white py-20">
     <Container>
-      <div class="about">
-        <Animation :x="-500" :opacity="0" :duration="0.7" :delay="0.5">
-          <div class="about__left">
-            <nuxt-img src="avatar.jpg" alt="Kai Mayer" sizes="md:50vw" />
+      <div
+        class="flex flex-col gap-8 lg:grid lg:grid-cols-[1fr_2fr] xl:grid-cols-[1fr_1.25fr] 2xl:grid-cols-[1fr_1.5fr] md:items-center">
+        <Animation :x="-500" :opacity="0" :duration="0.7" :delay="0.5" class="w-full">
+          <div
+            class="rounded-xl aspect-[4/3] lg:aspect-auto overflow-hidden md:self-start lg:-translate-x-[58%] lg:-translate-y-96 xl:-translate-x-[15vw] xl:-translate-y-[22svh] 2xl:-translate-x-[15vw] 2xl:-translate-y-28">
+            <nuxt-img class="object-cover object-top" src="avatar.jpg" alt="Kai Mayer"
+              sizes="sm:100vw md:100vw lg:100vw" />
           </div>
         </Animation>
+
         <div class="about__right">
           <Animation :x="200" :opacity="0" :duration="0.6" :delay="0.35">
-            <Typography variant="h3" tag="p" class="about__name">
-              Hi there, I'm Kai 👋
-            </Typography>
-            <Typography variant="caption" class="about__location">
-              <nuxt-img src="icons/map-pin.svg" alt="Location Icon" />
+            <h2 class="text-h2">Hi there, I'm Kai 👋</h2>
+
+            <span class="text-caption flex items-center">
+              <nuxt-img class="mr-2" src="icons/map-pin.svg" alt="Location Icon" />
               Moenchengladbach, Germany
-            </Typography>
+            </span>
           </Animation>
 
           <Animation :x="200" :opacity="0" :duration="0.6" :delay="0.35">
-            <Typography variant="body2" class="about__biography">
-              <ContentRenderer :value="content"  />
-            </Typography>
+            <ContentRenderer class="text-body2 mt-12" :value="content" />
           </Animation>
 
           <Animation :y="-100" :opacity="0" :duration="1" :delay="0.35">
-            <div class="about__social">
+            <div class="mt-20 flex gap-12">
               <a v-for="link in socialMedia" :key="link.name" :aria-label="link.name" :href="link.url" target="_blank"
-                rel="noopener" class="card--profile__social-item" :class="link.name">
+                rel="noopener" class="transition ease-cubic-bezier duration-500 hover:opacity-60" :class="link.name">
                 <nuxt-img :src="link.image" :alt="link.name" />
               </a>
             </div>
@@ -44,128 +45,3 @@ const socialStore = useSocialStore()
 
 const socialMedia = computed(() => socialStore.getAll)
 </script>
-
-<style scoped lang="scss">
-.section {
-  background: $secondary;
-  color: $white;
-
-  height: auto;
-
-  padding: 5rem 0;
-
-  @include bp(md) {
-    padding: 0rem 0;
-  }
-
-  .about {
-    display: flex;
-    flex-direction: column;
-    gap: $spacer * 2;
-
-    @include bp(md) {
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      align-items: center;
-    }
-
-    @include bp(lg) {
-      grid-template-columns: 450px 1fr;
-    }
-
-    @include bp(xl) {
-      grid-template-columns: 550px 1fr;
-    }
-
-    @include bp(hd) {
-      grid-template-columns: 600px 1fr;
-    }
-
-    @include bp(fhd) {
-      grid-template-columns: 650px 1fr;
-    }
-  }
-
-  .about__left {
-    height: 0;
-    padding-top: 100%;
-    border-radius: $border-radius;
-    overflow: hidden;
-
-    @include bp(md) {
-      align-self: flex-start;
-    }
-
-    @include bp(lg) {
-      height: 100vh;
-      transform: translateX(-20%) translateY(-2rem);
-    }
-
-    @include bp(xl) {
-      transform: translateX(-30%) translateY(-2rem);
-    }
-
-    @include bp(hd) {
-      transform: translateX(-30%) translateY(-2rem);
-    }
-
-    @include bp(fhd) {
-      transform: translateX(-50%) translateY(-2rem);
-    }
-
-    img {
-      position: absolute;
-      top: 0;
-      left: 0;
-
-      width: 100%;
-      height: auto;
-
-      object-fit: cover;
-      object-position: top;
-
-      @include bp(lg) {
-        max-height: 100vh;
-      }
-
-      // @include bp(hd) {
-      //   width: 850px;
-      // }
-
-      // @include bp(fhd) {
-      //   width: 980px;
-      // }
-    }
-  }
-
-  .about__name {
-    font-weight: 700;
-  }
-
-  .about__location {
-    margin-bottom: 3rem;
-
-    display: flex;
-    align-items: center;
-
-    img {
-      margin-right: 0.5rem;
-    }
-  }
-
-  .about__social {
-    margin-top: 5rem;
-
-    display: flex;
-    gap: 3rem;
-
-    a {
-      transition: $transition-ease;
-
-      &:hover {
-        opacity: 0.6;
-      }
-    }
-  }
-}
-</style>

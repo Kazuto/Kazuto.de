@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @font-face {
   font-family: 'Quicksand';
   src: local('Quicksand'), local('Quicksand'),
@@ -12,3 +11,53 @@
   font-display: swap;
 }
 
+@layer base {
+  * {
+    @apply antialiased box-border relative;
+  }
+
+  body,
+  html {
+    @apply scroll-smooth bg-neutral-100;
+  }
+
+  body {
+    @apply text-base overflow-x-hidden;
+  }
+
+  b,
+  strong {
+    @apply font-bold;
+  }
+
+  p + p {
+    @apply mt-4;
+  }
+
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.2s;
+  }
+
+  .fade-enter,
+  .fade-leave-to
+
+  /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .h1,
+  .h2,
+  .h3,
+  .h4,
+  .h5,
+  .h6 {
+    @apply font-bold mb-8 leading-5 tracking-normal;
+  }
+}

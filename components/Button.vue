@@ -1,13 +1,13 @@
 <template>
-  <component :is="tag" class="button" :class="{
-    'button--primary': primary,
-    'button--secondary': secondary,
-    'button--outline': outline,
-    'button--sm': sm,
-    'button--md': md,
-    'button--lg': lg,
-    'button--block': block,
-  }">
+  <component :is="tag"
+    class="text-center font-medium text-2xl rounded-xl px-6 py-2 border-0 transition duration-300 ease-cubic-bezier hover:cursor-pointer"
+    :class="{
+      'bg-primary-500 text-secondary-500 hover:bg-primary-200':
+        color === 'primary',
+      'bg-secondary-500 text-white hover:bg-secondary-300':
+        color === 'secondary',
+      'w-full': block,
+    }">
     <slot />
   </component>
 </template>
@@ -18,29 +18,9 @@ const props = defineProps({
     type: String,
     default: 'button',
   },
-  sm: {
-    type: Boolean,
-    default: false,
-  },
-  md: {
-    type: Boolean,
-    default: false,
-  },
-  lg: {
-    type: Boolean,
-    default: false,
-  },
-  primary: {
-    type: Boolean,
-    default: false,
-  },
-  secondary: {
-    type: Boolean,
-    default: false,
-  },
-  outline: {
-    type: Boolean,
-    default: false,
+  color: {
+    type: String,
+    default: 'secondary',
   },
   block: {
     type: Boolean,
@@ -48,68 +28,3 @@ const props = defineProps({
   },
 })
 </script>
-
-<style lang="scss" scoped>
-.button {
-  border: 0;
-
-  font-size: $btn-font-size;
-  font-weight: $btn-font-weight;
-  padding: $btn-padding;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background: $btn-bg;
-  color: $btn-color;
-  border-radius: $btn-border-radius;
-
-  transition: $transition-ease;
-
-  &:hover {
-    cursor: pointer;
-    background: $btn-bg-hover;
-  }
-
-  &--primary {
-    background: $primary;
-    color: $secondary;
-
-    &:hover {
-      background: lighten($primary, 10%);
-    }
-
-    &.button--outline {
-      color: $primary;
-    }
-  }
-
-  &--secondary {
-    background: $secondary;
-    color: $white;
-
-    &.button--outline {
-      color: $secondary;
-    }
-  }
-
-  &--outline {
-    border: 2px solid currentColor;
-    background: transparent;
-  }
-
-  &--block {
-    width: 100%;
-  }
-
-  &--sm {
-    font-size: $font-size-sm;
-  }
-
-  &--lg {
-    font-size: $font-size-lg;
-    padding: $spacer * 0.75 $spacer;
-  }
-}
-</style>

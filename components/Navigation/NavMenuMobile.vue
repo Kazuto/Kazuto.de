@@ -1,19 +1,11 @@
 <template>
   <transition name="overlay">
-    <nav
-      v-if="isMenuOpen"
-      class="nav__overlay"
-      :class="{ 'nav__container--active': isMenuOpen }"
-      role="navigation"
-      aria-label="Navigation"
-    >
-      <Container>
-        <ul class="nav__list">
-          <li v-for="(link, index) in items" :key="index" class="nav__item">
-            <NavigationNavLink
-              :link="link"
-              @click="toggleMenu()"
-            ></NavigationNavLink>
+    <nav v-if="isMenuOpen" class="absolute top-0 left-0 w-full h-screen bg-secondary-500 overflow-x-hidden px-10 z-10"
+      :class="{ 'opacity-100': isMenuOpen }" role="navigation" aria-label="Navigation">
+      <Container class="flex justify-end items-center">
+        <ul class="h-full list-none text-right">
+          <li v-for="(link, index) in items" :key="index" class="my-6">
+            <NavigationNavLink class="text-3xl" :link="link" @click="toggleMenu()"></NavigationNavLink>
           </li>
         </ul>
         <ul class="social__list" />
@@ -43,44 +35,7 @@ const toggleMenu = () => {
 }
 </script>
 
-<style lang="scss" scoped>
-.nav__overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: 1;
-
-  background: $nav-bg;
-  overflow-x: hidden;
-  padding: 0 40px;
-
-  .container {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-  }
-
-  &--active {
-    opacity: 1;
-  }
-}
-
-.nav__list {
-  display: flex;
-  flex-direction: column;
-  gap: $nav-items-gap;
-  list-style-type: none;
-  // padding: 0;
-  // margin: 0;
-  text-align: right;
-}
-
-.nav__link {
-  font-size: 1.8rem;
-}
-
+<style lang="postcss" scoped>
 .overlay-enter-active {
   animation: fade-from-top 300ms ease-in-out;
 }
@@ -94,9 +49,11 @@ const toggleMenu = () => {
     opacity: 0;
     transform: translate(0, -20%);
   }
+
   40% {
     opacity: 0.5;
   }
+
   100% {
     opacity: 1;
     transform: translate(0, 0);

@@ -1,7 +1,7 @@
 <template>
-  <Section>
+  <Section class="z-10 py-20 md:py-16 px-0">
     <Container>
-      <Project v-if="project" :item="project"></Project>
+      <Project v-if="project" class="md:translate-y-24" :item="project"></Project>
     </Container>
   </Section>
 </template>
@@ -11,24 +11,3 @@ const projectStore = useProjectStore()
 
 const project = computed(() => projectStore.getFeatured)
 </script>
-
-<style lang="scss" scoped>
-.section {
-  min-height: auto;
-  z-index: 1;
-
-  padding: 5rem 0;
-
-  @include bp(md) {
-    padding: 4rem 0;
-  }
-}
-
-.project {
-  @include bp(md) {
-    transform: translateY(6rem);
-  }
-}
-</style>
-
-<style lang="scss"></style>

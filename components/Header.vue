@@ -1,5 +1,5 @@
 <template>
-  <header id="header" :class="{
+  <header id="header" class="h-fit fixed top-0 left-0 right-0 z-50 transition-all delay-150" :class="{
     hide: state.curDirection === 2 && state.curScroll > state.scrollTreshold,
   }">
     <slot></slot>
@@ -48,27 +48,8 @@ const catchScroll = () => {
 }
 </script>
 
-<style scoped lang="scss">
-header {
-  height: fit-content;
-
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 101;
-
-  transition: top 500ms ease-in-out;
-  transition-delay: 150ms;
-}
-</style>
-
-<style lang="scss">
-body:not(.overflow-hidden) {
-  #header {
-    &.hide {
-      top: -150px;
-    }
-  }
+<style>
+body:not(.overflow-hidden) #header.hide {
+  top: -150px;
 }
 </style>

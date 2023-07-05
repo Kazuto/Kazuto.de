@@ -1,14 +1,16 @@
 <template>
   <transition name="fade">
-    <div v-show="state.visible" :style="{
-      bottom: state.isBackTopFooter ? `${state.visibleFooterPixel + 16}px` : 16 + 'px',
-    }" @click="backToTop">
-      <img src="~/assets/images/icons/chevron-up.svg" alt="" />
-      <!-- <fa :icon="['fas', 'chevron-up']" /> -->
+    <div v-show="state.visible"
+      class="flex justify-center items-center w-12 h-12 fixed bottom-4 right-4 z-50 bg-secondary-500 bg-opacity-80 text-white rounded-xl transition ease-cubic-bezier duration-500 hover:cursor-pointer"
+      :style="{
+        bottom: state.isBackTopFooter
+          ? `${state.visibleFooterPixel + 16}px`
+          : 16 + 'px',
+      }" @click="backToTop">
+      <nuxt-img class="w-6 h-auto" src="icons/chevron-up.svg" alt="" />
     </div>
   </transition>
 </template>
-
 
 <script setup>
 const props = defineProps({
@@ -53,14 +55,15 @@ onUnmounted(() => {
 })
 
 const catchScroll = () => {
-  const pastTopOffset = window.pageYOffset > parseInt(state.visibleoffset)
+  const pastTopOffset = window.pageYOffset > parseInt(props.visibleoffset)
+  console.log(pastTopOffset)
 
   const pastBottomOffset =
     window.innerHeight + window.pageYOffset >=
-    document.body.offsetHeight - parseInt(state.visibleoffsetbottom)
+    document.body.offsetHeight - parseInt(props.visibleoffsetbottom)
 
   state.visible =
-    parseInt(state.visibleoffsetbottom) > 0
+    parseInt(props.visibleoffsetbottom) > 0
       ? pastTopOffset && !pastBottomOffset
       : pastTopOffset
 
@@ -81,36 +84,3 @@ const scrollFn = () => {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-div {
-  position: fixed;
-  bottom: 1rem;
-  right: 1rem;
-  z-index: 100;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background: transparentize($secondary, 0.2);
-  color: $white;
-
-  border-radius: $border-radius;
-  width: 3rem;
-  height: 3rem;
-
-  font-size: $font-size-base;
-
-  transition: $transition-ease;
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  img {
-    width: 24px;
-    height: auto;
-  }
-}
-</style>

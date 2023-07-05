@@ -1,13 +1,11 @@
 <template>
-  <Section id="contact">
+  <Section id="contact" class="py-20 md:py-32">
     <Container>
       <Animation :y="-30" :opacity="0" :duration="0.6" :delay="0.3">
-        <Typography variant="h1" tag="h3" class="contact__title">
-          Hire me
-        </Typography>
+        <h3 class="text-h2 text-secondary-500">Hire me</h3>
       </Animation>
 
-      <form id="app" novalidate class="form" @submit.prevent="checkForm">
+      <form id="app" novalidate class="form w-96" @submit.prevent="checkForm">
         <transition name="fade">
           <Alert v-if="state.sendSuccessful" type="success" dismissible @close="sendSuccessful = false">
             The email was send successfully
@@ -31,21 +29,13 @@
         </transition>
 
         <Animation :y="-30" :opacity="0" :duration="0.6" :delay="0.5">
-          <div class="form__group">
-            <input id="name" v-model="state.form.name" placeholder="Name" type="text" aria-labelledby="name" name="name"
-              class="form__control" />
-            <label for="name" class="form__label" aria-label="Name Input Field">Name</label>
-          </div>
-          <div class="form__group">
-            <input id="email" v-model="state.form.mail" placeholder="Email" type="text" aria-labelledby="email" name="email"
-              class="form__control" />
-            <label for="email" class="form__label" aria-label="E-Mail Input Field">Email</label>
-          </div>
-          <div class="form__group">
-            <textarea id="message" v-model="state.form.message" placeholder="Message" rows="7" aria-labelledby="message"
-              name="message" class="form__control" />
-            <label for="message" class="form__label" aria-label="Name Input Field">Message</label>
-          </div>
+          <FormInput label="Name" :value="state.form.name" @update:value="(value) => (state.form.name = value)" />
+
+          <FormInput label="Email" :value="state.form.mail" @update:value="(value) => (state.form.mail = value)" />
+
+          <FormTextArea label="Message" :value="state.form.message"
+            @update:value="(value) => (state.form.message = value)" />
+
           <Button type="submit" block>
             <span>
               {{ state.isSubmitting ? 'Sending...' : 'Send Message' }}
@@ -103,12 +93,7 @@ const sendMail = (e) => {
   state.isSubmitting = true
 
   emailjs
-    .sendForm(
-      config.emailjsServiceId,
-      config.emailjsTemplateId,
-      e.target,
-      config.emailjsUserId
-    )
+    .sendForm(config.emailjsServiceId, config.emailjsTemplateId, e.target)
     .then(
       (result) => {
         result.status === 200
@@ -132,101 +117,4 @@ const sendMail = (e) => {
 }
 </script>
 
-<style scoped lang="scss">
-.section {
-  padding: 5rem 0;
-
-  @include bp(md) {
-    padding: 8rem 0;
-  }
-}
-
-.contact__title {
-  font-weight: 700;
-  margin-bottom: 2rem;
-}
-
-.contact {
-  width: 100%;
-}
-
-.form {
-  @include bp(sm) {
-    width: 450px;
-  }
-
-  &__group {
-    position: relative;
-  }
-
-  &__control {
-    background: $form-bg;
-    color: $form-color;
-    font-size: $font-size-sm;
-    padding: $form-control-padding;
-    margin-bottom: 1.5rem;
-
-    border-radius: $border-radius;
-    transition: $transition-ease;
-
-    width: 100%;
-    resize: none;
-    -moz-appearance: none;
-
-    border: $form-border;
-
-    &:focus {
-      outline: 0;
-    }
-
-    &::placeholder {
-      font-weight: 500;
-      letter-spacing: 1px;
-      color: transparent;
-    }
-
-    &:hover {
-      background: $form-bg-hover;
-    }
-
-    &:focus+.form__label,
-    &:not(:placeholder-shown)+.form__label {
-      background: $body-bg;
-      padding: 0 4px;
-
-      color: $form-color;
-      transform: translateY(-1.6rem) scale(0.7);
-    }
-  }
-
-  &__label {
-    position: absolute;
-    display: block;
-
-    top: clamp(1rem, 2.6vw, 0.4rem);
-    left: 1.2rem;
-    transform-origin: 0 0;
-
-    font-size: $font-size-base;
-    font-weight: $form-label-font-weight;
-    letter-spacing: $form-label-letter-spacing;
-
-    color: $form-color;
-
-    transition: $transition-ease;
-  }
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
-}
-
-.fade-enter,
-.fade-leave-to
-
-/* .fade-leave-active below version 2.1.8 */
-  {
-  opacity: 0;
-}
-</style>
+<style lang="postcss"></style>

@@ -2,6 +2,7 @@ export default defineNuxtConfig({
   nitro: {
     preset: 'vercel',
   },
+
   app: {
     head: {
       title: 'Kazuto - Full Stack Developer & Graphic Designer',
@@ -65,14 +66,25 @@ export default defineNuxtConfig({
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     },
   },
+
   build: {
     transpile: ['gsap'],
   },
+
   components: ['~/components/', '~/container/'],
   css: ['~/assets/css/app.css'],
+
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
+
   imports: {
     dirs: ['store'],
   },
+
   modules: [
     '@nuxt/image',
     '@nuxt/content',
@@ -83,18 +95,11 @@ export default defineNuxtConfig({
       },
     ],
   ],
+
   image: {
     dir: 'assets/images',
   },
-  runtimeConfig: {
-    public: {
-      cosmicBucketSlug: process.env.COSMIC_BUCKET_SLUG || '',
-      cosmicReadKey: process.env.COSMIC_READ_KEY || '',
-      emailjsUserId: process.env.EMAILJS_USER_ID || '',
-      emailjsTemplateId: process.env.EMAILJS_TEMPLATE_ID || '',
-      emailjsServiceId: process.env.EMAILJS_SERVICE_ID || '',
-    },
-  },
+
   // pwa: {
   //   manifest: {
   //     name: 'Kazuto - Full Stack Developer & Graphic Designer',
@@ -105,13 +110,17 @@ export default defineNuxtConfig({
   //     theme_color: '#ff9900',
   //   },
   // },
-  vite: {
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: `@import "@/assets/scss/app.scss";`,
-        },
-      },
+  runtimeConfig: {
+    public: {
+      cosmicBucketSlug: process.env.COSMIC_BUCKET_SLUG || '',
+      cosmicReadKey: process.env.COSMIC_READ_KEY || '',
+      emailjsUserId: process.env.EMAILJS_USER_ID || '',
+      emailjsTemplateId: process.env.EMAILJS_TEMPLATE_ID || '',
+      emailjsServiceId: process.env.EMAILJS_SERVICE_ID || '',
     },
+  },
+
+  devtools: {
+    enabled: true,
   },
 })

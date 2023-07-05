@@ -1,27 +1,15 @@
 <template>
-  <a :href="link.target" class="nav__link" @click="$emit('click')">{{
-    link.name
-  }}</a>
+  <a :href="link.target" class="text-2xl transition ease-cubic-bezier duration-500 text-neutral-50 hover:text-neutral-400"
+    @click="$emit('click')">
+    {{ link.name }}
+  </a>
 </template>
 
 <script setup>
 const props = defineProps({
   link: {
     type: Object,
-    default: () => {},
-  }
+    default: () => { },
+  },
 })
 </script>
-
-<style lang="scss" scoped>
-.nav__link {
-  font-size: 1.3rem;
-  color: $nav-color;
-
-  transition: $transition-ease;
-
-  &:hover {
-    color: $nav-color-hover;
-  }
-}
-</style>
