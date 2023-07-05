@@ -54,7 +54,7 @@ export default defineNuxtConfig({
         {
           hid: 'twitter:image',
           name: 'twitter:image',
-          content: 'https://kazuto.de/logo.png',
+          content: 'https://kazuto.de/images/logo.png',
         },
         { hid: 'twitter:site', name: 'twitter:site', content: '@dev_kazuto' },
         {
@@ -95,10 +95,6 @@ export default defineNuxtConfig({
       },
     ],
   ],
-
-  image: {
-    dir: 'assets/images',
-  },
 
   // pwa: {
   //   manifest: {

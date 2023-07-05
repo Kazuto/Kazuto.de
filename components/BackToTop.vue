@@ -56,7 +56,6 @@ onUnmounted(() => {
 
 const catchScroll = () => {
   const pastTopOffset = window.pageYOffset > parseInt(props.visibleoffset)
-  console.log(pastTopOffset)
 
   const pastBottomOffset =
     window.innerHeight + window.pageYOffset >=

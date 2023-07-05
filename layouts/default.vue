@@ -1,8 +1,8 @@
 <template>
   <div>
     <Header>
-      <NavigationNavBar :items="navItems" />
-      <NavigationNavMenuMobile :items="navItems" :header-height="state.headerHeight" />
+      <NavigationBar :items="navItems" />
+      <NavigationMenuMobile :items="navItems" :header-height="state.headerHeight" />
     </Header>
 
     <NuxtPage />

@@ -1,7 +1,7 @@
 <template>
   <Section id="landing" class="text-white bg-secondary-500 box-shadow relative overflow-hidden" name="landing" fluid>
     <span class="absolute -right-72 -bottom-20 z-0 select-none saturate-50 opacity-20" aria-hidden="true">
-      <img class="h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px]" src="@/assets/images/undraw_coding.svg"
+      <nuxt-img class="h-[400px] sm:h-[500px] md:h-[600px] lg:h-[700px]" src="images/undraw_coding.svg"
         alt="illustration" />
     </span>
 

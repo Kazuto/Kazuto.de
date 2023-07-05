@@ -6,7 +6,7 @@
         <Animation :x="-500" :opacity="0" :duration="0.7" :delay="0.5" class="w-full">
           <div
             class="rounded-xl aspect-[4/3] lg:aspect-auto overflow-hidden md:self-start lg:-translate-x-[58%] lg:-translate-y-96 xl:-translate-x-[15vw] xl:-translate-y-[22svh] 2xl:-translate-x-[15vw] 2xl:-translate-y-28">
-            <nuxt-img class="object-cover object-top" src="avatar.jpg" alt="Kai Mayer"
+            <nuxt-img class="object-cover object-top" src="images/avatar.jpg" alt="Kai Mayer"
               sizes="sm:100vw md:100vw lg:100vw" />
           </div>
         </Animation>

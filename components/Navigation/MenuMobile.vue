@@ -5,7 +5,7 @@
       <Container class="flex justify-end items-center">
         <ul class="h-full list-none text-right">
           <li v-for="(link, index) in items" :key="index" class="my-6">
-            <NavigationNavLink class="text-3xl" :link="link" @click="toggleMenu()"></NavigationNavLink>
+            <NavigationLink class="text-3xl" :link="link" @click="toggleMenu()" />
           </li>
         </ul>
         <ul class="social__list" />
