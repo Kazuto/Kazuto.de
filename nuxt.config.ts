@@ -114,13 +114,13 @@ export default defineNuxtConfig({
     public: {
       cosmicBucketSlug: process.env.COSMIC_BUCKET_SLUG || '',
       cosmicReadKey: process.env.COSMIC_READ_KEY || '',
-      emailjsUserId: process.env.EMAILJS_USER_ID || '',
+      emailjsPublicKey: process.env.EMAILJS_PUBLIC_KEY || '',
       emailjsTemplateId: process.env.EMAILJS_TEMPLATE_ID || '',
       emailjsServiceId: process.env.EMAILJS_SERVICE_ID || '',
     },
   },
 
   devtools: {
-    enabled: true,
+    enabled: false,
   },
 })

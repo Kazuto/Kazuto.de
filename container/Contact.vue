@@ -93,7 +93,12 @@ const sendMail = (e) => {
   state.isSubmitting = true
 
   emailjs
-    .sendForm(config.emailjsServiceId, config.emailjsTemplateId, e.target)
+    .sendForm(
+      config.emailjsServiceId,
+      config.emailjsTemplateId,
+      e.target,
+      config.emailjsPublicKey
+    )
     .then(
       (result) => {
         result.status === 200
