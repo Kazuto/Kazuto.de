@@ -8,7 +8,7 @@
 
       <ul class="hidden sm:flex sm:gap-8">
         <li v-for="(link, idx) in items" :key="idx">
-          <NavigationNavLink :link="link"></NavigationNavLink>
+          <NavLink :link="link"></NavLink>
         </li>
       </ul>
 
