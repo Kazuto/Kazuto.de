@@ -1,43 +1,23 @@
 <template>
-  <div ref="card" class="card">
-    <div v-if="hasHeaderSlot" class="card__header">
+  <div ref="card" class="bg-neutral-50 shadow rounded-xl p-10 overflow-hidden">
+    <div v-if="hasHeaderSlot">
       <slot name="header" />
     </div>
 
-    <div class="card__body">
+    <div>
       <slot />
     </div>
 
-    <div v-if="hasFooterSlot" class="card__footer">
+    <div v-if="hasFooterSlot">
       <slot name="footer" />
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'Card',
-  data() {
-    return {}
-  },
-  computed: {
-    hasHeaderSlot() {
-      return !!this.$slots.header
-    },
-    hasFooterSlot() {
-      return !!this.$slots.footer
-    },
-  },
-  created() {},
-}
-</script>
+<script setup>
+const slots = useSlots()
 
-<style lang="scss" scoped>
-.card {
-  background: $card-bg;
-  box-shadow: $card-box-shadow;
-  border-radius: $card-border-radius;
-  padding: $card-padding;
-  overflow: hidden;
-}
-</style>
+const hasHeaderSlot = computed(() => !!slots.header)
+
+const hasFooterSlot = computed(() => !!slots.footer)
+</script>

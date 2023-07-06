@@ -4,6 +4,7 @@
     viewBox="0 0 35 74"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    class="w-6 h-auto"
   >
     <rect
       x="2.5"
@@ -18,33 +19,24 @@
   </svg>
 </template>
 
-<script>
-import { gsap, Back } from 'gsap/dist/gsap'
+<script setup>
+import gsap, { Back } from 'gsap'
 
-export default {
-  mounted() {
-    const tl = gsap.timeline({
-      defaults: { duration: 2.5, delay: 1.5, opacity: 1 },
-    })
+onMounted(() => {
+  const tl = gsap.timeline({
+    defaults: { duration: 2.5, delay: 1.5, opacity: 1 },
+  })
 
-    tl.from('#indicator', { opacity: 0 }).to(
-      '#indicator__dot',
-      {
-        y: 36,
-        repeat: -1,
-        yoyo: true,
-        ease: Back.easeInOut.config(1.2),
-        duration: 1.65,
-      },
-      '-=3'
-    )
-  },
-}
+  tl.from('#indicator', { opacity: 0 }).to(
+    '#indicator__dot',
+    {
+      y: 36,
+      repeat: -1,
+      yoyo: true,
+      ease: Back.easeInOut.config(1.2),
+      duration: 1.65,
+    },
+    '-=3',
+  )
+})
 </script>
-
-<style lang="scss" scoped>
-svg {
-  width: 24px;
-  height: auto;
-}
-</style>

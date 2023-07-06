@@ -9,8 +9,24 @@
   </main>
 </template>
 
-<script>
-export default {}
-</script>
+<script setup>
+const projectStore = useProjectStore()
+const skillsStore = useSkillsStore()
 
-<style lang="scss"></style>
+onMounted(async () => {
+  await projectStore.fetch()
+  await skillsStore.fetch()
+})
+
+useSeoMeta({
+  ogImage: '[og:image]',
+  ogUrl: '[og:url]',
+  twitterCard: 'summary',
+})
+
+useHead({
+  htmlAttrs: {
+    lang: 'en',
+  },
+})
+</script>

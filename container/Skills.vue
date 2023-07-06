@@ -1,62 +1,48 @@
 <template>
-  <Section id="skills" name="skills">
-    <Container>
-      <div class="skills__left">
+  <Section
+    id="skills"
+    name="skills"
+    class="bg-primary-500 text-white py-20 md:py-40"
+  >
+    <Container
+      class="w-full flex flex-col md:flex-row justify-center items-start relative"
+    >
+      <div class="mb-8 md:sticky md:top-32 md:w-1/2 md:m-0 md:mr-16">
         <Animation :x="-500" :opacity="0" :duration="0.5" :delay="0.35">
-          <Typography variant="h1" tag="h3"> What I can do </Typography>
+          <h2 class="font-bold text-h1">What I can do</h2>
         </Animation>
+
         <Animation :x="-500" :opacity="0" :duration="0.5" :delay="0.5">
-          <Typography variant="body1">
-            I'm a trained and certified Graphic Designer and skilled in
-            <b>Adobe Photoshop</b>, <b>Illustrator</b> and <b>Indesign</b>,
-            though I'm also familiar with <b>Premiere Pro</b> and
-            <b>After Effects</b>. I work professionally as a Full-Stack
-            Developer and use <b>PHP (Laravel, Symfony)</b> and <b>Go</b> as
-            well as <b>HTML</b>, <b>CSS (SCSS)</b> and
-            <b>JavaScript (Vue.js, Nuxt.js)</b>.
-          </Typography>
+          <ContentRenderer class="text-body1 leading-wide" :value="content" />
         </Animation>
       </div>
-      <div class="skills__right">
+
+      <div
+        class="grid gap-8 md:gap-16 md:w-1/2 justify-start items-start p-4 -m-4 md:p-0 md:pt-16 md:m-0 md:-mt-8"
+      >
         <Animation
-          v-for="(stack, index) in stacks"
+          v-for="(skill, index) in skills"
           :key="index"
           :x="1000"
           :opacity="0"
           :duration="0.5"
           :delay="0.25"
         >
-          <Card name="skill">
-            <img
-              :alt="stack.title"
-              class="card__icon"
-              :src="stack.metadata.icon.imgix_url"
+          <Card
+            name="skill"
+            class="text-secondary-500 text-center py-8 px-6 md:py-16 md:px-20"
+          >
+            <nuxt-img
+              :alt="skill.title"
+              class="inline mb-8 w-16 h-16 md:w-20 md:h-20"
+              :src="skill.metadata.icon.imgix_url"
             />
 
-            <Typography variant="h3" tag="h4" class="card__title">
-              {{ stack.title }}
-            </Typography>
-            <Typography
-              variant="body2"
-              class="card__content"
-              v-html="stack.content"
-            />
+            <h3 class="text-h3 font-bold !mb-8">
+              {{ skill.title }}
+            </h3>
 
-            <!-- <div slot="footer">
-            <Typography variant="h5" tag="p" class="card__subtitle">
-              {{ stack.metadata.subtitle }}
-            </Typography>
-            <div class="card__tags">
-              <Tag
-                v-for="(skill, idx) in stack.metadata.skills"
-                :key="idx"
-                small
-                class="card__tag"
-              >
-                {{ skill.title }}
-              </Tag>
-            </div>
-          </div> -->
+            <p class="text-body2" v-html="skill.content" />
           </Card>
         </Animation>
       </div>
@@ -64,111 +50,10 @@
   </Section>
 </template>
 
-<script>
-export default {
-  name: 'SkillsSection',
-  data() {
-    return {}
-  },
-  computed: {
-    stacks() {
-      return this.$store.getters['skills/getAll']
-    },
-  },
-  methods: {},
-}
+<script setup>
+const content = await queryContent('/skills').findOne()
+
+const skillsStore = useSkillsStore()
+
+const skills = computed(() => skillsStore.getAll)
 </script>
-
-<style lang="scss">
-#skills {
-  background: $primary;
-  color: $white;
-
-  padding: 5rem 0;
-
-  @include bp(md) {
-    padding: 10rem 0;
-  }
-
-  .container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    position: relative;
-
-    @include bp(md) {
-      flex-direction: row;
-    }
-
-    .h1 {
-      font-weight: 700;
-    }
-
-    .skills__left {
-      margin: 0 0 2rem;
-
-      @include bp(md) {
-        position: sticky;
-        top: 8rem;
-        width: 50%;
-        margin: 0 4rem 0 0;
-      }
-    }
-
-    .skills__right {
-      display: grid;
-      grid-gap: 2rem;
-      justify-content: flex-start;
-      align-items: flex-start;
-      flex: 0 auto;
-      // overflow-x: hidden;
-
-      padding: 1rem;
-      margin: -1rem;
-
-      @include bp(md) {
-        grid-gap: 4rem;
-      }
-      @include bp(md) {
-        width: 50%;
-        padding: 4rem 0 0;
-        margin-top: -2rem;
-      }
-    }
-  }
-
-  .card {
-    color: $gray-900;
-    text-align: center;
-    padding: 2rem 1.5rem;
-
-    @include bp(lg) {
-      padding: 4rem 5rem;
-    }
-
-    .card__icon {
-      margin-bottom: 2rem;
-
-      width: 4rem;
-      height: 4rem;
-
-      @include bp(sm) {
-        width: 6rem;
-        height: 6rem;
-      }
-    }
-
-    .card__title {
-      font-weight: 700;
-
-      margin-bottom: 1.5rem;
-    }
-
-    .card__subtitle {
-      font-weight: 600;
-    }
-  }
-}
-</style>
