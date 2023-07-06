@@ -1,6 +1,10 @@
 <template>
-  <nav id="navigation" class="bg-secondary-500 transition ease-cubic-bezier duration-500" role="navigation"
-    aria-label="Navigation">
+  <nav
+    id="navigation"
+    class="bg-secondary-500 transition ease-cubic-bezier duration-500"
+    role="navigation"
+    aria-label="Navigation"
+  >
     <Container class="py-4 flex space-between items-center">
       <NavigationBrand />
 
@@ -18,7 +22,7 @@
 </template>
 
 <script setup>
-const props = defineProps({
+defineProps({
   items: {
     type: Array,
     default: () => [],

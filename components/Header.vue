@@ -1,7 +1,11 @@
 <template>
-  <header id="header" class="h-fit fixed top-0 left-0 right-0 z-50 transition-all delay-150" :class="{
-    hide: state.curDirection === 2 && state.curScroll > state.scrollTreshold,
-  }">
+  <header
+    id="header"
+    class="h-fit fixed top-0 left-0 right-0 z-50 transition-all delay-150"
+    :class="{
+      hide: state.curDirection === 2 && state.curScroll > state.scrollTreshold,
+    }"
+  >
     <slot></slot>
   </header>
 </template>

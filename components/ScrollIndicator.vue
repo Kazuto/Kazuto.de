@@ -1,13 +1,26 @@
 <template>
-  <svg id="indicator" viewBox="0 0 35 74" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-6 h-auto">
-    <rect x="2.5" y="2.5" width="30" height="69" rx="15" stroke="white" stroke-width="5" />
+  <svg
+    id="indicator"
+    viewBox="0 0 35 74"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    class="w-6 h-auto"
+  >
+    <rect
+      x="2.5"
+      y="2.5"
+      width="30"
+      height="69"
+      rx="15"
+      stroke="white"
+      stroke-width="5"
+    />
     <circle id="indicator__dot" cx="17.5" cy="18.5" r="8.5" fill="white" />
   </svg>
 </template>
 
 <script setup>
-import gsap from 'gsap'
-import { Back } from 'gsap'
+import gsap, { Back } from 'gsap'
 
 onMounted(() => {
   const tl = gsap.timeline({
@@ -23,7 +36,7 @@ onMounted(() => {
       ease: Back.easeInOut.config(1.2),
       duration: 1.65,
     },
-    '-=3'
+    '-=3',
   )
 })
 </script>

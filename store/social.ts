@@ -40,7 +40,7 @@ export const useSocialStore = defineStore('social', {
     getAll: (state) => {
       return state.all
     },
-  }
+  },
 })
 
 if (import.meta.hot) {

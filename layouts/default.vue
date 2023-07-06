@@ -2,7 +2,10 @@
   <div>
     <Header>
       <NavigationBar :items="navItems" />
-      <NavigationMenuMobile :items="navItems" :header-height="state.headerHeight" />
+      <NavigationMenuMobile
+        :items="navItems"
+        :header-height="state.headerHeight"
+      />
     </Header>
 
     <NuxtPage />
@@ -33,7 +36,7 @@ watch(overflow, (newValue) => {
   toggleBodyOverflow(newValue)
 })
 
-onMounted(async () => {
+onMounted(() => {
   state.headerHeight = document.querySelector('#header').clientHeight
 })
 

@@ -15,7 +15,7 @@
 <script setup>
 const slots = useSlots()
 
-const props = defineProps({
+defineProps({
   name: {
     type: String,
     default: '',

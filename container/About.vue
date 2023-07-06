@@ -1,13 +1,30 @@
 <template>
-  <Section id="about" flex align-center class="min-h-screen bg-secondary-500 text-white py-20">
+  <Section
+    id="about"
+    flex
+    align-center
+    class="min-h-screen bg-secondary-500 text-white py-20"
+  >
     <Container>
       <div
-        class="flex flex-col gap-8 lg:grid lg:grid-cols-[1fr_2fr] xl:grid-cols-[1fr_1.25fr] 2xl:grid-cols-[1fr_1.5fr] md:items-center">
-        <Animation :x="-500" :opacity="0" :duration="0.7" :delay="0.5" class="w-full">
+        class="flex flex-col gap-8 lg:grid lg:grid-cols-[1fr_2fr] xl:grid-cols-[1fr_1.25fr] 2xl:grid-cols-[1fr_1.5fr] md:items-center"
+      >
+        <Animation
+          :x="-500"
+          :opacity="0"
+          :duration="0.7"
+          :delay="0.5"
+          class="w-full"
+        >
           <div
-            class="rounded-xl aspect-[4/3] lg:aspect-auto overflow-hidden md:self-start lg:-translate-x-[58%] lg:-translate-y-96 xl:-translate-x-[15vw] xl:-translate-y-[22svh] 2xl:-translate-x-[15vw] 2xl:-translate-y-28">
-            <nuxt-img class="object-cover object-top" src="images/avatar.jpg" alt="Kai Mayer"
-              sizes="sm:100vw md:100vw lg:100vw" />
+            class="rounded-xl aspect-[4/3] lg:aspect-auto overflow-hidden md:self-start lg:-translate-x-[58%] lg:-translate-y-96 xl:-translate-x-[15vw] xl:-translate-y-[22svh] 2xl:-translate-x-[15vw] 2xl:-translate-y-28"
+          >
+            <nuxt-img
+              class="object-cover object-top"
+              src="images/avatar.jpg"
+              alt="Kai Mayer"
+              sizes="sm:100vw md:100vw lg:100vw"
+            />
           </div>
         </Animation>
 
@@ -16,7 +33,11 @@
             <h2 class="text-h2">Hi there, I'm Kai 👋</h2>
 
             <span class="text-caption flex items-center">
-              <nuxt-img class="mr-2" src="icons/map-pin.svg" alt="Location Icon" />
+              <nuxt-img
+                class="mr-2"
+                src="icons/map-pin.svg"
+                alt="Location Icon"
+              />
               Moenchengladbach, Germany
             </span>
           </Animation>
@@ -27,8 +48,16 @@
 
           <Animation :y="-100" :opacity="0" :duration="1" :delay="0.35">
             <div class="mt-20 flex gap-12">
-              <a v-for="link in socialMedia" :key="link.name" :aria-label="link.name" :href="link.url" target="_blank"
-                rel="noopener" class="transition ease-cubic-bezier duration-500 hover:opacity-60" :class="link.name">
+              <a
+                v-for="link in socialMedia"
+                :key="link.name"
+                :aria-label="link.name"
+                :href="link.url"
+                target="_blank"
+                rel="noopener"
+                class="transition ease-cubic-bezier duration-500 hover:opacity-60"
+                :class="link.name"
+              >
                 <nuxt-img :src="link.image" :alt="link.name" />
               </a>
             </div>

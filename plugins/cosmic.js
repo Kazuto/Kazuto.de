@@ -1,7 +1,7 @@
 import { createBucketClient } from '@cosmicjs/sdk'
 
 export default defineNuxtPlugin((nuxtApp) => {
-  const config = useRuntimeConfig();
+  const config = useRuntimeConfig()
 
   const cosmic = createBucketClient({
     bucketSlug: config.public.cosmicBucketSlug,

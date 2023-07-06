@@ -1,11 +1,14 @@
 <template>
-  <div class="min-h-full container mx-auto px-8 md:px-16" :class="{ 'max-w-full': fluid }">
+  <div
+    class="min-h-full container mx-auto px-8 md:px-16"
+    :class="{ 'max-w-full': fluid }"
+  >
     <slot />
   </div>
 </template>
 
 <script setup>
-const props = defineProps({
+defineProps({
   fluid: {
     type: Boolean,
     default: false,

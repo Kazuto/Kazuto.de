@@ -1,12 +1,15 @@
 <template>
   <transition name="fade">
-    <div v-show="state.visible"
+    <div
+      v-show="state.visible"
       class="flex justify-center items-center w-12 h-12 fixed bottom-4 right-4 z-50 bg-secondary-500 bg-opacity-80 text-white rounded-xl transition ease-cubic-bezier duration-500 hover:cursor-pointer"
       :style="{
         bottom: state.isBackTopFooter
           ? `${state.visibleFooterPixel + 16}px`
           : 16 + 'px',
-      }" @click="backToTop">
+      }"
+      @click="backToTop"
+    >
       <nuxt-img class="w-6 h-auto" src="icons/chevron-up.svg" alt="" />
     </div>
   </transition>
@@ -41,7 +44,7 @@ onMounted(() => {
         document.body.offsetHeight,
         document.documentElement.offsetHeight,
         document.body.clientHeight,
-        document.documentElement.clientHeight
+        document.documentElement.clientHeight,
       ) - window.innerHeight
   }, 1000)
 

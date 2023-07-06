@@ -7,13 +7,23 @@
 
       <form id="app" novalidate class="form w-96" @submit.prevent="checkForm">
         <transition name="fade">
-          <Alert v-if="state.sendSuccessful" type="success" dismissible @close="state.sendSuccessful = false">
+          <Alert
+            v-if="state.sendSuccessful"
+            type="success"
+            dismissible
+            @close="state.sendSuccessful = false"
+          >
             The email was send successfully
           </Alert>
         </transition>
 
         <transition name="fade">
-          <Alert v-if="state.sendFail" type="error" dismissible @close="state.sendFail = false">
+          <Alert
+            v-if="state.sendFail"
+            type="error"
+            dismissible
+            @close="state.sendFail = false"
+          >
             Your email could not be sent. Please try again later.
           </Alert>
         </transition>
@@ -29,12 +39,26 @@
         </transition>
 
         <Animation :y="-30" :opacity="0" :duration="0.6" :delay="0.5">
-          <FormInput id="name" label="Name" :value="state.form.name" @update:value="(value) => (state.form.name = value)" />
+          <FormInput
+            id="name"
+            label="Name"
+            :value="state.form.name"
+            @update:value="(value) => (state.form.name = value)"
+          />
 
-          <FormInput id="email" label="Email" :value="state.form.email" @update:value="(value) => (state.form.email = value)" />
+          <FormInput
+            id="email"
+            label="Email"
+            :value="state.form.email"
+            @update:value="(value) => (state.form.email = value)"
+          />
 
-          <FormTextArea id="message" label="Message" :value="state.form.message"
-            @update:value="(value) => (state.form.message = value)" />
+          <FormTextArea
+            id="message"
+            label="Message"
+            :value="state.form.message"
+            @update:value="(value) => (state.form.message = value)"
+          />
 
           <Button type="submit" block>
             <span>
@@ -49,7 +73,7 @@
 </template>
 
 <script setup>
-import emailjs from '@emailjs/browser'
+import { send } from '@emailjs/browser'
 
 const state = reactive({
   errors: [],
@@ -88,37 +112,35 @@ const validEmail = (email) => {
 }
 
 const sendMail = () => {
-  const {public: config} = useRuntimeConfig()
+  const { public: config } = useRuntimeConfig()
 
   state.isSubmitting = true
 
-  emailjs
-    .send(
-      config.emailjsServiceId,
-      config.emailjsTemplateId,
-      state.form,
-      config.emailjsPublicKey
-    )
-    .then(
-      (result) => {
-        result.status === 200
-          ? (state.sendSuccessful = true)
-          : (state.sendSuccessful = false)
+  send(
+    config.emailjsServiceId,
+    config.emailjsTemplateId,
+    state.form,
+    config.emailjsPublicKey,
+  ).then(
+    (result) => {
+      result.status === 200
+        ? (state.sendSuccessful = true)
+        : (state.sendSuccessful = false)
 
-        state.form.name = ''
-        state.form.email = ''
-        state.form.message = ''
+      state.form.name = ''
+      state.form.email = ''
+      state.form.message = ''
+
+      state.isSubmitting = false
+    },
+    (error) => {
+      if (error) {
+        state.sendFail = true
 
         state.isSubmitting = false
-      },
-      (error) => {
-        if (error) {
-          state.sendFail = true
-
-          state.isSubmitting = false
-        }
       }
-    )
+    },
+  )
 }
 </script>
 
