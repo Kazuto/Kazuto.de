@@ -36,7 +36,8 @@
 
         <div class="absolute bottom-10 left-1/2 -translate-x-1/2">
           <a
-            class="transition ease-cubic-bezier duration-500 opacity-100 hover:opacity-60"
+            id="scroll"
+            class="opacity-100 transition duration-500 ease-cubic-bezier hover:opacity-60"
             href="#portfolio"
             name="portfolio"
             aria-label="portfolio"
@@ -50,22 +51,26 @@
 </template>
 
 <script setup>
-import gsap from 'gsap'
+import gsap from 'gsap';
 
 onMounted(() => {
   const tl = gsap.timeline({
     defaults: { duration: 0.75 },
-  })
+  });
 
   tl.from('#title', { y: -100, opacity: 0, delay: 0.3 }).to('#title', {
     y: 0,
     opacity: 1,
-  })
+  });
 
   tl.from('#cta', { opacity: 0, delay: 0, duration: 0.5 }).to('#cta', {
     opacity: 1,
-  })
-})
+  });
+
+  tl.from('#scroll', { opacity: 0, delay: 0, duration: 0.2 }).to('#scroll', {
+    opacity: 1,
+  });
+});
 </script>
 
 <style lang="postcss"></style>

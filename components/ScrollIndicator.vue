@@ -24,10 +24,12 @@ import gsap, { Back } from 'gsap'
 
 onMounted(() => {
   const tl = gsap.timeline({
-    defaults: { duration: 2.5, delay: 1.5, opacity: 1 },
-  })
+    defaults: { duration: 2.5, delay: 2.5, opacity: 1 },
+  });
 
-  tl.from('#indicator', { opacity: 0 }).to(
+  tl.from('#indicator__dot', {
+    y: 0,
+  }).to(
     '#indicator__dot',
     {
       y: 36,
@@ -36,7 +38,7 @@ onMounted(() => {
       ease: Back.easeInOut.config(1.2),
       duration: 1.65,
     },
-    '-=3',
-  )
-})
+    '-=3'
+  );
+});
 </script>
