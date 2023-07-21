@@ -3,7 +3,7 @@
     id="about"
     flex
     align-center
-    class="min-h-screen bg-secondary-500 text-white py-20"
+    class="min-h-screen overflow-x-hidden bg-secondary-500 py-20 text-white"
   >
     <Container>
       <div
@@ -30,7 +30,7 @@
 
         <div class="about__right">
           <Animation :x="200" :opacity="0" :duration="0.6" :delay="0.35">
-            <h2 class="text-h2">Hi there, I'm Kai 👋</h2>
+            <h2 class="text-h2 leading-tight">Hi there, I'm Kai 👋</h2>
 
             <span class="text-caption flex items-center">
               <nuxt-img
