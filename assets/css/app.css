@@ -15,7 +15,7 @@
 
 @layer base {
   * {
-    @apply antialiased box-border relative;
+    @apply relative box-border antialiased;
   }
 
   body,
@@ -24,7 +24,7 @@
   }
 
   body {
-    @apply text-base overflow-x-hidden;
+    @apply overflow-x-hidden text-base;
   }
 
   b,
@@ -60,6 +60,6 @@
   .h4,
   .h5,
   .h6 {
-    @apply font-bold mb-8 leading-5 tracking-normal;
+    @apply mb-8 font-bold leading-5 tracking-normal;
   }
 }

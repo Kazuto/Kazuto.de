@@ -1,5 +1,8 @@
 <template>
-  <Section id="portfolio" class="min-h-fit z-10 py-20 md:py-16">
+  <Section
+    id="portfolio"
+    class="z-10 min-h-fit py-20 md:py-16"
+  >
     <Container>
       <Project
         v-for="project in projects"

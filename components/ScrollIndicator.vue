@@ -4,7 +4,7 @@
     viewBox="0 0 35 74"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    class="w-6 h-auto"
+    class="h-auto w-6"
   >
     <rect
       x="2.5"
@@ -15,7 +15,13 @@
       stroke="white"
       stroke-width="5"
     />
-    <circle id="indicator__dot" cx="17.5" cy="18.5" r="8.5" fill="white" />
+    <circle
+      id="indicator__dot"
+      cx="17.5"
+      cy="18.5"
+      r="8.5"
+      fill="white"
+    />
   </svg>
 </template>
 
@@ -25,7 +31,7 @@ import gsap, { Back } from 'gsap'
 onMounted(() => {
   const tl = gsap.timeline({
     defaults: { duration: 2.5, delay: 2.5, opacity: 1 },
-  });
+  })
 
   tl.from('#indicator__dot', {
     y: 0,
@@ -39,6 +45,6 @@ onMounted(() => {
       duration: 1.65,
     },
     '-=3'
-  );
-});
+  )
+})
 </script>

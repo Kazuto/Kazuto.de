@@ -1,7 +1,7 @@
 <template>
   <footer
     id="footer"
-    class="bg-secondary-500 text-neutral-50 font-medium text-xs"
+    class="bg-secondary-500 text-xs font-medium text-neutral-50"
   >
     <div class="container mx-auto p-4">
       <div class="text-center">
@@ -12,9 +12,13 @@
           :href="link.url"
           target="_blank"
           rel="noopener"
-          class="inline-block transition duration-500 ease-cubic-bezier hover:cursor-pointer text-gray-50 hover:text-gray-100 mx-4 hover:opacity-60"
+          class="mx-4 inline-block text-gray-50 transition duration-500 ease-cubic-bezier hover:cursor-pointer hover:text-gray-100 hover:opacity-60"
         >
-          <nuxt-img class="h-6 w-auto" :src="link.image" alt="" />
+          <nuxt-img
+            class="h-6 w-auto"
+            :src="link.image"
+            alt=""
+          />
         </a>
       </div>
     </div>
@@ -22,7 +26,7 @@
     <div class="container mx-auto p-4 text-center text-lg">
       <a
         href="/cv_kai_mayer.pdf"
-        class="inline-block my-1.5 transition duration-500 ease-cubic-bezier hover:cursor-pointer hover:opacity-60"
+        class="my-1.5 inline-block transition duration-500 ease-cubic-bezier hover:cursor-pointer hover:opacity-60"
         target="_blank"
       >
         Curriculum Vitae

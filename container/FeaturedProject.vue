@@ -1,5 +1,8 @@
 <template>
-  <Section id="featured" class="z-10 py-20 md:py-16 px-0">
+  <Section
+    id="featured"
+    class="z-10 px-0 py-20 md:py-16"
+  >
     <Container>
       <Project
         v-if="project"

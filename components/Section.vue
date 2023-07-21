@@ -1,5 +1,8 @@
 <template>
-  <section class="w-full" :class="{ flex: flex, 'items-center': alignCenter }">
+  <section
+    class="w-full"
+    :class="{ flex: flex, 'items-center': alignCenter }"
+  >
     <header v-if="hasHeaderSlot">
       <slot name="header" />
     </header>

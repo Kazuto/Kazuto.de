@@ -1,5 +1,8 @@
 <template>
-  <div ref="animation" class="animation">
+  <div
+    ref="animation"
+    class="animation"
+  >
     <slot />
   </div>
 </template>

@@ -28,7 +28,7 @@
 </template>
 
 <script setup>
-const headerStore = useHeaderStore();
+const headerStore = useHeaderStore()
 
 defineProps({
   items: {
@@ -39,13 +39,13 @@ defineProps({
     type: Number,
     default: 0,
   },
-});
+})
 
-const isMenuOpen = computed(() => headerStore.getMenuState);
+const isMenuOpen = computed(() => headerStore.getMenuState)
 
 const toggleMenu = () => {
-  headerStore.toggleMenu();
-};
+  headerStore.toggleMenu()
+}
 </script>
 
 <style lang="postcss" scoped>

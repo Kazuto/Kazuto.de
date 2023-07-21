@@ -1,8 +1,11 @@
 <template>
   <div>
-    <a href="/" title="Logo link">
+    <a
+      href="/"
+      title="Logo link"
+    >
       <nuxt-img
-        class="w-20 h-auto"
+        class="h-auto w-20"
         alt="Kazuto Logo Image"
         src="images/logo.svg"
       />

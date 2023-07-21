@@ -1,5 +1,8 @@
 <template>
-  <div ref="card" class="bg-neutral-50 shadow rounded-xl p-10 overflow-hidden">
+  <div
+    ref="card"
+    class="overflow-hidden rounded-xl bg-neutral-50 p-10 shadow"
+  >
     <div v-if="hasHeaderSlot">
       <slot name="header" />
     </div>

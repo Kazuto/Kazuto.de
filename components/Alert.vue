@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative bg-white text-lg font-medium mb-4 p-4 pr-12 border-2 rounded-xl"
+    class="relative mb-4 rounded-xl border-2 bg-white p-4 pr-12 text-lg font-medium"
     :class="{
       'border-green-500 text-green-500': type == 'success',
       'border-red-500 text-red-500': type == 'error',
@@ -9,7 +9,7 @@
   >
     <span
       v-if="dismissible"
-      class="absolute right-3 top-2 text-4xl cursor-pointer transition ease-cubic-bezier duration-500 hover:opacity-60 after:content-['×']"
+      class="absolute right-3 top-2 cursor-pointer text-4xl transition duration-500 ease-cubic-bezier after:content-['×'] hover:opacity-60"
       @click="$emit('close')"
     />
 

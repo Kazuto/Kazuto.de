@@ -1,11 +1,24 @@
 <template>
-  <Section id="contact" class="py-20 md:py-32">
+  <Section
+    id="contact"
+    class="py-20 md:py-32"
+  >
     <Container>
-      <Animation :y="-30" :opacity="0" :duration="0.6" :delay="0.3">
+      <Animation
+        :y="-30"
+        :opacity="0"
+        :duration="0.6"
+        :delay="0.3"
+      >
         <h3 class="text-h2 text-secondary-500">Hire me</h3>
       </Animation>
 
-      <form id="app" novalidate class="form max-w-md" @submit.prevent="checkForm">
+      <form
+        id="app"
+        novalidate
+        class="form max-w-md"
+        @submit.prevent="checkForm"
+      >
         <transition name="fade">
           <Alert
             v-if="state.sendSuccessful"
@@ -29,16 +42,27 @@
         </transition>
 
         <transition name="fade">
-          <Alert v-if="state.errors.length" type="error">
+          <Alert
+            v-if="state.errors.length"
+            type="error"
+          >
             <ul>
-              <li v-for="error in state.errors" :key="error">
+              <li
+                v-for="error in state.errors"
+                :key="error"
+              >
                 {{ error }}
               </li>
             </ul>
           </Alert>
         </transition>
 
-        <Animation :y="-30" :opacity="0" :duration="0.6" :delay="0.5">
+        <Animation
+          :y="-30"
+          :opacity="0"
+          :duration="0.6"
+          :delay="0.5"
+        >
           <FormInput
             id="name"
             label="Name"
@@ -60,11 +84,17 @@
             @update:value="(value) => (state.form.message = value)"
           />
 
-          <Button type="submit" block>
+          <Button
+            type="submit"
+            block
+          >
             <span>
               {{ state.isSubmitting ? 'Sending...' : 'Send Message' }}
             </span>
-            <span v-if="state.isSubmitting" class="spinner" />
+            <span
+              v-if="state.isSubmitting"
+              class="spinner"
+            />
           </Button>
         </Animation>
       </form>
@@ -120,7 +150,7 @@ const sendMail = () => {
     config.emailjsServiceId,
     config.emailjsTemplateId,
     state.form,
-    config.emailjsPublicKey,
+    config.emailjsPublicKey
   ).then(
     (result) => {
       result.status === 200
@@ -139,7 +169,7 @@ const sendMail = () => {
 
         state.isSubmitting = false
       }
-    },
+    }
   )
 }
 </script>

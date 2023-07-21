@@ -21,13 +21,19 @@
         <div class="w-full sm:w-3/4 md:w-2/3 lg:w-1/2">
           <h1
             id="title"
-            class="text-display4 font-bold uppercase mb-8 !leading-tight"
+            class="mb-8 text-display4 font-bold uppercase !leading-tight"
           >
             Uniquely crafted web experiences
           </h1>
 
-          <div id="cta" class="flex flex-wrap gap-4">
-            <Button tag="a" href="#portfolio" color="primary"
+          <div
+            id="cta"
+            class="flex flex-wrap gap-4"
+          >
+            <Button
+              tag="a"
+              href="#portfolio"
+              color="primary"
               >Check my work</Button
             >
           </div>
@@ -50,26 +56,26 @@
 </template>
 
 <script setup>
-import gsap from 'gsap';
+import gsap from 'gsap'
 
 onMounted(() => {
   const tl = gsap.timeline({
     defaults: { duration: 0.75 },
-  });
+  })
 
   tl.from('#title', { y: -100, opacity: 0, delay: 0.3 }).to('#title', {
     y: 0,
     opacity: 1,
-  });
+  })
 
   tl.from('#cta', { opacity: 0, delay: 0, duration: 0.5 }).to('#cta', {
     opacity: 1,
-  });
+  })
 
   tl.from('#scroll', { opacity: 0, delay: 0, duration: 0.2 }).to('#scroll', {
     opacity: 1,
-  });
-});
+  })
+})
 </script>
 
 <style lang="postcss"></style>
