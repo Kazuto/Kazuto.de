@@ -1,6 +1,6 @@
 <template>
   <div
-    class="min-h-full container mx-auto px-8 md:px-16"
+    class="container mx-auto px-8 md:px-16"
     :class="{ 'max-w-full': fluid }"
   >
     <slot />
@@ -13,5 +13,5 @@ defineProps({
     type: Boolean,
     default: false,
   },
-})
+});
 </script>
