@@ -9,10 +9,15 @@ module.exports = {
     parser: '@typescript-eslint/parser',
   },
   extends: ['@nuxtjs/eslint-config-typescript', 'plugin:prettier/recommended'],
-  plugins: [],
-  // add your custom rules here
   rules: {
-    'vue/multi-word-component-names': 0,
-    'vue/no-v-html': 0,
+    'vue/component-name-in-template-casing': ['error', 'PascalCase'],
+    'vue/multi-word-component-names': 'off',
+    'vue/no-multiple-template-root': 'off',
+    'vue/no-v-html': 'off',
+    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
   },
-}
+  globals: {
+    $nuxt: true,
+  },
+};

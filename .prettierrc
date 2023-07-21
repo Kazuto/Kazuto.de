@@ -1,4 +1,11 @@
 {
+  "singleQuote": true,
   "semi": false,
-  "singleQuote": true
+  "bracketSameLine": false,
+  "endOfLine": "lf",
+  "trailingComma": "es5",
+  "arrowParens": "always",
+  "vueIndentScriptAndStyle": false,
+  "singleAttributePerLine": true,
+  "plugins": ["prettier-plugin-tailwindcss"]
 }

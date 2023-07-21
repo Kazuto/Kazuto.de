@@ -35,7 +35,7 @@ module.exports = {
         h5: 'clamp(1.5rem, 2.5vw, 1.875rem)',
         h6: '1.5rem',
         body1: 'clamp(1.3rem, 2vw, 1.5rem)',
-        body2: 'clamp(0.75rem, 2vw, 1.3rem)',
+        body2: 'clamp(1.15rem, 2vw, 1.3rem)',
         lead: 'clamp(1.5rem, 3vw, 2.25rem)',
         display1: 'clamp(7.5rem, 12vw, 9rem)',
         display2: 'clamp(6.75rem, 10.5vw, 7.5rem)',
@@ -84,4 +84,4 @@ module.exports = {
     },
   },
   plugins: [],
-}
+};
