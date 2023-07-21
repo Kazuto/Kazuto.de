@@ -56,7 +56,7 @@
     </div>
 
     <div
-      class="relative order-1 translate-x-0 md:order-2 md:translate-x-[15vw]"
+      class="relative order-1 translate-x-0 md:order-2 md:translate-x-[15vw] overflow-hidden"
     >
       <Animation
         :x="1000"
@@ -64,14 +64,14 @@
         :duration="0.5"
         :delay="0.3"
       >
-        <Card class="!p-0">
+        <div class="overflow-hidden rounded-xl shadow">
           <nuxt-img
             class="aspect-[16/10] max-h-[600px] object-cover object-left"
             :src="item.metadata.image.url"
             :alt="item.title"
             sizes="md:40vw"
           />
-        </Card>
+        </div>
       </Animation>
     </div>
   </div>
