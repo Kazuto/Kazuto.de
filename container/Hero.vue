@@ -1,12 +1,12 @@
 <template>
   <Section
     id="landing"
-    class="text-white bg-secondary-500 box-shadow relative overflow-hidden"
+    class="box-shadow relative overflow-hidden bg-secondary-500 text-white"
     name="landing"
     fluid
   >
     <span
-      class="absolute -right-72 -bottom-20 z-0 select-none saturate-50 opacity-20"
+      class="absolute -bottom-4 -right-48 z-0 select-none opacity-20 saturate-[.25] md:-right-72"
       aria-hidden="true"
     >
       <nuxt-img
@@ -17,8 +17,8 @@
     </span>
 
     <Container>
-      <div class="z-10 w-full h-screen flex place-items-center">
-        <div class="w-3/4 md:w-2/3 lg:w-1/2">
+      <div class="z-10 flex h-screen w-full place-items-center">
+        <div class="w-full sm:w-3/4 md:w-2/3 lg:w-1/2">
           <h1
             id="title"
             class="text-display4 font-bold uppercase mb-8 !leading-tight"
@@ -30,7 +30,6 @@
             <Button tag="a" href="#portfolio" color="primary"
               >Check my work</Button
             >
-            <Button tag="a" href="#about">More about me</Button>
           </div>
         </div>
 
