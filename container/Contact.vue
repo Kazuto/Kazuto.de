@@ -5,7 +5,7 @@
         <h3 class="text-h2 text-secondary-500">Hire me</h3>
       </Animation>
 
-      <form id="app" novalidate class="form w-96" @submit.prevent="checkForm">
+      <form id="app" novalidate class="form max-w-md" @submit.prevent="checkForm">
         <transition name="fade">
           <Alert
             v-if="state.sendSuccessful"
