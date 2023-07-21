@@ -2,14 +2,14 @@
   <Section
     id="skills"
     name="skills"
-    class="bg-primary-500 text-white py-20 md:py-40"
+    class="overflow-hidden bg-primary-500 py-20 text-white md:py-40"
   >
     <Container
       class="w-full flex flex-col md:flex-row justify-center items-start relative"
     >
       <div class="mb-8 md:sticky md:top-32 md:w-1/2 md:m-0 md:mr-16">
         <Animation :x="-500" :opacity="0" :duration="0.5" :delay="0.35">
-          <h2 class="font-bold text-h1">What I can do</h2>
+          <h2 class="text-h1 font-bold leading-tight">What I can do</h2>
         </Animation>
 
         <Animation :x="-500" :opacity="0" :duration="0.5" :delay="0.5">
@@ -38,7 +38,7 @@
               :src="skill.metadata.icon.imgix_url"
             />
 
-            <h3 class="text-h3 font-bold !mb-8">
+            <h3 class="!mb-8 text-h3 font-bold leading-tight">
               {{ skill.title }}
             </h3>
 
