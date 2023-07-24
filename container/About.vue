@@ -3,11 +3,11 @@
     id="about"
     flex
     align-center
-    class="min-h-screen overflow-x-hidden bg-secondary-500 py-20 text-white"
+    class="min-h-screen bg-secondary-500 py-20 text-white"
   >
     <Container>
       <div
-        class="flex flex-col gap-8 md:items-center lg:grid lg:grid-cols-[1fr_2fr] xl:grid-cols-[1fr_1.25fr] 2xl:grid-cols-[1fr_1.5fr]"
+        class="flex flex-col gap-8 md:items-center lg:grid lg:grid-cols-[1fr_1.5fr] xl:grid-cols-[1fr_1.25fr] 2xl:grid-cols-[1fr_1.5fr]"
       >
         <Animation
           :x="-500"
@@ -17,7 +17,7 @@
           class="w-full"
         >
           <div
-            class="aspect-[4/3] overflow-hidden rounded-xl md:self-start lg:aspect-auto lg:-translate-x-[58%] lg:-translate-y-96 xl:-translate-x-[15vw] xl:-translate-y-[22svh] 2xl:-translate-x-[15vw] 2xl:-translate-y-28"
+            class="aspect-[4/3] overflow-hidden rounded-xl md:self-start lg:aspect-auto lg:-translate-x-[11rem] lg:-translate-y-[30rem] xl:-translate-x-[12rem] xl:-translate-y-[19rem] 2xl:-translate-x-[15.5rem] 2xl:-translate-y-44"
           >
             <nuxt-img
               class="object-cover object-top"
@@ -28,7 +28,7 @@
           </div>
         </Animation>
 
-        <div class="about__right">
+        <div>
           <Animation
             :x="200"
             :opacity="0"

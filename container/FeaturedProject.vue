@@ -1,7 +1,7 @@
 <template>
   <Section
     id="featured"
-    class="z-10 px-0 py-20 md:py-16"
+    class="z-10 z-50 px-0 py-20 md:py-16"
   >
     <Container>
       <Project

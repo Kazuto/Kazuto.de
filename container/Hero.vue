@@ -34,7 +34,13 @@
               tag="a"
               href="#portfolio"
               color="primary"
-              >Check my work</Button
+            >
+              Check my work
+            </Button>
+            <Button
+              tag="a"
+              href="#about"
+              >More about me</Button
             >
           </div>
         </div>

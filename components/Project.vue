@@ -56,7 +56,7 @@
     </div>
 
     <div
-      class="relative order-1 translate-x-0 md:order-2 md:translate-x-[15vw] overflow-hidden"
+      class="relative order-1 translate-x-0 md:order-2 md:translate-x-[15vw]"
     >
       <Animation
         :x="1000"

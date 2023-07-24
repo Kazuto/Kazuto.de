@@ -7,7 +7,7 @@
     <Container
       class="relative flex w-full flex-col items-start justify-center md:flex-row"
     >
-      <div class="mb-8 md:sticky md:top-32 md:m-0 md:mr-16 md:w-1/2">
+      <div class="mb-8 md:m-0 md:mr-16 md:w-1/2">
         <Animation
           :x="-500"
           :opacity="0"
