@@ -98,8 +98,6 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      cosmicBucketSlug: process.env.COSMIC_BUCKET_SLUG || '',
-      cosmicReadKey: process.env.COSMIC_READ_KEY || '',
       emailjsPublicKey: process.env.EMAILJS_PUBLIC_KEY || '',
       emailjsTemplateId: process.env.EMAILJS_TEMPLATE_ID || '',
       emailjsServiceId: process.env.EMAILJS_SERVICE_ID || '',

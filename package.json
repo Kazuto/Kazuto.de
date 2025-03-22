@@ -13,7 +13,6 @@
     "lintfix": "prettier --write --list-different . && yarn lint:js --fix"
   },
   "dependencies": {
-    "@cosmicjs/sdk": "^1.4.0",
     "@emailjs/browser": "^3.12.1",
     "@pinia/nuxt": "^0.4.11",
     "@tailwindcss/vite": "^4.0.15",

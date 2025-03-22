@@ -5,8 +5,8 @@
   >
     <Container>
       <Project
-        v-for="project in projects"
-        :key="project.id"
+        v-for="(project, index) in content"
+        :key="index"
         :item="project"
       ></Project>
     </Container>
@@ -14,7 +14,7 @@
 </template>
 
 <script setup>
-const projectStore = useProjectStore()
-
-const projects = computed(() => projectStore.getNonFeatured)
+const content = await queryContent('/projects')
+  .where({ featured: false })
+  .find()
 </script>

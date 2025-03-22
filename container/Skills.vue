@@ -25,7 +25,7 @@
         >
           <ContentRenderer
             class="leading-wide text-body1"
-            :value="content"
+            :value="description"
           />
         </Animation>
       </div>
@@ -34,7 +34,7 @@
         class="-m-4 grid items-start justify-start gap-8 p-4 md:m-0 md:-mt-8 md:w-1/2 md:gap-16 md:p-0 md:pt-16"
       >
         <Animation
-          v-for="(skill, index) in skills"
+          v-for="(skill, index) in content"
           :key="index"
           :x="1000"
           :opacity="0"
@@ -48,16 +48,15 @@
             <nuxt-img
               :alt="skill.title"
               class="mb-8 inline h-16 w-16 md:h-20 md:w-20"
-              :src="skill.metadata.icon.imgix_url"
+              :src="`/icons/${skill.image}`"
             />
 
             <h3 class="text-h3 mb-8! leading-tight font-bold">
               {{ skill.title }}
             </h3>
-
-            <p
+            <ContentRenderer
               class="text-body2"
-              v-html="skill.content"
+              :value="skill"
             />
           </Card>
         </Animation>
@@ -67,9 +66,11 @@
 </template>
 
 <script setup>
-const content = await queryContent('/skills').findOne()
+const description = await queryContent('/skills')
+  .where({ title: 'Description' })
+  .findOne()
 
-const skillsStore = useSkillsStore()
-
-const skills = computed(() => skillsStore.getAll)
+const content = await queryContent('/skills')
+  .where({ title: { $not: 'Description' } })
+  .find()
 </script>

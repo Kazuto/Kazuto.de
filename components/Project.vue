@@ -14,8 +14,8 @@
         <p
           class="animate text-subtitle text-primary-500 mb-4 font-bold tracking-wide uppercase"
         >
-          <span v-if="item.metadata.featured">Featured Project</span>
-          <span v-else>{{ item.metadata.caption }}</span>
+          <span v-if="item.featured">Featured Project</span>
+          <span v-else>{{ item.caption }}</span>
         </p>
       </Animation>
 
@@ -36,15 +36,15 @@
         :duration="0.6"
         :delay="0.5"
       >
-        <p
+        <ContentRenderer
           class="animate text-body1 text-secondary-500 mb-0"
-          v-html="item.content"
-        ></p>
+          :value="item"
+        />
 
         <a
-          v-if="item.metadata.url"
+          v-if="item.url"
           tag="a"
-          :href="item.metadata.url"
+          :href="item.url"
           target="_blank"
           :aria-label="item.title"
           rel="noreferrer"
@@ -67,7 +67,7 @@
         <div class="overflow-hidden rounded-xl shadow">
           <nuxt-img
             class="aspect-16/10 max-h-[600px] object-cover object-left"
-            :src="item.metadata.image.url"
+            :src="`/images/projects/${item.image}`"
             :alt="item.title"
             sizes="md:40vw"
           />

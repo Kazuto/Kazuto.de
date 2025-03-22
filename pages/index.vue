@@ -10,14 +10,6 @@
 </template>
 
 <script setup>
-const projectStore = useProjectStore()
-const skillsStore = useSkillsStore()
-
-onMounted(async () => {
-  await projectStore.fetch()
-  await skillsStore.fetch()
-})
-
 useSeoMeta({
   ogImage: '[og:image]',
   ogUrl: '[og:url]',
