@@ -2,7 +2,7 @@
   <Section
     id="skills"
     name="skills"
-    class="overflow-hidden bg-primary-500 py-20 text-white md:py-40"
+    class="bg-primary-500 overflow-hidden py-20 text-white md:py-40"
   >
     <Container
       class="relative flex w-full flex-col items-start justify-center md:flex-row"
@@ -14,7 +14,7 @@
           :duration="0.5"
           :delay="0.35"
         >
-          <h2 class="text-h1 font-bold leading-tight">What I can do</h2>
+          <h2 class="text-h1 leading-tight font-bold">What I can do</h2>
         </Animation>
 
         <Animation
@@ -43,7 +43,7 @@
         >
           <Card
             name="skill"
-            class="px-6 py-8 text-center text-secondary-500 md:px-20 md:py-16"
+            class="text-secondary-500 px-6 py-8 text-center md:px-20 md:py-16"
           >
             <nuxt-img
               :alt="skill.title"
@@ -51,7 +51,7 @@
               :src="skill.metadata.icon.imgix_url"
             />
 
-            <h3 class="!mb-8 text-h3 font-bold leading-tight">
+            <h3 class="text-h3 mb-8! leading-tight font-bold">
               {{ skill.title }}
             </h3>
 

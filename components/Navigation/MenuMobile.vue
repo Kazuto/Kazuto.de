@@ -2,7 +2,7 @@
   <transition name="overlay">
     <nav
       v-if="isMenuOpen"
-      class="absolute left-0 top-0 z-10 h-screen w-full overflow-x-hidden bg-secondary-500 px-10"
+      class="bg-secondary-500 absolute top-0 left-0 z-10 h-screen w-full overflow-x-hidden px-10"
       :class="{ 'opacity-100': isMenuOpen }"
       role="navigation"
       aria-label="Navigation"

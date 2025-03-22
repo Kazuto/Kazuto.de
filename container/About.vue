@@ -3,7 +3,7 @@
     id="about"
     flex
     align-center
-    class="min-h-screen bg-secondary-500 py-20 text-white"
+    class="bg-secondary-500 min-h-screen py-20 text-white"
   >
     <Container>
       <div
@@ -17,7 +17,7 @@
           class="w-full"
         >
           <div
-            class="aspect-[4/3] overflow-hidden rounded-xl md:self-start lg:aspect-auto lg:-translate-x-[11rem] lg:-translate-y-[30rem] xl:-translate-x-[12rem] xl:-translate-y-[19rem] 2xl:-translate-x-[15.5rem] 2xl:-translate-y-44"
+            class="aspect-4/3 overflow-hidden rounded-xl md:self-start lg:aspect-auto lg:-translate-x-[11rem] lg:-translate-y-[30rem] xl:-translate-x-[12rem] xl:-translate-y-[19rem] 2xl:-translate-x-[15.5rem] 2xl:-translate-y-44"
           >
             <nuxt-img
               class="object-cover object-top"
@@ -37,7 +37,7 @@
           >
             <h2 class="text-h2 leading-tight">Hi there, I'm Kai 👋</h2>
 
-            <span class="flex items-center text-caption">
+            <span class="text-caption flex items-center">
               <nuxt-img
                 class="mr-2"
                 src="icons/map-pin.svg"
@@ -54,7 +54,7 @@
             :delay="0.35"
           >
             <ContentRenderer
-              class="mt-12 text-body2"
+              class="text-body2 mt-12"
               :value="content"
             />
           </Animation>
@@ -73,7 +73,7 @@
                 :href="link.url"
                 target="_blank"
                 rel="noopener"
-                class="transition duration-500 ease-cubic-bezier hover:opacity-60"
+                class="ease-cubic-bezier transition duration-500 hover:opacity-60"
                 :class="link.name"
               >
                 <nuxt-img

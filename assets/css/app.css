@@ -1,16 +1,93 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-@font-face {
-  font-family: 'Quicksand';
-  src:
-    local('Quicksand'),
-    local('Quicksand'),
-    url('~/assets/fonts/QuicksandVariable.ttf') format('truetype');
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
+@custom-variant dark (@media (prefers-color-scheme: dark));
+
+@theme {
+  --spacing-unset: unset;
+
+  --max-height-screen: calc(100svh);
+
+  --font-sans:
+    'Quicksand', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+  --text-base: 1.5rem;
+  --text-h1: clamp(3rem, 5vw, 3.75rem);
+  --text-h2: clamp(2.5rem, 4vw, 3rem);
+  --text-h3: clamp(2.25rem, 3.5vw, 2.5rem);
+  --text-h4: clamp(1.875rem, 3vw, 2.25rem);
+  --text-h5: clamp(1.5rem, 2.5vw, 1.875rem);
+  --text-h6: 1.5rem;
+  --text-body1: clamp(1.3rem, 2vw, 1.5rem);
+  --text-body2: clamp(1.15rem, 2vw, 1.3rem);
+  --text-lead: clamp(1.5rem, 3vw, 2.25rem);
+  --text-display1: clamp(7.5rem, 12vw, 9rem);
+  --text-display2: clamp(6.75rem, 10.5vw, 7.5rem);
+  --text-display3: clamp(5.25rem, 9vw, 6.75rem);
+  --text-display4: clamp(3rem, 7vw, 5.25rem);
+  --text-subtitle: clamp(0.75rem, 1.3vw, 0.975rem);
+  --text-caption: 1.125rem;
+
+  --color-primary-50: #ffd08a;
+  --color-primary-100: #ffca7a;
+  --color-primary-200: #ffbe5c;
+  --color-primary-300: #ffb13d;
+  --color-primary-400: #ffa51f;
+  --color-primary-500: #ff9900;
+  --color-primary-600: #e68a00;
+  --color-primary-700: #cc7a00;
+  --color-primary-800: #b36b00;
+  --color-primary-900: #995c00;
+  --color-primary-950: #8c5400;
+  --color-primary: #ff9900;
+
+  --color-secondary-50: #4178a8;
+  --color-secondary-100: #3c6e9b;
+  --color-secondary-200: #325c81;
+  --color-secondary-300: #284a68;
+  --color-secondary-400: #1e374e;
+  --color-secondary-500: #142534;
+  --color-secondary-600: #11202d;
+  --color-secondary-700: #0e1b25;
+  --color-secondary-800: #0c151e;
+  --color-secondary-900: #091017;
+  --color-secondary-950: #070d13;
+  --color-secondary: #142534;
+
+  --ease-cubic-bezier: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  --shadow: 0 20px 30px 0 rgba(0, 0, 0, 0.08), 0 4px 4px 0 rgba(0, 0, 0, 0.12);
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+@layer utilities {
+  @font-face {
+    font-family: 'Quicksand';
+    src:
+      local('Quicksand'),
+      local('Quicksand'),
+      url('~/assets/fonts/QuicksandVariable.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
 }
 
 @layer base {
@@ -60,6 +137,6 @@
   .h4,
   .h5,
   .h6 {
-    @apply mb-8 font-bold leading-5 tracking-normal;
+    @apply mb-8 leading-5 font-bold tracking-normal;
   }
 }

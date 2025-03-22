@@ -2,7 +2,7 @@
   <transition name="fade">
     <div
       v-show="state.visible"
-      class="fixed bottom-4 right-4 z-50 flex h-12 w-12 items-center justify-center rounded-xl bg-secondary-500 bg-opacity-80 text-white transition duration-500 ease-cubic-bezier hover:cursor-pointer"
+      class="bg-secondary-500 bg-opacity-80 ease-cubic-bezier fixed right-4 bottom-4 z-50 flex h-12 w-12 items-center justify-center rounded-xl text-white transition duration-500 hover:cursor-pointer"
       :style="{
         bottom: state.isBackTopFooter
           ? `${state.visibleFooterPixel + 16}px`

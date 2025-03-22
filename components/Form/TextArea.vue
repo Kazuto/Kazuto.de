@@ -8,14 +8,14 @@
       :aria-labelledby="`label-${id}`"
       :name="id"
       :value="value"
-      class="font-sm mb-6 w-full resize-none rounded-xl border-2 border-secondary-500 bg-neutral-100 px-5 py-4 text-secondary-500 transition duration-500 ease-cubic-bezier hover:bg-neutral-50"
+      class="font-sm border-secondary-500 text-secondary-500 ease-cubic-bezier mb-6 w-full resize-none rounded-xl border-2 bg-neutral-100 px-5 py-4 transition duration-500 hover:bg-neutral-50"
       @input="$emit('update:value', $event.target.value)"
     />
 
     <label
       :id="`label-${id}`"
       :for="id"
-      class="absolute left-5 block origin-[0_0] font-medium tracking-wide text-secondary-500 transition duration-500 ease-cubic-bezier"
+      class="text-secondary-500 ease-cubic-bezier absolute left-5 block origin-[0_0] font-medium tracking-wide transition duration-500"
       :aria-label="label"
     >
       {{ label }}

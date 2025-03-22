@@ -1,12 +1,12 @@
 <template>
   <Section
     id="landing"
-    class="box-shadow relative overflow-hidden bg-secondary-500 text-white"
+    class="box-shadow bg-secondary-500 relative overflow-hidden text-white"
     name="landing"
     fluid
   >
     <span
-      class="absolute -bottom-4 -right-48 z-0 select-none opacity-20 saturate-[.25] md:-right-72"
+      class="absolute -right-48 -bottom-4 z-0 opacity-20 saturate-[.25] select-none md:-right-72"
       aria-hidden="true"
     >
       <nuxt-img
@@ -21,7 +21,7 @@
         <div class="w-full sm:w-3/4 md:w-2/3 lg:w-1/2">
           <h1
             id="title"
-            class="mb-8 text-display4 font-bold uppercase !leading-tight"
+            class="text-display4 mb-8 leading-tight! font-bold uppercase"
           >
             Uniquely crafted web experiences
           </h1>
@@ -48,7 +48,7 @@
         <div class="absolute bottom-10 left-1/2 -translate-x-1/2">
           <a
             id="scroll"
-            class="opacity-100 transition duration-500 ease-cubic-bezier hover:opacity-60"
+            class="ease-cubic-bezier opacity-100 transition duration-500 hover:opacity-60"
             href="#portfolio"
             name="portfolio"
             aria-label="portfolio"

@@ -12,7 +12,7 @@
         :delay="0.3"
       >
         <p
-          class="animate mb-4 text-subtitle font-bold uppercase tracking-wide text-primary-500"
+          class="animate text-subtitle text-primary-500 mb-4 font-bold tracking-wide uppercase"
         >
           <span v-if="item.metadata.featured">Featured Project</span>
           <span v-else>{{ item.metadata.caption }}</span>
@@ -25,7 +25,7 @@
         :duration="0.6"
         :delay="0.4"
       >
-        <h2 class="animate text-h2 font-bold text-secondary-500">
+        <h2 class="animate text-h2 text-secondary-500 font-bold">
           {{ item.title }}
         </h2>
       </Animation>
@@ -37,7 +37,7 @@
         :delay="0.5"
       >
         <p
-          class="animate mb-0 text-body1 text-secondary-500"
+          class="animate text-body1 text-secondary-500 mb-0"
           v-html="item.content"
         ></p>
 
@@ -48,7 +48,7 @@
           target="_blank"
           :aria-label="item.title"
           rel="noreferrer"
-          class="mt-6 inline-block text-body2 font-medium text-primary-500 transition duration-500 ease-cubic-bezier hover:text-primary-700"
+          class="text-body2 text-primary-500 ease-cubic-bezier hover:text-primary-700 mt-6 inline-block font-medium transition duration-500"
         >
           Visit now →
         </a>
@@ -66,7 +66,7 @@
       >
         <div class="overflow-hidden rounded-xl shadow">
           <nuxt-img
-            class="aspect-[16/10] max-h-[600px] object-cover object-left"
+            class="aspect-16/10 max-h-[600px] object-cover object-left"
             :src="item.metadata.image.url"
             :alt="item.title"
             sizes="md:40vw"

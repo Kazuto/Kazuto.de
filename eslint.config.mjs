@@ -1,4 +1,7 @@
-module.exports = {
+// @ts-check
+import withNuxt from './.nuxt/eslint.config.mjs'
+
+export default withNuxt({
   root: true,
   env: {
     browser: true,
@@ -20,4 +23,4 @@ module.exports = {
   globals: {
     $nuxt: true,
   },
-}
+})

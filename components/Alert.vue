@@ -9,7 +9,7 @@
   >
     <span
       v-if="dismissible"
-      class="absolute right-3 top-2 cursor-pointer text-4xl transition duration-500 ease-cubic-bezier after:content-['×'] hover:opacity-60"
+      class="ease-cubic-bezier absolute top-2 right-3 cursor-pointer text-4xl transition duration-500 after:content-['×'] hover:opacity-60"
       @click="$emit('close')"
     />
 

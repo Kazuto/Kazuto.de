@@ -1,14 +1,14 @@
 <template>
   <nav
     id="navigation"
-    class="bg-secondary-500 transition duration-500 ease-cubic-bezier"
+    class="bg-secondary-500 ease-cubic-bezier transition duration-500"
     role="navigation"
     aria-label="Navigation"
   >
     <Container class="space-between flex items-center py-4">
       <NavigationBrand />
 
-      <div class="flex-grow" />
+      <div class="grow" />
 
       <ul class="hidden sm:flex sm:gap-8">
         <li
