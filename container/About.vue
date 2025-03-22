@@ -70,7 +70,7 @@
                 v-for="link in socialMedia"
                 :key="link.name"
                 :aria-label="link.name"
-                :href="link.url"
+                :href="link.target"
                 target="_blank"
                 rel="noopener"
                 class="ease-cubic-bezier transition duration-500 hover:opacity-60"
@@ -91,7 +91,6 @@
 
 <script setup>
 const content = await queryContent('/about').findOne()
-const socialStore = useSocialStore()
 
-const socialMedia = computed(() => socialStore.getAll)
+const { items: socialMedia } = useSocial()
 </script>

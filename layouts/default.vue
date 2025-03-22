@@ -22,17 +22,13 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const headerStore = useHeaderStore()
+const {links: navItems, open} = useHeader()
 
 const state = reactive({
   headerHeight: 0,
 })
 
-const navItems = computed(() => headerStore.getAllItems)
-
-const overflow = computed(() => headerStore.getMenuState)
-
-watch(overflow, (newValue) => {
+watch(open, (newValue) => {
   toggleBodyOverflow(newValue)
 })
 

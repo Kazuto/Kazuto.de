@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-const headerStore = useHeaderStore()
+const { open, toggle } = useHeader()
 
 const state = reactive({
   breakpoint: 576,
@@ -22,8 +22,6 @@ const state = reactive({
   prevDirection: 0,
 })
 
-const isMenuOpen = computed(() => headerStore.getMenuState)
-
 onMounted(() => {
   state.curScroll = window.scrollY || document.documentElement.scrollTop
   state.prevScroll = window.scrollY || document.documentElement.scrollTop
@@ -33,12 +31,12 @@ onMounted(() => {
 })
 
 const catchResize = () => {
-  if (!isMenuOpen) {
+  if (!open) {
     return
   }
 
   if (window.innerWidth >= state.breakpoint) {
-    headerStore.toggleMenu()
+    toggle()
   }
 }
 

@@ -6,10 +6,10 @@
     <div class="container mx-auto p-4">
       <div class="text-center">
         <a
-          v-for="link in socialMedia"
+          v-for="link in links"
           :key="link.name"
           :aria-label="link.name"
-          :href="link.url"
+          :href="link.target"
           target="_blank"
           rel="noopener"
           class="ease-cubic-bezier mx-4 inline-block text-gray-50 transition duration-500 hover:cursor-pointer hover:text-gray-100 hover:opacity-60"
@@ -42,7 +42,5 @@
 </template>
 
 <script setup>
-const socialStore = useSocialStore()
-
-const socialMedia = computed(() => socialStore.getAll)
+const { links } = useSocial()
 </script>

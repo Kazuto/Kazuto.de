@@ -1,9 +1,9 @@
 <template>
   <transition name="overlay">
     <nav
-      v-if="isMenuOpen"
+      v-if="open"
       class="bg-secondary-500 absolute top-0 left-0 z-10 h-screen w-full overflow-x-hidden px-10"
-      :class="{ 'opacity-100': isMenuOpen }"
+      :class="{ 'opacity-100': open }"
       role="navigation"
       aria-label="Navigation"
     >
@@ -17,7 +17,7 @@
             <NavigationLink
               class="text-3xl"
               :link="link"
-              @click="toggleMenu()"
+              @click="toggle"
             />
           </li>
         </ul>
@@ -28,7 +28,7 @@
 </template>
 
 <script setup>
-const headerStore = useHeaderStore()
+const {toggle, open} = useHeader()
 
 defineProps({
   items: {
@@ -40,12 +40,6 @@ defineProps({
     default: 0,
   },
 })
-
-const isMenuOpen = computed(() => headerStore.getMenuState)
-
-const toggleMenu = () => {
-  headerStore.toggleMenu()
-}
 </script>
 
 <style lang="postcss" scoped>
