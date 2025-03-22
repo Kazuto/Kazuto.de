@@ -1,38 +1,20 @@
 <template>
-  <Section>
+  <Section
+    id="featured"
+    class="z-10 px-0 py-20 md:py-16"
+  >
     <Container>
-      <Project :item="project"></Project>
+      <Project
+        v-if="content"
+        class="md:translate-y-24"
+        :item="content"
+      ></Project>
     </Container>
   </Section>
 </template>
 
-<script>
-export default {
-  computed: {
-    project() {
-      return this.$store.getters['projects/getFeatured'][0]
-    },
-  },
-}
+<script setup>
+const content = await queryContent('/projects')
+  .where({ featured: true })
+  .findOne()
 </script>
-
-<style lang="scss" scoped>
-.section {
-  min-height: auto;
-  z-index: 1;
-
-  padding: 5rem 0;
-
-  @include bp(md) {
-    padding: 4rem 0;
-  }
-}
-
-.project {
-  @include bp(md) {
-    transform: translateY(6rem);
-  }
-}
-</style>
-
-<style lang="scss"></style>

@@ -2,6 +2,8 @@
 
 ## Build Setup
 
+Use `Node 20.3.0` and `yarn 1.22.19`
+
 ```bash
 # install dependencies
 $ npm install

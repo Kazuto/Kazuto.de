@@ -1,114 +1,92 @@
 <template>
   <transition name="fade">
     <div
-      v-show="visible"
+      v-show="state.visible"
+      class="bg-secondary-500 bg-opacity-80 ease-cubic-bezier fixed right-4 bottom-4 z-50 flex h-12 w-12 items-center justify-center rounded-xl text-white transition duration-500 hover:cursor-pointer"
       :style="{
-        bottom: isBackTopFooter ? `${visibleFooterPixel + 16}px` : 16 + 'px',
+        bottom: state.isBackTopFooter
+          ? `${state.visibleFooterPixel + 16}px`
+          : 16 + 'px',
       }"
       @click="backToTop"
     >
-      <img src="~/assets/images/icons/chevron-up.svg" alt="" />
-      <!-- <fa :icon="['fas', 'chevron-up']" /> -->
+      <nuxt-img
+        class="h-auto w-6"
+        src="icons/chevron-up.svg"
+        alt=""
+      />
     </div>
   </transition>
 </template>
 
-<style lang="scss" scoped>
-div {
-  position: fixed;
-  bottom: 1rem;
-  right: 1rem;
-  z-index: 100;
+<script setup>
+const props = defineProps({
+  visibleoffset: {
+    type: [String, Number],
+    default: 600,
+  },
+  visibleoffsetbottom: {
+    type: [String, Number],
+    default: 0,
+  },
+})
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+const state = reactive({
+  visible: false,
+  isBackTopFooter: false,
+  scrollIndentBackTop: 0,
+  scrollHeight: 0,
+  visibleFooterPixel: 0,
+})
 
-  background: transparentize($secondary, 0.2);
-  color: $white;
+onMounted(() => {
+  setTimeout(() => {
+    state.scrollHeight =
+      Math.max(
+        document.body.scrollHeight,
+        document.documentElement.scrollHeight,
+        document.body.offsetHeight,
+        document.documentElement.offsetHeight,
+        document.body.clientHeight,
+        document.documentElement.clientHeight
+      ) - window.innerHeight
+  }, 1000)
 
-  border-radius: $border-radius;
-  width: 3rem;
-  height: 3rem;
+  state.scrollIndentBackTop = document.getElementById('footer').clientHeight
 
-  font-size: $font-size-base;
+  window.addEventListener('scroll', catchScroll)
+})
 
-  transition: $transition-ease;
+onUnmounted(() => {
+  window.removeEventListener('scroll', catchScroll)
+})
 
-  &:hover {
-    cursor: pointer;
-  }
+const catchScroll = () => {
+  const pastTopOffset = window.pageYOffset > parseInt(props.visibleoffset)
 
-  img {
-    width: 24px;
-    height: auto;
-  }
+  const pastBottomOffset =
+    window.innerHeight + window.pageYOffset >=
+    document.body.offsetHeight - parseInt(props.visibleoffsetbottom)
+
+  state.visible =
+    parseInt(props.visibleoffsetbottom) > 0
+      ? pastTopOffset && !pastBottomOffset
+      : pastTopOffset
+
+  scrollFn()
 }
-</style>
 
-<script>
-export default {
-  name: 'BackTopTop',
-  props: {
-    visibleoffset: {
-      type: [String, Number],
-      default: 600,
-    },
-    visibleoffsetbottom: {
-      type: [String, Number],
-      default: 0,
-    },
-  },
-  data() {
-    return {
-      visible: false,
-      isBackTopFooter: false,
-      scrollIndentBackTop: 0,
-      scrollHeight: 0,
-      visibleFooterPixel: 0,
-    }
-  },
-  mounted() {
-    setTimeout(() => {
-      this.scrollHeight =
-        Math.max(
-          document.body.scrollHeight,
-          document.documentElement.scrollHeight,
-          document.body.offsetHeight,
-          document.documentElement.offsetHeight,
-          document.body.clientHeight,
-          document.documentElement.clientHeight
-        ) - window.innerHeight
-    }, 1000)
-    this.scrollIndentBackTop = document.getElementById('footer').clientHeight
-    window.addEventListener('scroll', this.catchScroll)
-  },
-  destroyed() {
-    window.removeEventListener('scroll', this.handleScroll)
-  },
-  methods: {
-    catchScroll() {
-      const pastTopOffset = window.pageYOffset > parseInt(this.visibleoffset)
-      const pastBottomOffset =
-        window.innerHeight + window.pageYOffset >=
-        document.body.offsetHeight - parseInt(this.visibleoffsetbottom)
-      this.visible =
-        parseInt(this.visibleoffsetbottom) > 0
-          ? pastTopOffset && !pastBottomOffset
-          : pastTopOffset
-      this.scrollFn()
-    },
-    backToTop() {
-      window.scrollTo(0, 0)
-    },
-    scrollFn() {
-      const diff = this.scrollHeight - window.pageYOffset
-      this.isBackTopFooter = diff < this.scrollIndentBackTop
+const backToTop = () => {
+  window.scrollTo(0, 0)
+}
 
-      if (this.isBackTopFooter) {
-        this.visibleFooterPixel = this.scrollIndentBackTop - diff
-      }
-    },
-  },
+const scrollFn = () => {
+  const diff = state.scrollHeight - window.pageYOffset
+
+  state.isBackTopFooter = diff < state.scrollIndentBackTop
+
+  if (state.isBackTopFooter) {
+    state.visibleFooterPixel = state.scrollIndentBackTop - diff
+  }
 }
 </script>

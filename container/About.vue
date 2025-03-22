@@ -1,63 +1,84 @@
 <template>
-  <Section id="about" flex align-center>
+  <Section
+    id="about"
+    flex
+    align-center
+    class="bg-secondary-500 min-h-screen py-20 text-white"
+  >
     <Container>
-      <div class="about">
-        <Animation :x="-500" :opacity="0" :duration="0.7" :delay="0.5">
-          <div class="about__left">
-            <img
-              data-src="~/assets/images/avatar.jpg"
-              :data-srcset="require('~/assets/images/avatar.jpg').srcSet"
-              class="lazyload"
+      <div
+        class="flex flex-col gap-8 md:items-center lg:grid lg:grid-cols-[1fr_1.5fr] xl:grid-cols-[1fr_1.25fr] 2xl:grid-cols-[1fr_1.5fr]"
+      >
+        <Animation
+          :x="-500"
+          :opacity="0"
+          :duration="0.7"
+          :delay="0.5"
+          class="w-full"
+        >
+          <div
+            class="aspect-4/3 overflow-hidden rounded-xl md:self-start lg:aspect-auto lg:-translate-x-[11rem] lg:-translate-y-[30rem] xl:-translate-x-[12rem] xl:-translate-y-[19rem] 2xl:-translate-x-[15.5rem] 2xl:-translate-y-44"
+          >
+            <nuxt-img
+              class="object-cover object-top"
+              src="images/avatar.jpg"
               alt="Kai Mayer"
-              sizes="(min-width: 768px) 50vw"
+              sizes="sm:100vw md:100vw lg:100vw"
             />
           </div>
         </Animation>
-        <div class="about__right">
-          <Animation :x="200" :opacity="0" :duration="0.6" :delay="0.35">
-            <Typography variant="h3" tag="p" class="about__name">
-              Kai Mayer
-            </Typography>
-            <Typography variant="caption" class="about__location">
-              <img
-                src="~/assets/images/icons/map-pin.svg"
+
+        <div>
+          <Animation
+            :x="200"
+            :opacity="0"
+            :duration="0.6"
+            :delay="0.35"
+          >
+            <h2 class="text-h2 leading-tight">Hi there, I'm Kai 👋</h2>
+
+            <span class="text-caption flex items-center">
+              <nuxt-img
+                class="mr-2"
+                src="icons/map-pin.svg"
                 alt="Location Icon"
               />
               Moenchengladbach, Germany
-            </Typography>
+            </span>
           </Animation>
 
-          <Animation :x="200" :opacity="0" :duration="0.6" :delay="0.35">
-            <Typography variant="body2" class="about__biography">
-              I've started experimenting with Photoshop, HTML and CSS when I was
-              13 years old and quickly grew fond of graphic design and web
-              development. With the age of 23, I've decided to begin training as
-              a Graphic Designer. Through the internship during the training,
-              I've started working as a Front-End Developer. Due to my passion
-              for technology and my never-ending thirst for knowledge I've got
-              more and more in touch with server technologies such as Nginx, PHP
-              and Go what finally led me to work as a Full-Stack developer. But
-              technologies aren't my only passion. I play several instruments
-              and am a big fan of anime and manga as well as tv shows and
-              movies, not to mention video games.
-            </Typography>
+          <Animation
+            :x="200"
+            :opacity="0"
+            :duration="0.6"
+            :delay="0.35"
+          >
+            <ContentRenderer
+              class="text-body2 mt-12"
+              :value="content"
+            />
           </Animation>
 
-          <Animation :y="-100" :opacity="0" :duration="1" :delay="0.35">
-            <div class="about__social">
+          <Animation
+            :y="-100"
+            :opacity="0"
+            :duration="1"
+            :delay="0.35"
+          >
+            <div class="mt-20 flex gap-12">
               <a
                 v-for="link in socialMedia"
                 :key="link.name"
                 :aria-label="link.name"
-                :href="link.url"
+                :href="link.target"
                 target="_blank"
                 rel="noopener"
-                class="card--profile__social-item"
+                class="ease-cubic-bezier transition duration-500 hover:opacity-60"
                 :class="link.name"
               >
-                <img
-                  :src="require(`~/assets/images/icons/${link.name}.svg`)"
-                  alt=""
+                <nuxt-img
+                  :src="link.image"
+                  :alt="link.name"
                 />
               </a>
             </div>
@@ -68,137 +89,8 @@
   </Section>
 </template>
 
-<script>
-export default {
-  name: 'About',
-  computed: {
-    socialMedia() {
-      return this.$store.getters['social/getAll']
-    },
-  },
-}
+<script setup>
+const content = await queryContent('/about').findOne()
+
+const { items: socialMedia } = useSocial()
 </script>
-
-<style scoped lang="scss">
-.section {
-  background: $secondary;
-  color: $white;
-
-  height: auto;
-
-  padding: 5rem 0;
-
-  @include bp(md) {
-    padding: 0rem 0;
-  }
-
-  .about {
-    display: flex;
-    flex-direction: column;
-    gap: $spacer * 2;
-
-    @include bp(md) {
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      align-items: center;
-    }
-
-    @include bp(lg) {
-      grid-template-columns: 450px 1fr;
-    }
-
-    @include bp(xl) {
-      grid-template-columns: 550px 1fr;
-    }
-
-    @include bp(hd) {
-      grid-template-columns: 600px 1fr;
-    }
-
-    @include bp(fhd) {
-      grid-template-columns: 650px 1fr;
-    }
-  }
-
-  .about__left {
-    height: 0;
-    padding-top: 100%;
-    border-radius: $border-radius;
-    overflow: hidden;
-
-    @include bp(md) {
-      align-self: flex-start;
-    }
-
-    @include bp(lg) {
-      height: 100vh;
-      transform: translateX(-20%) translateY(-2rem);
-    }
-
-    @include bp(xl) {
-      transform: translateX(-30%) translateY(-2rem);
-    }
-
-    @include bp(hd) {
-      transform: translateX(-30%) translateY(-2rem);
-    }
-
-    @include bp(fhd) {
-      transform: translateX(-50%) translateY(-2rem);
-    }
-    img {
-      position: absolute;
-      top: 0;
-      left: 0;
-
-      width: 100%;
-      height: auto;
-
-      object-fit: cover;
-      object-position: top;
-
-      @include bp(lg) {
-        max-height: 100vh;
-      }
-
-      // @include bp(hd) {
-      //   width: 850px;
-      // }
-
-      // @include bp(fhd) {
-      //   width: 980px;
-      // }
-    }
-  }
-
-  .about__name {
-    font-weight: 700;
-  }
-
-  .about__location {
-    margin-bottom: 3rem;
-
-    display: flex;
-    align-items: center;
-
-    img {
-      margin-right: 0.5rem;
-    }
-  }
-
-  .about__social {
-    margin-top: 5rem;
-
-    display: flex;
-    gap: 3rem;
-
-    a {
-      transition: $transition-ease;
-
-      &:hover {
-        opacity: 0.6;
-      }
-    }
-  }
-}
-</style>

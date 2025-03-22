@@ -1,38 +1,20 @@
 <template>
-  <Section>
+  <Section
+    id="portfolio"
+    class="z-10 min-h-fit py-20 md:py-16"
+  >
     <Container>
       <Project
-        v-for="project in projects"
-        :key="project.id"
+        v-for="(project, index) in content"
+        :key="index"
         :item="project"
       ></Project>
     </Container>
   </Section>
 </template>
 
-<script>
-export default {
-  computed: {
-    projects() {
-      return this.$store.getters['projects/getNonFeatured']
-    },
-  },
-}
+<script setup>
+const content = await queryContent('/projects')
+  .where({ featured: false })
+  .find()
 </script>
-
-<style lang="scss" scoped>
-.section {
-  min-height: auto;
-  z-index: 1;
-
-  padding: 5rem 0;
-
-  @include bp(md) {
-    padding: 4rem 0;
-  }
-
-  .project + .project {
-    margin-top: $spacer * 5;
-  }
-}
-</style>

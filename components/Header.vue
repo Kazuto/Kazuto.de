@@ -1,80 +1,57 @@
 <template>
   <header
     id="header"
-    :class="{ hide: curDirection === 2 && curScroll > scrollTreshold }"
+    class="fixed top-0 right-0 left-0 z-50 h-fit transition-all delay-150"
+    :class="{
+      hide: state.curDirection === 2 && state.curScroll > state.scrollTreshold,
+    }"
   >
     <slot></slot>
   </header>
 </template>
 
-<script>
-export default {
-  name: 'Header',
-  data() {
-    return {
-      breakpoint: 576,
-      curScroll: 0,
-      prevScroll: 0,
-      scrollTreshold: 200,
-      curDirection: 0,
-      prevDirection: 0,
-    }
-  },
-  computed: {
-    isMenuOpen() {
-      return this.$store.getters['header/getMenuState']
-    },
-  },
-  mounted() {
-    this.curScroll = window.scrollY || document.documentElement.scrollTop
-    this.prevScroll = window.scrollY || document.documentElement.scrollTop
+<script setup>
+const { open, toggle } = useHeader()
 
-    window.addEventListener('resize', this.catchResize)
-    window.addEventListener('scroll', this.catchScroll)
-  },
-  methods: {
-    catchResize() {
-      if (!this.isMenuOpen) {
-        return
-      }
+const state = reactive({
+  breakpoint: 576,
+  curScroll: 0,
+  prevScroll: 0,
+  scrollTreshold: 200,
+  curDirection: 0,
+  prevDirection: 0,
+})
 
-      if (window.innerWidth >= this.breakpoint) {
-        this.$store.dispatch('header/toggleMenu')
-      }
-    },
-    catchScroll() {
-      this.curScroll = window.scrollY || document.documentElement.scrollTop
+onMounted(() => {
+  state.curScroll = window.scrollY || document.documentElement.scrollTop
+  state.prevScroll = window.scrollY || document.documentElement.scrollTop
 
-      this.curDirection = this.curScroll > this.prevScroll ? 2 : 1
+  window.addEventListener('resize', catchResize)
+  window.addEventListener('scroll', catchScroll)
+})
 
-      this.prevDirection = this.curDirection
-      this.prevScroll = this.curScroll
-    },
-  },
+const catchResize = () => {
+  if (!open) {
+    return
+  }
+
+  if (window.innerWidth >= state.breakpoint) {
+    toggle()
+  }
+}
+
+const catchScroll = () => {
+  state.curScroll = window.scrollY || document.documentElement.scrollTop
+
+  state.curDirection = state.curScroll > state.prevScroll ? 2 : 1
+
+  state.prevDirection = state.curDirection
+  state.prevScroll = state.curScroll
 }
 </script>
 
-<style scoped lang="scss">
-header {
-  height: fit-content;
-
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 101;
-
-  transition: top 500ms ease-in-out;
-  transition-delay: 150ms;
-}
-</style>
-
-<style lang="scss">
-body:not(.overflow-hidden) {
-  #header {
-    &.hide {
-      top: -150px;
-    }
-  }
+<style>
+body:not(.overflow-hidden) #header.hide {
+  top: -150px;
 }
 </style>

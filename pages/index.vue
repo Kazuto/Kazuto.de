@@ -9,8 +9,16 @@
   </main>
 </template>
 
-<script>
-export default {}
-</script>
+<script setup>
+useSeoMeta({
+  ogImage: '[og:image]',
+  ogUrl: '[og:url]',
+  twitterCard: 'summary',
+})
 
-<style lang="scss"></style>
+useHead({
+  htmlAttrs: {
+    lang: 'en',
+  },
+})
+</script>

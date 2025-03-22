@@ -1,177 +1,87 @@
 <template>
-  <div v-if="item" ref="project" class="project">
-    <div class="project__left">
-      <Animation :y="-30" :opacity="0" :duration="0.6" :delay="0.3">
-        <Typography variant="overline" class="animate">
-          <span v-if="item.metadata.featured">Featured Project</span>
-          <span v-else>{{ item.metadata.caption }}</span>
-        </Typography>
-      </Animation>
-      <Animation :y="-30" :opacity="0" :duration="0.6" :delay="0.4">
-        <Typography variant="h2" class="project__title animate">{{
-          item.title
-        }}</Typography>
+  <div
+    v-if="item"
+    ref="project"
+    class="flex flex-col gap-8 md:grid md:grid-cols-[1fr_1.5fr] md:items-center lg:grid-cols-[1fr_1.3fr] xl:grid-cols-[1fr_1.5fr] 2xl:grid-cols-[1fr_2.0fr]"
+  >
+    <div class="order-2 md:order-1">
+      <Animation
+        :y="-30"
+        :opacity="0"
+        :duration="0.6"
+        :delay="0.3"
+      >
+        <p
+          class="animate text-subtitle text-primary-500 mb-4 font-bold tracking-wide uppercase"
+        >
+          <span v-if="item.featured">Featured Project</span>
+          <span v-else>{{ item.caption }}</span>
+        </p>
       </Animation>
 
-      <Animation :y="-30" :opacity="0" :duration="0.6" :delay="0.5">
-        <Typography
-          variant="body1"
-          class="project__description animate"
-          v-html="item.content"
-        ></Typography>
+      <Animation
+        :y="-30"
+        :opacity="0"
+        :duration="0.6"
+        :delay="0.4"
+      >
+        <h2 class="animate text-h2 text-secondary-500 font-bold">
+          {{ item.title }}
+        </h2>
+      </Animation>
 
-        <Typography
-          v-if="item.metadata.url"
-          variant="body1"
+      <Animation
+        :y="-30"
+        :opacity="0"
+        :duration="0.6"
+        :delay="0.5"
+      >
+        <ContentRenderer
+          class="animate text-body1 text-secondary-500 mb-0"
+          :value="item"
+        />
+
+        <a
+          v-if="item.url"
           tag="a"
-          :href="item.metadata.url"
+          :href="item.url"
           target="_blank"
           :aria-label="item.title"
           rel="noreferrer"
-          class="project__link"
+          class="text-body2 text-primary-500 ease-cubic-bezier hover:text-primary-700 mt-6 inline-block font-medium transition duration-500"
         >
-          Visit now
-        </Typography>
+          Visit now →
+        </a>
       </Animation>
     </div>
-    <div class="project__right">
-      <Animation :x="1000" :opacity="0" :duration="0.5" :delay="0.3">
-        <Card class="card--project">
-          <img
-            :src="item.metadata.image.url"
-            :srcset="generateSrcSet(item.metadata.image.imgix_url)"
+
+    <div
+      class="relative order-1 translate-x-0 md:order-2 md:translate-x-[15vw]"
+    >
+      <Animation
+        :x="1000"
+        :opacity="0"
+        :duration="0.5"
+        :delay="0.3"
+      >
+        <div class="overflow-hidden rounded-xl shadow">
+          <nuxt-img
+            class="aspect-16/10 max-h-[600px] object-cover object-left"
+            :src="`/images/projects/${item.image}`"
             :alt="item.title"
-            class="lazyload"
-            sizes="(min-width: 768px) 40vw"
+            sizes="md:40vw"
           />
-        </Card>
+        </div>
       </Animation>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    item: {
-      type: Object,
-      default: () => {},
-    },
+<script setup>
+defineProps({
+  item: {
+    type: Object,
+    default: () => {},
   },
-  data() {
-    return {
-      imageSizes: [320, 640, 768, 960, 1024, 1280, 1600, 1920, 2560, 3840],
-    }
-  },
-  methods: {
-    generateSrcSet(url) {
-      let string = ''
-
-      this.imageSizes.map((size, index) => {
-        string += `${url}?w=${size} ${size}w`
-
-        if (index < this.imageSizes.length - 1) {
-          string += ','
-        }
-      })
-
-      return string
-    },
-  },
-}
+})
 </script>
-
-<style lang="scss" scoped>
-.project {
-  display: flex;
-  flex-direction: column;
-  gap: $spacer * 2;
-
-  @include bp(md) {
-    display: grid;
-    grid-template-columns: 400px 450px;
-    align-items: center;
-  }
-
-  @include bp(lg) {
-    grid-template-columns: 450px 600px;
-  }
-
-  @include bp(xl) {
-    grid-template-columns: 500px 800px;
-  }
-
-  @include bp(hd) {
-    grid-template-columns: 600px 1135px;
-  }
-
-  &__left {
-    order: 1;
-
-    @include bp(md) {
-      order: 0;
-    }
-  }
-
-  &__right {
-    order: 0;
-
-    @include bp(md) {
-      order: 1;
-      transform: translateX(10vw);
-    }
-  }
-
-  .project__title {
-    font-weight: 700;
-  }
-
-  .overline {
-    color: $primary;
-    margin-bottom: 0;
-  }
-
-  .project__description {
-    margin-bottom: 0;
-  }
-
-  .project__link {
-    display: inline-block;
-    margin-top: $spacer * 1.5;
-
-    font-size: $font-size-sm;
-    color: $primary;
-    font-weight: 500;
-
-    transition: $transition-ease;
-
-    &:hover {
-      color: darken($primary, 10%);
-    }
-  }
-}
-</style>
-
-<style lang="scss">
-.project__right .card.card--project {
-  padding: 0;
-
-  .card__body {
-    position: relative;
-
-    height: 0;
-    padding-top: 56.25%;
-  }
-
-  img {
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-  }
-}
-</style>

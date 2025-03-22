@@ -1,122 +1,32 @@
 <template>
   <component
     :is="tag"
-    class="button"
+    class="ease-cubic-bezier rounded-xl border-0 px-6 py-2 text-center text-2xl font-medium transition duration-300 hover:cursor-pointer"
     :class="{
-      'button--primary': primary,
-      'button--secondary': secondary,
-      'button--outline': outline,
-      'button--sm': sm,
-      'button--md': md,
-      'button--lg': lg,
-      'button--block': block,
+      'bg-primary-500 text-secondary-500 hover:bg-primary-200':
+        color === 'primary',
+      'bg-secondary-500 hover:bg-secondary-300 text-white':
+        color === 'secondary',
+      'w-full': block,
     }"
   >
     <slot />
   </component>
 </template>
 
-<script>
-export default {
-  name: 'Button',
-  props: {
-    tag: {
-      type: String,
-      default: 'button',
-    },
-    sm: {
-      type: Boolean,
-      default: false,
-    },
-    md: {
-      type: Boolean,
-      default: false,
-    },
-    lg: {
-      type: Boolean,
-      default: false,
-    },
-    primary: {
-      type: Boolean,
-      default: false,
-    },
-    secondary: {
-      type: Boolean,
-      default: false,
-    },
-    outline: {
-      type: Boolean,
-      default: false,
-    },
-    block: {
-      type: Boolean,
-      default: false,
-    },
+<script setup>
+defineProps({
+  tag: {
+    type: String,
+    default: 'button',
   },
-  computed: {},
-}
+  color: {
+    type: String,
+    default: 'secondary',
+  },
+  block: {
+    type: Boolean,
+    default: false,
+  },
+})
 </script>
-
-<style lang="scss" scoped>
-.button {
-  border: 0;
-
-  font-size: $btn-font-size;
-  font-weight: $btn-font-weight;
-  padding: $btn-padding;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background: $btn-bg;
-  color: $btn-color;
-  border-radius: $btn-border-radius;
-
-  transition: $transition-ease;
-
-  &:hover {
-    cursor: pointer;
-    background: $btn-bg-hover;
-  }
-
-  &--primary {
-    background: $primary;
-    color: $secondary;
-
-    &:hover {
-      background: lighten($primary, 10%);
-    }
-
-    &.button--outline {
-      color: $primary;
-    }
-  }
-
-  &--secondary {
-    background: $secondary;
-    color: $white;
-    &.button--outline {
-      color: $secondary;
-    }
-  }
-
-  &--outline {
-    border: 2px solid currentColor;
-    background: transparent;
-  }
-
-  &--block {
-    width: 100%;
-  }
-
-  &--sm {
-    font-size: $font-size-sm;
-  }
-
-  &--lg {
-    font-size: $font-size-lg;
-    padding: $spacer * 0.75 $spacer;
-  }
-}
-</style>
