@@ -2,6 +2,8 @@ import { ref } from 'vue'
 
 const isMenuOpen = ref(false)
 
+const { width } = useWindowSize()
+
 export function useHeader() {
   function toggle() {
     isMenuOpen.value = !isMenuOpen.value
@@ -21,6 +23,12 @@ export function useHeader() {
       target: '#contact',
     },
   ]
+
+  watchEffect(() => {
+    if (width.value >= 576) {
+      isMenuOpen.value = false
+    }
+  })
 
   return { open: isMenuOpen, toggle, links }
 }

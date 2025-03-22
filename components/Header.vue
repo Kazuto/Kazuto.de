@@ -3,7 +3,7 @@
     id="header"
     class="fixed top-0 right-0 left-0 z-50 h-fit transition-all delay-150"
     :class="{
-      hide: state.curDirection === 2 && state.curScroll > state.scrollTreshold,
+      hide,
     }"
   >
     <slot></slot>
@@ -11,43 +11,23 @@
 </template>
 
 <script setup>
-const { open, toggle } = useHeader()
-
-const state = reactive({
-  breakpoint: 576,
-  curScroll: 0,
-  prevScroll: 0,
-  scrollTreshold: 200,
-  curDirection: 0,
-  prevDirection: 0,
+const { y, directions } = useScroll(document, {
+  throttle: 500,
 })
 
-onMounted(() => {
-  state.curScroll = window.scrollY || document.documentElement.scrollTop
-  state.prevScroll = window.scrollY || document.documentElement.scrollTop
+const down = ref(false)
 
-  window.addEventListener('resize', catchResize)
-  window.addEventListener('scroll', catchScroll)
+const hide = computed(() => {
+  if (down.value && y.value > 200) return true
+
+  return false
 })
 
-const catchResize = () => {
-  if (!open) {
-    return
-  }
+watchEffect(() => {
+  if (directions.bottom) down.value = true
 
-  if (window.innerWidth >= state.breakpoint) {
-    toggle()
-  }
-}
-
-const catchScroll = () => {
-  state.curScroll = window.scrollY || document.documentElement.scrollTop
-
-  state.curDirection = state.curScroll > state.prevScroll ? 2 : 1
-
-  state.prevDirection = state.curDirection
-  state.prevScroll = state.curScroll
-}
+  if (directions.top) down.value = false
+})
 </script>
 
 <style>
