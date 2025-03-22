@@ -73,11 +73,7 @@ export default defineNuxtConfig({
     dirs: ['store'],
   },
 
-  modules: [
-    '@nuxt/image',
-    '@nuxt/content',
-    '@nuxt/eslint',
-  ],
+  modules: ['@nuxt/image', '@nuxt/content', '@nuxt/eslint', '@vueuse/nuxt'],
 
   // pwa: {
   //   manifest: {
