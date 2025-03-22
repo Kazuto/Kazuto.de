@@ -42,5 +42,5 @@
 </template>
 
 <script setup>
-const { links } = useSocial()
+const { links } = useSocialMedia()
 </script>

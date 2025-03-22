@@ -92,5 +92,5 @@
 <script setup>
 const content = await queryContent('/about').findOne()
 
-const { items: socialMedia } = useSocial()
+const { items: socialMedia } = useSocialMedia()
 </script>
