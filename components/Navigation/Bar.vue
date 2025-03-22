@@ -12,7 +12,7 @@
 
       <ul class="hidden sm:flex sm:gap-8">
         <li
-          v-for="(link, idx) in items"
+          v-for="(link, idx) in links"
           :key="idx"
         >
           <NavigationLink :link="link"></NavigationLink>
@@ -25,10 +25,5 @@
 </template>
 
 <script setup>
-defineProps({
-  items: {
-    type: Array,
-    default: () => [],
-  },
-})
+const { links } = useHeader()
 </script>

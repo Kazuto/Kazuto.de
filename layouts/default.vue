@@ -1,11 +1,8 @@
 <template>
   <div class="overflow-x-hidden">
     <Header>
-      <NavigationBar :items="navItems" />
-      <NavigationMenuMobile
-        :items="navItems"
-        :header-height="state.headerHeight"
-      />
+      <NavigationBar />
+      <NavigationMenuMobile :header-height="state.headerHeight" />
     </Header>
 
     <NuxtPage />
@@ -22,7 +19,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const {links: navItems, open} = useHeader()
+const { open } = useHeader()
 
 const state = reactive({
   headerHeight: 0,

@@ -10,7 +10,7 @@
       <Container class="flex h-full items-center justify-end">
         <ul class="list-none text-right">
           <li
-            v-for="(link, index) in items"
+            v-for="(link, index) in links"
             :key="index"
             class="my-6"
           >
@@ -28,13 +28,9 @@
 </template>
 
 <script setup>
-const {toggle, open} = useHeader()
+const { toggle, open, links } = useHeader()
 
 defineProps({
-  items: {
-    type: Array,
-    default: () => [],
-  },
   headerHeight: {
     type: Number,
     default: 0,
