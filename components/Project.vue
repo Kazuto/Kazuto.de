@@ -2,7 +2,7 @@
   <div
     v-if="item"
     ref="project"
-    class="flex flex-col gap-8 md:grid md:grid-cols-[1fr_1.5fr] md:items-center lg:grid-cols-[1fr_1.3fr] xl:grid-cols-[1fr_1.5fr] 2xl:grid-cols-[1fr_2.0fr]"
+    class="flex h-fit flex-col gap-8 md:grid md:grid-cols-[1fr_1.5fr] md:items-center lg:grid-cols-[1fr_1.3fr] xl:grid-cols-[1fr_1.5fr] 2xl:grid-cols-[1fr_2.0fr]"
   >
     <div class="order-2 md:order-1">
       <Animation
@@ -64,12 +64,12 @@
         :duration="0.5"
         :delay="0.3"
       >
-        <div class="overflow-hidden rounded-xl shadow">
+        <div class="aspect-video overflow-hidden rounded-xl shadow">
           <nuxt-img
-            class="aspect-16/10 max-h-[600px] object-cover object-left"
+            class="aspect-video w-full object-fill object-left"
             :src="`/images/projects/${item.image}`"
             :alt="item.title"
-            sizes="md:40vw"
+            sizes="sm:30vw md:40vw lg:50vw xl:60vw"
           />
         </div>
       </Animation>
