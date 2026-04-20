@@ -25,8 +25,11 @@
   --text-display2: clamp(6.75rem, 10.5vw, 7.5rem);
   --text-display3: clamp(5.25rem, 9vw, 6.75rem);
   --text-display4: clamp(3rem, 7vw, 5.25rem);
+  --text-display5: clamp(2rem, 5vw, 3rem);
+  --text-display6: clamp(1.5rem, 3vw, 2rem);
   --text-subtitle: clamp(0.75rem, 1.3vw, 0.975rem);
   --text-caption: 1.125rem;
+  --text-body3: clamp(0.875rem, 1.5vw, 1rem);
 
   --color-primary-50: #ffd08a;
   --color-primary-100: #ffca7a;

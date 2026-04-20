@@ -1,0 +1,109 @@
+{
+  "personal": {
+    "name": "Kai Mayer",
+    "title": "FullStack Developer | Graphic Designer",
+    "location": "aus Mönchengladbach",
+    "birthdate": "07.09.1992",
+    "address": {
+      "street": "Knopsstraße 5",
+      "city": "41061 Mönchengladbach"
+    },
+    "contact": {
+      "mobile": "0176 / 74 70 48 83",
+      "email": "mail@kazuto.de",
+      "web": "kazuto.de"
+    }
+  },
+  "languages": [
+    { "name": "Deutsch", "level": "Muttersprache" },
+    { "name": "Englisch", "level": "fließend" }
+  ],
+  "skills": [
+    "HTML",
+    "Javascript",
+    "PHP",
+    "Golang",
+    "Laravel",
+    "Vue (Nuxt)",
+    "UI/UX",
+    "Tailwind CSS",
+    "Adobe Suite"
+  ],
+  "experience": [
+    {
+      "company": "Smake IT GmbH",
+      "role": "FullStack Developer",
+      "period": "2022 - Heute",
+      "responsibilities": [
+        {
+          "category": "Backend (Laravel)",
+          "tasks": [
+            "Implementierung neuer Features sowie Bugfixing und Performance-Optimierungen in einer Laravel-Applikation",
+            "Behebung von N+1-Datenbankproblemen zur Verbesserung der Abfrageeffizienz",
+            "Entwicklung und Anbindung von REST-API-Endpunkten",
+            "Datenbankmodellierung sowie Erstellung von Migrationen und Schema-Änderungen",
+            "Refactoring von Legacy-Code zur Verbesserung von Wartbarkeit und Codequalität",
+            "Sicherstellung der Codequalität durch das Schreiben von Unit-, Feature- und Integrationstests"
+          ]
+        },
+        {
+          "category": "Frontend (Vue / Nuxt / TypeScript)",
+          "tasks": [
+            "Neuentwicklung einer internen Full-Stack-Monitoring-Applikation (Nuxt + Moleculer) mit Echtzeit-Datenkommunikation via WebSockets",
+            "Migration von Frontend-Features aus bestehenden Laravel-Projekten in eigenständige Nuxt-Anwendungen",
+            "Strukturierung und Optimierung der komponentenbasierten UI-Bibliothek nach dem Single Responsibility Principle (Primitives, Variants, Orchestrator)",
+            "Entwicklung neuer sowie Refactoring bestehender Vue-Komponenten mit TypeScript und Tailwind CSS"
+          ]
+        }
+      ]
+    },
+    {
+      "company": "LeasingMarkt.de GmbH",
+      "role": "FullStack Developer",
+      "period": "2021 - 2022",
+      "responsibilities": [
+        {
+          "tasks": [
+            "Programmierung von In-House Software mit PHP (Laravel)",
+            "Umsetzung von Benutzeroberflächen mittels Blade (Template Engine) & Tailwind CSS",
+            "Optimierung bestehender Prozesse durch Automatisierung",
+            "Migration und Refactoring bestehendes Codes"
+          ]
+        }
+      ]
+    },
+    {
+      "company": "Busch & Glatz GmbH",
+      "subtitle": "vormals: ADDUCET GMBH",
+      "role": "FullStack Developer",
+      "period": "2017 - 2020",
+      "responsibilities": [
+        {
+          "tasks": [
+            "Programmierung projektbezogener Software in der Programmiersprache PHP",
+            "Eigenständige und teamorientierte Umsetzung von Softwareprojekten",
+            "Umsetzung grafischer Entwürfe entsprechend der Webstandards",
+            "Pflege und Wartung des Frontends bestehender Webanwendungen",
+            "Entwicklung dynamischer Schnittstellen- und datenbankbasierter Anwendungen",
+            "Sicherstellung von Funktionalität und Usability",
+            "Suche und Durchführung der Korrektur von Programmfehlern",
+            "Integration von Schnittstellen in bestehende Anwendungen",
+            "Planung und Entwicklung von Softwareprojekten",
+            "Analyse der Anforderungen für die Planung von IT-Projekten",
+            "Recherche und Bewertung von neuen Technologien",
+            "Kontinuierliche Weiterentwicklung von Webdesign-Konzepten",
+            "Browser- und Performanceoptimierung bestehender Oberflächen",
+            "Entwicklung von internen Projekten zur Optimierung des Arbeitsablaufs",
+            "Erstellung und Pflege technischer Dokumentationen"
+          ]
+        }
+      ]
+    },
+    {
+      "company": "Berufskolleg Platz der Republik",
+      "role": "Gestaltungstechnischer Assistent",
+      "period": "2014 - 2018",
+      "responsibilities": []
+    }
+  ]
+}
