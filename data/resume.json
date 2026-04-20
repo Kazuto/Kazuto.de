@@ -1,7 +1,7 @@
 {
   "personal": {
     "name": "Kai Mayer",
-    "title": "FullStack Developer | Graphic Designer",
+    "title": "Full-Stack Developer | Graphic Designer",
     "location": "aus Mönchengladbach",
     "birthdate": "07.09.1992",
     "address": {
@@ -20,7 +20,7 @@
   ],
   "skills": [
     "HTML",
-    "Javascript",
+    "JS/TS",
     "PHP",
     "Golang",
     "Laravel",
@@ -32,7 +32,7 @@
   "experience": [
     {
       "company": "Smake IT GmbH",
-      "role": "FullStack Developer",
+      "role": "Full-Stack Developer",
       "period": "2022 - Heute",
       "responsibilities": [
         {
@@ -59,7 +59,7 @@
     },
     {
       "company": "LeasingMarkt.de GmbH",
-      "role": "FullStack Developer",
+      "role": "Full-Stack Developer",
       "period": "2021 - 2022",
       "responsibilities": [
         {
@@ -74,8 +74,8 @@
     },
     {
       "company": "Busch & Glatz GmbH",
-      "subtitle": "vormals: ADDUCET GMBH",
-      "role": "FullStack Developer",
+      "subtitle": "vormals: Adduce GmbH",
+      "role": "Full-Stack Developer",
       "period": "2017 - 2020",
       "responsibilities": [
         {
