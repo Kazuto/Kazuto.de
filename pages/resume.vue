@@ -57,11 +57,9 @@
 </template>
 
 <script setup>
-import resumeDe from '@/data/resume.json'
-import resumeEn from '@/data/resume-en.json'
-
 const { locale, t } = useI18n()
 const route = useRoute()
+const { resumeData } = useResumeData()
 
 definePageMeta({
   layout: 'resume',
@@ -69,11 +67,6 @@ definePageMeta({
 
 const siteUrl = 'https://kazuto.de'
 const ogImageUrl = `${siteUrl}/images/og-image.png`
-
-// Load resume data based on current locale
-const resumeData = computed(() => {
-  return locale.value === 'en' ? resumeEn : resumeDe
-})
 
 useSeoMeta({
   title: computed(() => `${resumeData.value.personal.name} - ${t('resume.title')}`),

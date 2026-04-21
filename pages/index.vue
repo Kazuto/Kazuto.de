@@ -12,6 +12,7 @@
 <script setup>
 const { locale } = useI18n()
 const route = useRoute()
+const { resumeData } = useResumeData()
 
 const siteUrl = 'https://kazuto.de'
 const ogImageUrl = `${siteUrl}/images/og-image.png`
@@ -81,18 +82,7 @@ useHead({
           addressLocality: 'Mönchengladbach',
           addressCountry: 'DE'
         },
-        knowsAbout: [
-          'JavaScript',
-          'TypeScript',
-          'Vue.js',
-          'Nuxt.js',
-          'PHP',
-          'Laravel',
-          'Golang',
-          'UI/UX Design',
-          'Graphic Design',
-          'Web Development'
-        ]
+        knowsAbout: computed(() => resumeData.value.skills || [])
       })
     }
   ]
