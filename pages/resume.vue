@@ -20,12 +20,14 @@
               href="/cv_kai_mayer.pdf"
               download
               color="primary"
+              size="small"
             >
               {{ $t('resume.downloadPdf') }}
             </Button>
             <Button
               tag="button"
               @click="printResume"
+              size="small"
             >
               {{ $t('resume.print') }}
             </Button>
