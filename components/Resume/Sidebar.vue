@@ -40,9 +40,23 @@
           </div>
           <div>
             <span class="block text-gray-400">Anschrift:</span>
-            <span class="text-white">{{ data.personal.address.street }}</span>
-            <br />
-            <span class="text-white">{{ data.personal.address.city }}</span>
+            <button
+              v-if="!showContact"
+              @click="showContact = true"
+              class="text-primary-500 underline hover:text-primary-300 print:hidden"
+            >
+              Click to reveal
+            </button>
+            <div v-else class="text-white">
+              <span>{{ data.personal.address.street }}</span>
+              <br />
+              <span>{{ data.personal.address.city }}</span>
+            </div>
+            <div class="hidden print:block text-white">
+              <span>{{ data.personal.address.street }}</span>
+              <br />
+              <span>{{ data.personal.address.city }}</span>
+            </div>
           </div>
         </div>
       </section>
@@ -52,21 +66,43 @@
         <div class="space-y-3 text-sm text-gray-300">
           <div>
             <span class="block text-gray-400">Mobile:</span>
+            <button
+              v-if="!showContact"
+              @click="showContact = true"
+              class="text-primary-500 underline hover:text-primary-300 print:hidden"
+            >
+              Click to reveal
+            </button>
             <a
+              v-else
               :href="`tel:${data.personal.contact.mobile}`"
               class="hover:text-primary-500 text-white"
             >
               {{ data.personal.contact.mobile }}
             </a>
+            <span class="hidden print:inline text-white">
+              {{ data.personal.contact.mobile }}
+            </span>
           </div>
           <div>
             <span class="block text-gray-400">E-Mail:</span>
+            <button
+              v-if="!showContact"
+              @click="showContact = true"
+              class="text-primary-500 underline hover:text-primary-300 print:hidden"
+            >
+              Click to reveal
+            </button>
             <a
+              v-else
               :href="`mailto:${data.personal.contact.email}`"
               class="hover:text-primary-500 text-white"
             >
               {{ data.personal.contact.email }}
             </a>
+            <span class="hidden print:inline text-white">
+              {{ data.personal.contact.email }}
+            </span>
           </div>
           <div>
             <span class="block text-gray-400">Web:</span>
@@ -136,4 +172,6 @@ defineProps({
     required: true,
   },
 })
+
+const showContact = ref(false)
 </script>
