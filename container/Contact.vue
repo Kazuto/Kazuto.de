@@ -103,8 +103,6 @@
 </template>
 
 <script setup>
-import { send } from '@emailjs/browser'
-
 const { t } = useI18n()
 
 const state = reactive({
@@ -143,36 +141,25 @@ const validEmail = (email) => {
   return re.test(email)
 }
 
-const sendMail = () => {
-  const { public: config } = useRuntimeConfig()
-
+const sendMail = async () => {
   state.isSubmitting = true
 
-  send(
-    config.emailjsServiceId,
-    config.emailjsTemplateId,
-    state.form,
-    config.emailjsPublicKey
-  ).then(
-    (result) => {
-      result.status === 200
-        ? (state.sendSuccessful = true)
-        : (state.sendSuccessful = false)
+  try {
+    await $fetch('/api/contact', {
+      method: 'POST',
+      body: state.form
+    })
 
-      state.form.name = ''
-      state.form.email = ''
-      state.form.message = ''
-
-      state.isSubmitting = false
-    },
-    (error) => {
-      if (error) {
-        state.sendFail = true
-
-        state.isSubmitting = false
-      }
-    }
-  )
+    state.sendSuccessful = true
+    state.form.name = ''
+    state.form.email = ''
+    state.form.message = ''
+  } catch (error) {
+    console.error('Failed to send email:', error)
+    state.sendFail = true
+  } finally {
+    state.isSubmitting = false
+  }
 }
 </script>
 

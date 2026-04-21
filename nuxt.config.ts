@@ -101,7 +101,15 @@ export default defineNuxtConfig({
   // },
 
   runtimeConfig: {
+    // Server-side only (private)
+    smtpHost: process.env.SMTP_HOST || '',
+    smtpPort: process.env.SMTP_PORT || '587',
+    smtpUser: process.env.SMTP_USER || '',
+    smtpPass: process.env.SMTP_PASS || '',
+    smtpTo: process.env.SMTP_TO || '',
+
     public: {
+      // Keep old EmailJS config for reference (can be removed later)
       emailjsPublicKey: process.env.EMAILJS_PUBLIC_KEY || '',
       emailjsTemplateId: process.env.EMAILJS_TEMPLATE_ID || '',
       emailjsServiceId: process.env.EMAILJS_SERVICE_ID || '',
