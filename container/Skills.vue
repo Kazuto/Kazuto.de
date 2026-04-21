@@ -68,22 +68,22 @@
 <script setup>
 const { locale } = useI18n()
 
-const { data: description } = await useAsyncData(
-  `skills-description-${locale.value}`,
+const { data: description, refresh: refreshDescription } = await useAsyncData(
+  'skills-description',
   () => queryContent(`/${locale.value}/skills`)
     .where({ description: true })
     .findOne()
 )
 
-const { data: content } = await useAsyncData(
-  `skills-${locale.value}`,
+const { data: content, refresh: refreshContent } = await useAsyncData(
+  'skills-content',
   () => queryContent(`/${locale.value}/skills`)
     .where({ description: { $not: true } })
     .find()
 )
 
 watch(locale, () => {
-  refreshNuxtData(`skills-description-${locale.value}`)
-  refreshNuxtData(`skills-${locale.value}`)
+  refreshDescription()
+  refreshContent()
 })
 </script>

@@ -1,30 +1,32 @@
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 const isMenuOpen = ref(false)
 
 export function useHeader() {
+  const { t } = useI18n()
+
   function toggle() {
     isMenuOpen.value = !isMenuOpen.value
   }
 
-  const links = [
+  const links = computed(() => [
     {
-      name: 'My work',
+      name: t('nav.myWork'),
       target: '#portfolio',
     },
     {
-      name: 'My skills',
+      name: t('nav.mySkills'),
       target: '#skills',
     },
     {
-      name: 'Resume',
+      name: t('nav.resume'),
       target: '/resume',
     },
     {
-      name: 'Contact me',
+      name: t('nav.contact'),
       target: '#contact',
     },
-  ]
+  ])
 
   return { open: isMenuOpen, toggle, links }
 }

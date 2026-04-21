@@ -20,6 +20,9 @@
               @click="toggle"
             />
           </li>
+          <li class="my-6 flex justify-end">
+            <LanguageSwitcher />
+          </li>
         </ul>
         <ul class="social__list" />
       </Container>

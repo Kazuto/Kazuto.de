@@ -10,12 +10,15 @@
 
       <div class="grow" />
 
-      <ul class="hidden sm:flex sm:gap-8">
+      <ul class="hidden sm:flex sm:gap-8 sm:items-center">
         <li
           v-for="(link, idx) in items"
           :key="idx"
         >
           <NavigationLink :link="link"></NavigationLink>
+        </li>
+        <li>
+          <LanguageSwitcher />
         </li>
       </ul>
 

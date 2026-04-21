@@ -10,7 +10,7 @@
         :duration="0.6"
         :delay="0.3"
       >
-        <h3 class="text-h2 text-secondary-500">Hire me</h3>
+        <h3 class="text-h2 text-secondary-500">{{ $t('contact.title') }}</h3>
       </Animation>
 
       <form
@@ -26,7 +26,7 @@
             dismissible
             @close="state.sendSuccessful = false"
           >
-            The email was send successfully
+            {{ $t('contact.successMessage') }}
           </Alert>
         </transition>
 
@@ -37,7 +37,7 @@
             dismissible
             @close="state.sendFail = false"
           >
-            Your email could not be sent. Please try again later.
+            {{ $t('contact.errorMessage') }}
           </Alert>
         </transition>
 
@@ -65,21 +65,21 @@
         >
           <FormInput
             id="name"
-            label="Name"
+            :label="$t('contact.name')"
             :value="state.form.name"
             @update:value="(value) => (state.form.name = value)"
           />
 
           <FormInput
             id="email"
-            label="Email"
+            :label="$t('contact.email')"
             :value="state.form.email"
             @update:value="(value) => (state.form.email = value)"
           />
 
           <FormTextArea
             id="message"
-            label="Message"
+            :label="$t('contact.message')"
             :value="state.form.message"
             @update:value="(value) => (state.form.message = value)"
           />
@@ -89,7 +89,7 @@
             block
           >
             <span>
-              {{ state.isSubmitting ? 'Sending...' : 'Send Message' }}
+              {{ state.isSubmitting ? $t('contact.sending') : $t('contact.sendMessage') }}
             </span>
             <span
               v-if="state.isSubmitting"
@@ -104,6 +104,8 @@
 
 <script setup>
 import { send } from '@emailjs/browser'
+
+const { t } = useI18n()
 
 const state = reactive({
   errors: [],
@@ -121,13 +123,13 @@ const checkForm = () => {
   state.errors = []
 
   if (!state.form.name) {
-    state.errors.push('Please enter a name')
+    state.errors.push(t('contact.errorNameRequired'))
   }
 
   if (!state.form.email) {
-    state.errors.push('Please enter a email')
+    state.errors.push(t('contact.errorEmailRequired'))
   } else if (!validEmail(state.form.email)) {
-    state.errors.push('The email has to be valid')
+    state.errors.push(t('contact.errorEmailInvalid'))
   }
 
   if (!state.errors.length) {

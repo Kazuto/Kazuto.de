@@ -16,14 +16,14 @@
 <script setup>
 const { locale } = useI18n()
 
-const { data: content } = await useAsyncData(
-  `projects-${locale.value}`,
+const { data: content, refresh } = await useAsyncData(
+  'projects',
   () => queryContent(`/${locale.value}/projects`)
     .where({ featured: false })
     .find()
 )
 
 watch(locale, () => {
-  refreshNuxtData(`projects-${locale.value}`)
+  refresh()
 })
 </script>

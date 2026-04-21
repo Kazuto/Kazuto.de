@@ -1,14 +1,14 @@
 <template>
-  <div class="flex gap-2">
+  <div class="flex gap-1">
     <button
       v-for="locale in availableLocales"
       :key="locale.code"
       @click="switchLocale(locale.code)"
       :class="[
-        'px-2 py-1 text-2xl transition-all print:hidden',
+        'px-1 py-1 text-xl transition-all print:hidden',
         currentLocale === locale.code
-          ? 'scale-110'
-          : 'opacity-40 hover:opacity-70 grayscale hover:grayscale-0'
+          ? 'scale-100'
+          : 'opacity-40 grayscale hover:opacity-70 hover:grayscale-0',
       ]"
       :title="locale.name"
     >
@@ -24,13 +24,13 @@ const currentLocale = computed(() => locale.value)
 
 const flagMap = {
   de: '🇩🇪',
-  en: '🇺🇸'
+  en: '🇺🇸',
 }
 
 const availableLocales = computed(() =>
-  locales.value.map(loc => ({
+  locales.value.map((loc) => ({
     ...loc,
-    flag: flagMap[loc.code] || loc.code
+    flag: flagMap[loc.code] || loc.code,
   }))
 )
 

@@ -1,4 +1,27 @@
 {
+  "hero": {
+    "checkMyWork": "Meine Arbeit",
+    "moreAboutMe": "Mehr über mich"
+  },
+  "contact": {
+    "title": "Kontaktiere mich",
+    "name": "Name",
+    "email": "E-Mail",
+    "message": "Nachricht",
+    "sendMessage": "Nachricht senden",
+    "sending": "Wird gesendet...",
+    "successMessage": "Die E-Mail wurde erfolgreich gesendet",
+    "errorMessage": "Ihre E-Mail konnte nicht gesendet werden. Bitte versuchen Sie es später erneut.",
+    "errorNameRequired": "Bitte geben Sie einen Namen ein",
+    "errorEmailRequired": "Bitte geben Sie eine E-Mail-Adresse ein",
+    "errorEmailInvalid": "Die E-Mail-Adresse muss gültig sein"
+  },
+  "nav": {
+    "myWork": "Meine Arbeit",
+    "mySkills": "Meine Skills",
+    "resume": "Lebenslauf",
+    "contact": "Kontakt"
+  },
   "resume": {
     "title": "Lebenslauf",
     "downloadPdf": "PDF herunterladen",

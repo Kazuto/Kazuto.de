@@ -1,4 +1,27 @@
 {
+  "hero": {
+    "checkMyWork": "Check my work",
+    "moreAboutMe": "More about me"
+  },
+  "contact": {
+    "title": "Hire me",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "sendMessage": "Send Message",
+    "sending": "Sending...",
+    "successMessage": "The email was sent successfully",
+    "errorMessage": "Your email could not be sent. Please try again later.",
+    "errorNameRequired": "Please enter a name",
+    "errorEmailRequired": "Please enter an email",
+    "errorEmailInvalid": "The email has to be valid"
+  },
+  "nav": {
+    "myWork": "My work",
+    "mySkills": "My skills",
+    "resume": "Resume",
+    "contact": "Contact"
+  },
   "resume": {
     "title": "Resume",
     "downloadPdf": "Download PDF",

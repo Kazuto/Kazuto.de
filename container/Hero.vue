@@ -35,13 +35,14 @@
               href="#portfolio"
               color="primary"
             >
-              Check my work
+              {{ $t('hero.checkMyWork') }}
             </Button>
             <Button
               tag="a"
               href="#about"
-              >More about me</Button
             >
+              {{ $t('hero.moreAboutMe') }}
+            </Button>
           </div>
         </div>
 

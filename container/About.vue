@@ -92,13 +92,13 @@
 <script setup>
 const { locale } = useI18n()
 
-const { data: content } = await useAsyncData(
-  `about-${locale.value}`,
+const { data: content, refresh } = await useAsyncData(
+  'about',
   () => queryContent(`/${locale.value}/about`).findOne()
 )
 
 watch(locale, () => {
-  refreshNuxtData(`about-${locale.value}`)
+  refresh()
 })
 
 const { items: socialMedia } = useSocial()
