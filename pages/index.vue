@@ -63,7 +63,7 @@ useHead({
   script: [
     {
       type: 'application/ld+json',
-      children: JSON.stringify({
+      children: computed(() => JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'Person',
         name: 'Kai Mayer',
@@ -82,8 +82,8 @@ useHead({
           addressLocality: 'Mönchengladbach',
           addressCountry: 'DE'
         },
-        knowsAbout: computed(() => resumeData.value.skills || [])
-      })
+        knowsAbout: resumeData.value.skills || []
+      }))
     }
   ]
 })
