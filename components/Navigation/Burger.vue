@@ -1,7 +1,7 @@
 <template>
   <a
     href="#"
-    class="ease-cubic-bezier z-20 flex h-16 w-16 cursor-pointer items-center justify-center border-0 bg-transparent transition duration-500 sm:hidden"
+    class="ease-cubic-bezier z-20 flex h-16 w-16 cursor-pointer items-center justify-center border-0 bg-transparent transition duration-500 lg:hidden"
     type="button"
     aria-label="show navigation"
     @click.prevent="toggle()"

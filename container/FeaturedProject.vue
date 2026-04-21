@@ -6,7 +6,7 @@
     <Container>
       <Project
         v-if="content"
-        class="md:translate-y-24"
+        class="xl:translate-y-24"
         :item="content"
       ></Project>
     </Container>

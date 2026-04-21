@@ -5,9 +5,9 @@
     class="bg-primary-500 overflow-hidden py-20 text-white md:py-40"
   >
     <Container
-      class="relative flex w-full flex-col items-start justify-center md:flex-row"
+      class="relative flex w-full flex-col items-start justify-center lg:flex-row"
     >
-      <div class="mb-8 md:m-0 md:mr-16 md:w-1/2">
+      <div class="mb-8 lg:m-0 lg:mr-16 lg:w-1/2">
         <Animation
           :x="-500"
           :opacity="0"
@@ -31,7 +31,7 @@
       </div>
 
       <div
-        class="-m-4 grid items-start justify-start gap-8 p-4 md:m-0 md:-mt-8 md:w-1/2 md:gap-16 md:p-0 md:pt-16"
+        class="-m-4 grid items-start justify-start gap-8 p-4 lg:m-0 lg:-mt-8 lg:w-1/2 lg:gap-16 lg:p-0 lg:pt-16"
       >
         <Animation
           v-for="(skill, index) in content"

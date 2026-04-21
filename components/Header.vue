@@ -14,7 +14,7 @@
 const { open, toggle } = useHeader()
 
 const state = reactive({
-  breakpoint: 576,
+  breakpoint: 1024, // Tailwind's lg breakpoint
   curScroll: 0,
   prevScroll: 0,
   scrollTreshold: 200,
@@ -30,12 +30,14 @@ onMounted(() => {
   window.addEventListener('scroll', catchScroll)
 })
 
-const catchResize = () => {
-  if (!open) {
-    return
-  }
+onUnmounted(() => {
+  window.removeEventListener('resize', catchResize)
+  window.removeEventListener('scroll', catchScroll)
+})
 
-  if (window.innerWidth >= state.breakpoint) {
+const catchResize = () => {
+  // Close menu when resizing to desktop size
+  if (open.value && window.innerWidth >= state.breakpoint) {
     toggle()
   }
 }

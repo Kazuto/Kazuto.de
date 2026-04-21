@@ -13,6 +13,19 @@ export default defineEventHandler(async (event) => {
 
   const config = useRuntimeConfig()
 
+  // Check if environment variables are set
+  if (!config.smtpHost || !config.smtpUser || !config.smtpPass) {
+    console.error('Missing SMTP configuration:', {
+      hasHost: !!config.smtpHost,
+      hasUser: !!config.smtpUser,
+      hasPass: !!config.smtpPass,
+    })
+    throw createError({
+      statusCode: 500,
+      message: 'SMTP not configured'
+    })
+  }
+
   // Create transporter
   const transporter = nodemailer.createTransport({
     host: config.smtpHost,

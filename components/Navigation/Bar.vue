@@ -10,7 +10,7 @@
 
       <div class="grow" />
 
-      <ul class="hidden sm:flex sm:gap-8 sm:items-center">
+      <ul class="hidden lg:flex lg:gap-8 lg:items-center">
         <li
           v-for="(link, idx) in items"
           :key="idx"

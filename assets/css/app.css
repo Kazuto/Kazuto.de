@@ -139,6 +139,6 @@
   .h4,
   .h5,
   .h6 {
-    @apply mb-8 leading-5 font-bold tracking-normal;
+    @apply mb-8 leading-none font-bold tracking-normal;
   }
 }
