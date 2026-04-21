@@ -11,6 +11,10 @@ export const useHeaderStore = defineStore('header', {
         target: '#skills',
       },
       {
+        name: 'Resume',
+        target: '/resume',
+      },
+      {
         name: 'Hire me',
         target: '#contact',
       },

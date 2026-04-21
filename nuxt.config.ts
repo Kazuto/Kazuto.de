@@ -73,11 +73,21 @@ export default defineNuxtConfig({
     dirs: ['store'],
   },
 
-  modules: [
-    '@nuxt/image',
-    '@nuxt/content',
-    '@nuxt/eslint',
-  ],
+  modules: ['@nuxt/image', '@nuxt/content', '@nuxt/eslint', '@nuxtjs/i18n'],
+
+  i18n: {
+    locales: [
+      { code: 'de', iso: 'de-DE', file: 'de.json', name: 'Deutsch' },
+      { code: 'en', iso: 'en-US', file: 'en.json', name: 'English' },
+    ],
+    defaultLocale: 'de',
+    strategy: 'no_prefix',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root',
+    },
+  },
 
   // pwa: {
   //   manifest: {

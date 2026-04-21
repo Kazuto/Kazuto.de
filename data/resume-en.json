@@ -1,0 +1,109 @@
+{
+  "personal": {
+    "name": "Kai Mayer",
+    "title": "Full-Stack Developer | Graphic Designer",
+    "location": "from Mönchengladbach",
+    "birthdate": "07.09.1992",
+    "address": {
+      "street": "Knopsstraße 5",
+      "city": "41061 Mönchengladbach"
+    },
+    "contact": {
+      "mobile": "0176 / 74 70 48 83",
+      "email": "mail@kazuto.de",
+      "web": "kazuto.de"
+    }
+  },
+  "languages": [
+    { "name": "German", "level": "native" },
+    { "name": "English", "level": "fluent" }
+  ],
+  "skills": [
+    "HTML",
+    "JS/TS",
+    "PHP",
+    "Golang",
+    "Laravel",
+    "Vue (Nuxt)",
+    "UI/UX",
+    "Tailwind CSS",
+    "Adobe Suite"
+  ],
+  "experience": [
+    {
+      "company": "Smake IT GmbH",
+      "role": "Full-Stack Developer",
+      "period": "2022 - Present",
+      "responsibilities": [
+        {
+          "category": "Backend (Laravel)",
+          "tasks": [
+            "Implementation of new features as well as bugfixing and performance optimizations in a Laravel application",
+            "Resolution of N+1 database problems to improve query efficiency",
+            "Development and integration of REST API endpoints",
+            "Database modeling as well as creation of migrations and schema changes",
+            "Refactoring of legacy code to improve maintainability and code quality",
+            "Ensuring code quality through writing unit, feature and integration tests"
+          ]
+        },
+        {
+          "category": "Frontend (Vue / Nuxt / TypeScript)",
+          "tasks": [
+            "Development of an internal full-stack monitoring application (Nuxt + Moleculer) with real-time data communication via WebSockets",
+            "Migration of frontend features from existing Laravel projects into standalone Nuxt applications",
+            "Structuring and optimization of the component-based UI library according to the Single Responsibility Principle (Primitives, Variants, Orchestrator)",
+            "Development of new as well as refactoring of existing Vue components with TypeScript and Tailwind CSS"
+          ]
+        }
+      ]
+    },
+    {
+      "company": "LeasingMarkt.de GmbH",
+      "role": "Full-Stack Developer",
+      "period": "2021 - 2022",
+      "responsibilities": [
+        {
+          "tasks": [
+            "Programming of in-house software with PHP (Laravel)",
+            "Implementation of user interfaces using Blade (Template Engine) & Tailwind CSS",
+            "Optimization of existing processes through automation",
+            "Migration and refactoring of existing code"
+          ]
+        }
+      ]
+    },
+    {
+      "company": "Busch & Glatz GmbH",
+      "subtitle": "formerly: Adduce GmbH",
+      "role": "Full-Stack Developer",
+      "period": "2017 - 2020",
+      "responsibilities": [
+        {
+          "tasks": [
+            "Programming of project-related software in PHP",
+            "Independent and team-oriented implementation of software projects",
+            "Implementation of graphic designs according to web standards",
+            "Maintenance and upkeep of the frontend of existing web applications",
+            "Development of dynamic interface and database-based applications",
+            "Ensuring functionality and usability",
+            "Search and execution of the correction of program errors",
+            "Integration of interfaces into existing applications",
+            "Planning and development of software projects",
+            "Analysis of requirements for the planning of IT projects",
+            "Research and evaluation of new technologies",
+            "Continuous development of web design concepts",
+            "Browser and performance optimization of existing interfaces",
+            "Development of internal projects to optimize workflows",
+            "Creation and maintenance of technical documentation"
+          ]
+        }
+      ]
+    },
+    {
+      "company": "Berufskolleg Platz der Republik",
+      "role": "Technical Design Assistant",
+      "period": "2014 - 2018",
+      "responsibilities": []
+    }
+  ]
+}

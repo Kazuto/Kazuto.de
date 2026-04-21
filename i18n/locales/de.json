@@ -1,0 +1,19 @@
+{
+  "resume": {
+    "title": "Lebenslauf",
+    "downloadPdf": "PDF herunterladen",
+    "print": "Drucken",
+    "personalData": "Stammdaten",
+    "contact": "Kontakt",
+    "languages": "Sprachen",
+    "skills": "Skills",
+    "birthdate": "Geburtsdatum",
+    "address": "Anschrift",
+    "mobile": "Mobile",
+    "email": "E-Mail",
+    "web": "Web",
+    "clickToReveal": "Klicken zum Anzeigen",
+    "nativeLanguage": "Muttersprache",
+    "fluent": "fließend"
+  }
+}

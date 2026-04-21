@@ -1,0 +1,19 @@
+{
+  "resume": {
+    "title": "Resume",
+    "downloadPdf": "Download PDF",
+    "print": "Print",
+    "personalData": "Personal Data",
+    "contact": "Contact",
+    "languages": "Languages",
+    "skills": "Skills",
+    "birthdate": "Date of Birth",
+    "address": "Address",
+    "mobile": "Mobile",
+    "email": "Email",
+    "web": "Web",
+    "clickToReveal": "Click to reveal",
+    "nativeLanguage": "Native",
+    "fluent": "Fluent"
+  }
+}

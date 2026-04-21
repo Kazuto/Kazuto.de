@@ -11,22 +11,25 @@
         class="bg-secondary-500 p-8 lg:p-12 print:mt-0 print:bg-white print:px-6 print:pt-0 print:pb-8"
       >
         <div class="mx-auto max-w-4xl print:max-w-none">
-          <!-- Download Button -->
-          <div class="mb-8 flex justify-end gap-4 print:hidden">
+          <!-- Language Switcher & Download Buttons -->
+          <div class="mb-8 flex justify-between items-center gap-4 print:hidden">
+            <LanguageSwitcher />
+            <div class="flex gap-4">
             <Button
               tag="a"
               href="/cv_kai_mayer.pdf"
               download
               color="primary"
             >
-              Download PDF
+              {{ $t('resume.downloadPdf') }}
             </Button>
             <Button
               tag="button"
               @click="printResume"
             >
-              Print
+              {{ $t('resume.print') }}
             </Button>
+            </div>
           </div>
 
           <!-- Experience Timeline -->
@@ -52,26 +55,34 @@
 </template>
 
 <script setup>
-import resumeData from '@/data/resume.json'
+import resumeDe from '@/data/resume.json'
+import resumeEn from '@/data/resume-en.json'
+
+const { locale, t } = useI18n()
 
 definePageMeta({
   layout: 'resume',
 })
 
+// Load resume data based on current locale
+const resumeData = computed(() => {
+  return locale.value === 'en' ? resumeEn : resumeDe
+})
+
 useHead({
-  title: `${resumeData.personal.name} - Resume`,
+  title: computed(() => `${resumeData.value.personal.name} - ${t('resume.title')}`),
   meta: [
     {
       name: 'description',
-      content: `Professional resume of ${resumeData.personal.name}, ${resumeData.personal.title}`,
+      content: computed(() => `Professional resume of ${resumeData.value.personal.name}, ${resumeData.value.personal.title}`),
     },
     {
       property: 'og:title',
-      content: `${resumeData.personal.name} - Resume`,
+      content: computed(() => `${resumeData.value.personal.name} - ${t('resume.title')}`),
     },
     {
       property: 'og:description',
-      content: `Professional resume of ${resumeData.personal.name}, ${resumeData.personal.title}`,
+      content: computed(() => `Professional resume of ${resumeData.value.personal.name}, ${resumeData.value.personal.title}`),
     },
   ],
 })

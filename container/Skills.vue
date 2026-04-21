@@ -66,11 +66,24 @@
 </template>
 
 <script setup>
-const description = await queryContent('/skills')
-  .where({ title: 'Description' })
-  .findOne()
+const { locale } = useI18n()
 
-const content = await queryContent('/skills')
-  .where({ title: { $not: 'Description' } })
-  .find()
+const { data: description } = await useAsyncData(
+  `skills-description-${locale.value}`,
+  () => queryContent(`/${locale.value}/skills`)
+    .where({ description: true })
+    .findOne()
+)
+
+const { data: content } = await useAsyncData(
+  `skills-${locale.value}`,
+  () => queryContent(`/${locale.value}/skills`)
+    .where({ description: { $not: true } })
+    .find()
+)
+
+watch(locale, () => {
+  refreshNuxtData(`skills-description-${locale.value}`)
+  refreshNuxtData(`skills-${locale.value}`)
+})
 </script>

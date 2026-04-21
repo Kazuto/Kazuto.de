@@ -1,5 +1,5 @@
 <template>
-  <article class="relative mb-12 pl-8 last:pb-0 print:pl-0 print:break-inside-avoid">
+  <article class="relative mb-12 last:pb-0 print:break-inside-avoid print:pl-0">
     <div class="mb-8">
       <div class="flex w-full flex-wrap items-center justify-between gap-2">
         <h3 class="text-display6 mb-1 font-bold text-white">

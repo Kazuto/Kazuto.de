@@ -90,7 +90,16 @@
 </template>
 
 <script setup>
-const content = await queryContent('/about').findOne()
+const { locale } = useI18n()
+
+const { data: content } = await useAsyncData(
+  `about-${locale.value}`,
+  () => queryContent(`/${locale.value}/about`).findOne()
+)
+
+watch(locale, () => {
+  refreshNuxtData(`about-${locale.value}`)
+})
 
 const { items: socialMedia } = useSocial()
 </script>

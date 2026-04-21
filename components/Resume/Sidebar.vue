@@ -1,6 +1,6 @@
 <template>
   <aside
-    class="bg-secondary-600 rounded-tr-3xl rounded-br-3xl p-8 lg:sticky lg:top-0 lg:max-h-screen lg:overflow-y-auto print:static print:max-h-fit print:rounded-none print:bg-transparent print:px-6 print:pt-6 print:pb-4 print:mb-6 print:border-b-2 print:border-gray-300"
+    class="bg-secondary-600 rounded-tr-3xl rounded-br-3xl p-8 lg:sticky lg:top-0 lg:max-h-screen lg:overflow-y-auto print:static print:mb-6 print:max-h-fit print:rounded-none print:border-b-2 print:border-gray-300 print:bg-transparent print:px-6 print:pt-6 print:pb-4"
   >
     <div class="print:flex print:w-full print:items-center">
       <div class="mb-8 flex justify-center print:mr-8 print:justify-start">
@@ -16,11 +16,15 @@
       </div>
 
       <div class="mb-8 text-center print:text-left">
-        <h1 class="text-display6 text-primary-500 mb-2 font-bold uppercase">
+        <h1
+          class="text-display6 text-primary-500 mb-2 font-bold uppercase print:pb-2!"
+        >
           {{ data.personal.name }}
         </h1>
-        <p class="text-body2 text-white">{{ data.personal.title }}</p>
-        <p class="text-body3 mt-2 text-gray-400">
+        <p class="text-body2 text-white print:text-sm!">
+          {{ data.personal.title }}
+        </p>
+        <p class="text-body3 mt-2 text-gray-400 print:text-sm!">
           {{ data.personal.location }}
         </p>
       </div>
@@ -32,27 +36,34 @@
       class="print:grid print:w-full print:grid-cols-3 print:items-start print:gap-8"
     >
       <section class="mb-8">
-        <h2 class="text-body1 mb-4 font-bold text-white">Stammdaten</h2>
+        <h2 class="text-body1 mb-4 font-bold text-white">
+          {{ $t('resume.personalData') }}
+        </h2>
         <div class="space-y-3 text-sm text-gray-300">
           <div>
-            <span class="block text-gray-400">Geburtsdatum:</span>
+            <span class="block text-gray-400"
+              >{{ $t('resume.birthdate') }}:</span
+            >
             <span class="text-white">{{ data.personal.birthdate }}</span>
           </div>
           <div>
-            <span class="block text-gray-400">Anschrift:</span>
+            <span class="block text-gray-400">{{ $t('resume.address') }}:</span>
             <button
               v-if="!showContact"
               @click="showContact = true"
-              class="text-primary-500 underline hover:text-primary-300 print:hidden"
+              class="text-primary-500 hover:text-primary-300 underline print:hidden"
             >
-              Click to reveal
+              {{ $t('resume.clickToReveal') }}
             </button>
-            <div v-else class="text-white">
+            <div
+              v-else
+              class="text-white"
+            >
               <span>{{ data.personal.address.street }}</span>
               <br />
               <span>{{ data.personal.address.city }}</span>
             </div>
-            <div class="hidden print:block text-white">
+            <div class="hidden text-white print:block">
               <span>{{ data.personal.address.street }}</span>
               <br />
               <span>{{ data.personal.address.city }}</span>
@@ -62,16 +73,18 @@
       </section>
 
       <section class="mb-8">
-        <h2 class="text-body1 mb-4 font-bold text-white">Kontakt</h2>
+        <h2 class="text-body1 mb-4 font-bold text-white">
+          {{ $t('resume.contact') }}
+        </h2>
         <div class="space-y-3 text-sm text-gray-300">
           <div>
-            <span class="block text-gray-400">Mobile:</span>
+            <span class="block text-gray-400">{{ $t('resume.mobile') }}:</span>
             <button
               v-if="!showContact"
               @click="showContact = true"
-              class="text-primary-500 underline hover:text-primary-300 print:hidden"
+              class="text-primary-500 hover:text-primary-300 underline print:hidden"
             >
-              Click to reveal
+              {{ $t('resume.clickToReveal') }}
             </button>
             <a
               v-else
@@ -80,18 +93,18 @@
             >
               {{ data.personal.contact.mobile }}
             </a>
-            <span class="hidden print:inline text-white">
+            <span class="hidden text-white print:inline">
               {{ data.personal.contact.mobile }}
             </span>
           </div>
           <div>
-            <span class="block text-gray-400">E-Mail:</span>
+            <span class="block text-gray-400">{{ $t('resume.email') }}:</span>
             <button
               v-if="!showContact"
               @click="showContact = true"
-              class="text-primary-500 underline hover:text-primary-300 print:hidden"
+              class="text-primary-500 hover:text-primary-300 underline print:hidden"
             >
-              Click to reveal
+              {{ $t('resume.clickToReveal') }}
             </button>
             <a
               v-else
@@ -100,12 +113,12 @@
             >
               {{ data.personal.contact.email }}
             </a>
-            <span class="hidden print:inline text-white">
+            <span class="hidden text-white print:inline">
               {{ data.personal.contact.email }}
             </span>
           </div>
           <div>
-            <span class="block text-gray-400">Web:</span>
+            <span class="block text-gray-400">{{ $t('resume.web') }}:</span>
             <a
               :href="`https://${data.personal.contact.web}`"
               target="_blank"
@@ -118,14 +131,18 @@
       </section>
 
       <section class="mb-8">
-        <h2 class="text-body1 mb-4 font-bold text-white">Sprachen</h2>
+        <h2 class="text-body1 mb-4 font-bold text-white">
+          {{ $t('resume.languages') }}
+        </h2>
         <div class="space-y-2 text-sm text-gray-300">
           <div
             v-for="lang in data.languages"
             :key="lang.name"
           >
             <span class="text-white">{{ lang.name }}</span>
-            <span class="text-gray-400"> ({{ lang.level }})</span>
+            <span class="text-gray-400">
+              ({{ translateLevel(lang.level) }})</span
+            >
           </div>
         </div>
       </section>
@@ -148,7 +165,9 @@
 
     <div class="print:w-full">
       <section class="hidden print:block">
-        <h2 class="text-body1 mb-4 font-bold text-white">Skills</h2>
+        <h2 class="text-body1 mb-4 font-bold text-white">
+          {{ $t('resume.skills') }}
+        </h2>
         <div class="flex flex-wrap gap-2 text-sm">
           <span
             v-for="skill in data.skills"
@@ -166,6 +185,8 @@
 </template>
 
 <script setup>
+const { t } = useI18n()
+
 defineProps({
   data: {
     type: Object,
@@ -174,4 +195,14 @@ defineProps({
 })
 
 const showContact = ref(false)
+
+const translateLevel = (level) => {
+  const levelMap = {
+    native: t('resume.nativeLanguage'),
+    Muttersprache: t('resume.nativeLanguage'),
+    fluent: t('resume.fluent'),
+    fließend: t('resume.fluent'),
+  }
+  return levelMap[level] || level
+}
 </script>

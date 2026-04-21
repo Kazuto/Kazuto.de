@@ -10,6 +10,8 @@
 </template>
 
 <script setup>
+const { locale } = useI18n()
+
 useSeoMeta({
   ogImage: '[og:image]',
   ogUrl: '[og:url]',
@@ -18,7 +20,7 @@ useSeoMeta({
 
 useHead({
   htmlAttrs: {
-    lang: 'en',
+    lang: computed(() => locale.value),
   },
 })
 </script>

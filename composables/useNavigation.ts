@@ -9,17 +9,21 @@ export function useHeader() {
 
   const links = [
     {
-        name: 'My work',
-        target: '#portfolio',
-      },
-      {
-        name: 'My skills',
-        target: '#skills',
-      },
-      {
-        name: 'Hire me',
-        target: '#contact',
-      },
+      name: 'My work',
+      target: '#portfolio',
+    },
+    {
+      name: 'My skills',
+      target: '#skills',
+    },
+    {
+      name: 'Resume',
+      target: '/resume',
+    },
+    {
+      name: 'Contact me',
+      target: '#contact',
+    },
   ]
 
   return { open: isMenuOpen, toggle, links }
