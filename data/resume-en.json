@@ -5,8 +5,8 @@
     "location": "from Mönchengladbach",
     "birthdate": "07.09.1992",
     "address": {
-      "street": "Knopsstraße 5",
-      "city": "41061 Mönchengladbach"
+      "city": "41061 Mönchengladbach",
+      "country": "Germany"
     },
     "contact": {
       "mobile": "0176 / 74 70 48 83",

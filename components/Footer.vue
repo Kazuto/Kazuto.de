@@ -24,13 +24,13 @@
     </div>
 
     <div class="container mx-auto p-4 text-center text-lg">
-      <a
-        href="/cv_kai_mayer.pdf"
+      <nuxt-link
+        to="/resume"
         class="ease-cubic-bezier my-1.5 inline-block transition duration-500 hover:cursor-pointer hover:opacity-60"
         target="_blank"
       >
-        Curriculum Vitae
-      </a>
+        {{ $t('nav.resume') }}
+      </nuxt-link>
     </div>
 
     <div class="container mx-auto p-4">
@@ -42,5 +42,7 @@
 </template>
 
 <script setup>
+import { NuxtLink } from '#components'
+
 const { links } = useSocial()
 </script>

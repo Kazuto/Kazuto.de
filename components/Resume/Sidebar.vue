@@ -47,26 +47,13 @@
             <span class="text-white">{{ data.personal.birthdate }}</span>
           </div>
           <div>
-            <span class="block text-gray-400">{{ $t('resume.address') }}:</span>
-            <button
-              v-if="!showContact"
-              @click="showContact = true"
-              class="text-primary-500 hover:text-primary-300 underline print:hidden"
+            <span class="block text-gray-400"
+              >{{ $t('resume.location') }}:</span
             >
-              {{ $t('resume.clickToReveal') }}
-            </button>
-            <div
-              v-else
-              class="text-white"
-            >
-              <span>{{ data.personal.address.street }}</span>
-              <br />
+            <div class="text-white">
               <span>{{ data.personal.address.city }}</span>
-            </div>
-            <div class="hidden text-white print:block">
-              <span>{{ data.personal.address.street }}</span>
               <br />
-              <span>{{ data.personal.address.city }}</span>
+              <span>{{ data.personal.address.country }}</span>
             </div>
           </div>
         </div>
@@ -77,26 +64,6 @@
           {{ $t('resume.contact') }}
         </h2>
         <div class="space-y-3 text-sm text-gray-300">
-          <div>
-            <span class="block text-gray-400">{{ $t('resume.mobile') }}:</span>
-            <button
-              v-if="!showContact"
-              @click="showContact = true"
-              class="text-primary-500 hover:text-primary-300 underline print:hidden"
-            >
-              {{ $t('resume.clickToReveal') }}
-            </button>
-            <a
-              v-else
-              :href="`tel:${data.personal.contact.mobile}`"
-              class="hover:text-primary-500 text-white"
-            >
-              {{ data.personal.contact.mobile }}
-            </a>
-            <span class="hidden text-white print:inline">
-              {{ data.personal.contact.mobile }}
-            </span>
-          </div>
           <div>
             <span class="block text-gray-400">{{ $t('resume.email') }}:</span>
             <button

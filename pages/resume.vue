@@ -12,25 +12,18 @@
       >
         <div class="mx-auto max-w-4xl print:max-w-none">
           <!-- Language Switcher & Download Buttons -->
-          <div class="mb-8 flex justify-between items-center gap-4 print:hidden">
+          <div
+            class="mb-8 flex items-center justify-between gap-4 print:hidden"
+          >
             <LanguageSwitcher />
             <div class="flex gap-4">
-            <Button
-              tag="a"
-              href="/cv_kai_mayer.pdf"
-              download
-              color="primary"
-              size="small"
-            >
-              {{ $t('resume.downloadPdf') }}
-            </Button>
-            <Button
-              tag="button"
-              @click="printResume"
-              size="small"
-            >
-              {{ $t('resume.print') }}
-            </Button>
+              <Button
+                tag="button"
+                @click="printResume"
+                size="small"
+              >
+                {{ $t('resume.print') }}
+              </Button>
             </div>
           </div>
 
@@ -69,18 +62,33 @@ const siteUrl = 'https://kazuto.de'
 const ogImageUrl = `${siteUrl}/images/og-image.png`
 
 useSeoMeta({
-  title: computed(() => `${resumeData.value.personal.name} - ${t('resume.title')}`),
-  description: computed(() => `Professional resume of ${resumeData.value.personal.name}, ${resumeData.value.personal.title}. Download PDF or view online.`),
-  ogTitle: computed(() => `${resumeData.value.personal.name} - ${t('resume.title')}`),
-  ogDescription: computed(() => `Professional resume of ${resumeData.value.personal.name}, ${resumeData.value.personal.title}`),
+  title: computed(
+    () => `${resumeData.value.personal.name} - ${t('resume.title')}`
+  ),
+  description: computed(
+    () =>
+      `Professional resume of ${resumeData.value.personal.name}, ${resumeData.value.personal.title}. Download PDF or view online.`
+  ),
+  ogTitle: computed(
+    () => `${resumeData.value.personal.name} - ${t('resume.title')}`
+  ),
+  ogDescription: computed(
+    () =>
+      `Professional resume of ${resumeData.value.personal.name}, ${resumeData.value.personal.title}`
+  ),
   ogImage: ogImageUrl,
   ogUrl: `${siteUrl}${route.path}`,
   ogType: 'profile',
   ogSiteName: 'Kazuto Portfolio',
-  ogLocale: computed(() => locale.value === 'de' ? 'de_DE' : 'en_US'),
+  ogLocale: computed(() => (locale.value === 'de' ? 'de_DE' : 'en_US')),
   twitterCard: 'summary_large_image',
-  twitterTitle: computed(() => `${resumeData.value.personal.name} - ${t('resume.title')}`),
-  twitterDescription: computed(() => `Professional resume of ${resumeData.value.personal.name}, ${resumeData.value.personal.title}`),
+  twitterTitle: computed(
+    () => `${resumeData.value.personal.name} - ${t('resume.title')}`
+  ),
+  twitterDescription: computed(
+    () =>
+      `Professional resume of ${resumeData.value.personal.name}, ${resumeData.value.personal.title}`
+  ),
   twitterImage: ogImageUrl,
   robots: 'index, follow',
 })
@@ -89,42 +97,44 @@ useHead({
   link: [
     {
       rel: 'canonical',
-      href: `${siteUrl}${route.path}`
+      href: `${siteUrl}${route.path}`,
     },
     {
       rel: 'alternate',
       hreflang: 'de',
-      href: `${siteUrl}/resume`
+      href: `${siteUrl}/resume`,
     },
     {
       rel: 'alternate',
       hreflang: 'en',
-      href: `${siteUrl}/resume`
+      href: `${siteUrl}/resume`,
     },
     {
       rel: 'alternate',
       hreflang: 'x-default',
-      href: `${siteUrl}/resume`
-    }
+      href: `${siteUrl}/resume`,
+    },
   ],
   script: [
     {
       type: 'application/ld+json',
-      children: computed(() => JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'Person',
-        name: resumeData.value.personal.name,
-        jobTitle: resumeData.value.personal.title,
-        url: `${siteUrl}/resume`,
-        address: {
-          '@type': 'PostalAddress',
-          addressLocality: 'Mönchengladbach',
-          addressCountry: 'DE'
-        },
-        knowsAbout: resumeData.value.skills || []
-      }))
-    }
-  ]
+      children: computed(() =>
+        JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'Person',
+          name: resumeData.value.personal.name,
+          jobTitle: resumeData.value.personal.title,
+          url: `${siteUrl}/resume`,
+          address: {
+            '@type': 'PostalAddress',
+            addressLocality: 'Mönchengladbach',
+            addressCountry: 'DE',
+          },
+          knowsAbout: resumeData.value.skills || [],
+        })
+      ),
+    },
+  ],
 })
 
 const printResume = () => {
