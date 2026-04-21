@@ -14,7 +14,7 @@
     <label
       :id="`label-${id}`"
       :for="id"
-      class="text-secondary-500 ease-cubic-bezier absolute left-5 block origin-[0_0] font-medium tracking-wide transition duration-500"
+      class="text-secondary-500 absolute left-5 block font-medium tracking-wide"
       :aria-label="label"
     >
       {{ label }}
@@ -52,20 +52,22 @@ input::placeholder {
   color: transparent;
 }
 
-input::focus {
+input:focus {
   outline: 0;
+}
+
+label {
+  top: 1rem;
+  pointer-events: none;
+  transform-origin: left top;
 }
 
 input:focus + label,
 input:not(:placeholder-shown) + label {
-  @apply bg-neutral-100;
-  padding: 0 4px;
-
-  transform: translateY(-1.8rem) scale(0.7);
-}
-
-label {
-  top: clamp(1rem, 2.6vw, 0.4rem);
+  top: -0.75rem;
+  transform: scale(0.75);
+  background-color: rgb(245 245 245);
+  padding: 0 0.25rem;
 }
 
 .fade-enter-active,
