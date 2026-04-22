@@ -20,6 +20,7 @@
     "myWork": "My work",
     "mySkills": "My skills",
     "resume": "Resume",
+    "blog": "Blog",
     "contact": "Contact"
   },
   "resume": {
@@ -38,5 +39,13 @@
     "clickToReveal": "Click to reveal",
     "nativeLanguage": "Native",
     "fluent": "Fluent"
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "Thoughts, tutorials, and insights about web development and design",
+    "loading": "Loading posts...",
+    "noPosts": "No blog posts yet",
+    "notFound": "Post not found",
+    "backToList": "Back to blog"
   }
 }

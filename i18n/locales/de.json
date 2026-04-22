@@ -20,6 +20,7 @@
     "myWork": "Meine Arbeit",
     "mySkills": "Meine Skills",
     "resume": "Lebenslauf",
+    "blog": "Blog",
     "contact": "Kontakt"
   },
   "resume": {
@@ -38,5 +39,13 @@
     "clickToReveal": "Klicken zum Anzeigen",
     "nativeLanguage": "Muttersprache",
     "fluent": "fließend"
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "Gedanken, Tutorials und Einblicke über Webentwicklung und Design",
+    "loading": "Beiträge werden geladen...",
+    "noPosts": "Noch keine Blogbeiträge",
+    "notFound": "Beitrag nicht gefunden",
+    "backToList": "Zurück zum Blog"
   }
 }

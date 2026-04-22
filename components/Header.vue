@@ -1,16 +1,26 @@
 <template>
   <header
     id="header"
-    class="fixed top-0 right-0 left-0 z-50 h-fit transition-all delay-150"
-    :class="{
-      hide: state.curDirection === 2 && state.curScroll > state.scrollTreshold,
-    }"
+    :class="[
+      staticPosition ? 'static' : 'fixed top-0 right-0 left-0 z-50',
+      'h-fit transition-all delay-150',
+      {
+        hide: !staticPosition && state.curDirection === 2 && state.curScroll > state.scrollTreshold,
+      }
+    ]"
   >
     <slot></slot>
   </header>
 </template>
 
 <script setup>
+const props = defineProps({
+  staticPosition: {
+    type: Boolean,
+    default: false
+  }
+})
+
 const { open, toggle } = useHeader()
 
 const state = reactive({

@@ -1,6 +1,6 @@
 <template>
   <div class="overflow-x-hidden">
-    <Header>
+    <Header :static-position="route.meta.headerStatic">
       <NavigationBar :items="navItems" />
       <NavigationMenuMobile
         :items="navItems"
@@ -22,6 +22,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
+const route = useRoute()
 const {links: navItems, open} = useHeader()
 
 const state = reactive({
