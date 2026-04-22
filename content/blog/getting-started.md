@@ -8,8 +8,6 @@ image: /images/blog/welcome.jpg
 readingTime: 3 min read
 ---
 
-# Welcome to My Blog
-
 This is my first blog post! I'm excited to start sharing my thoughts, tutorials, and insights about web development and design.
 
 ## What to Expect
