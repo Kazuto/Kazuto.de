@@ -7,10 +7,9 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "postinstall": "nuxt prepare",
-    "lint:js": "eslint --ext .ts,.js,.vue --ignore-path .gitignore .",
-    "lint:prettier": "prettier --check .",
-    "lint": "bun lint:js && yarn lint:prettier",
-    "lintfix": "prettier --write --list-different . && yarn lint:js --fix"
+    "prepare": "husky",
+    "lint:check": "oxlint . && prettier --check .",
+    "lint": "oxlint --fix . && prettier --write ."
   },
   "dependencies": {
     "@emailjs/browser": "^3.12.1",
@@ -23,18 +22,26 @@
   "devDependencies": {
     "@nuxt/content": "^2.13.4",
     "@nuxt/devtools": "latest",
-    "@nuxt/eslint": "1.2.0",
     "@nuxt/image": "^1.10.0",
-    "@types/eslint": "^9.6.1",
     "@types/node": "^18.19.81",
     "@types/nodemailer": "^8.0.0",
-    "@typescript-eslint/parser": "^5.62.0",
-    "eslint": "^8.57.1",
     "gsap": "^3.12.7",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
     "nuxt": "^3.16.1",
+    "oxlint": "^1.61.0",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "typescript": "^5.8.2",
     "vue-tsc": "^2.2.8"
+  },
+  "lint-staged": {
+    "*.{js,ts,vue}": [
+      "oxlint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,css}": [
+      "prettier --write"
+    ]
   }
 }

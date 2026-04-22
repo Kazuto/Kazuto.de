@@ -29,7 +29,10 @@ export default defineNuxtConfig({
           content:
             'Full-stack developer and graphic designer specializing in Vue.js, Nuxt, Laravel, and modern web technologies. Based in Mönchengladbach, Germany.',
         },
-        { property: 'og:image', content: 'https://kazuto.de/images/og-image.png' },
+        {
+          property: 'og:image',
+          content: 'https://kazuto.de/images/og-image.png',
+        },
         { property: 'og:url', content: 'https://kazuto.de' },
         { name: 'author', content: 'Kai Mayer' },
         { name: 'copyright', content: 'Kai Mayer' },
@@ -70,7 +73,7 @@ export default defineNuxtConfig({
     dirs: ['store'],
   },
 
-  modules: ['@nuxt/image', '@nuxt/content', '@nuxt/eslint', '@nuxtjs/i18n'],
+  modules: ['@nuxt/image', '@nuxt/content', '@nuxtjs/i18n'],
 
   i18n: {
     locales: [
