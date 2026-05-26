@@ -6,7 +6,6 @@
     <Container>
       <Project
         v-if="content"
-        class="xl:translate-y-24"
         :item="content"
       ></Project>
     </Container>
@@ -16,11 +15,8 @@
 <script setup>
 const { locale } = useI18n()
 
-const { data: content, refresh } = await useAsyncData(
-  'featured-project',
-  () => queryContent(`/${locale.value}/projects`)
-    .where({ featured: true })
-    .findOne()
+const { data: content, refresh } = await useAsyncData('featured-project', () =>
+  queryContent(`/${locale.value}/projects`).where({ featured: true }).findOne()
 )
 
 watch(locale, () => {

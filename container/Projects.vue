@@ -3,7 +3,7 @@
     id="portfolio"
     class="z-10 min-h-fit py-20 md:py-16"
   >
-    <Container>
+    <Container class="flex flex-col gap-16 md:gap-12">
       <Project
         v-for="(project, index) in content"
         :key="index"
@@ -16,11 +16,8 @@
 <script setup>
 const { locale } = useI18n()
 
-const { data: content, refresh } = await useAsyncData(
-  'projects',
-  () => queryContent(`/${locale.value}/projects`)
-    .where({ featured: false })
-    .find()
+const { data: content, refresh } = await useAsyncData('projects', () =>
+  queryContent(`/${locale.value}/projects`).where({ featured: false }).find()
 )
 
 watch(locale, () => {
