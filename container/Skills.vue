@@ -55,7 +55,7 @@
               {{ skill.title }}
             </h3>
             <ContentRenderer
-              class="text-body2"
+              class="text-body2 leading-normal"
               :value="skill"
             />
           </Card>
@@ -70,16 +70,18 @@ const { locale } = useI18n()
 
 const { data: description, refresh: refreshDescription } = await useAsyncData(
   'skills-description',
-  () => queryContent(`/${locale.value}/skills`)
-    .where({ description: true })
-    .findOne()
+  () =>
+    queryContent(`/${locale.value}/skills`)
+      .where({ description: true })
+      .findOne()
 )
 
 const { data: content, refresh: refreshContent } = await useAsyncData(
   'skills-content',
-  () => queryContent(`/${locale.value}/skills`)
-    .where({ description: { $not: true } })
-    .find()
+  () =>
+    queryContent(`/${locale.value}/skills`)
+      .where({ description: { $not: true } })
+      .find()
 )
 
 watch(locale, () => {

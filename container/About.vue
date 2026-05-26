@@ -54,7 +54,7 @@
             :delay="0.35"
           >
             <ContentRenderer
-              class="text-body2 mt-12"
+              class="text-body2 mt-12 leading-normal"
               :value="content"
             />
           </Animation>
@@ -92,9 +92,8 @@
 <script setup>
 const { locale } = useI18n()
 
-const { data: content, refresh } = await useAsyncData(
-  'about',
-  () => queryContent(`/${locale.value}/about`).findOne()
+const { data: content, refresh } = await useAsyncData('about', () =>
+  queryContent(`/${locale.value}/about`).findOne()
 )
 
 watch(locale, () => {

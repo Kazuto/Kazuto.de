@@ -37,7 +37,7 @@
         :delay="0.5"
       >
         <ContentRenderer
-          class="animate text-body1 text-secondary-500 mb-0"
+          class="animate text-body1 text-secondary-500 mb-0 leading-normal"
           :value="item"
         />
 
