@@ -47,5 +47,11 @@
     "noPosts": "No blog posts yet",
     "notFound": "Post not found",
     "backToList": "Back to blog"
+  },
+  "pages": {
+    "portfolio": {
+      "featured": "Featured Project",
+      "visit": "Visit now"
+    }
   }
 }
